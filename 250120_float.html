@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin: 0;padding: 0;
+    }
+    .wrap{width: 1200px;margin:0 auto}
+    .top {width: 1200px;height: 100px;background-color: red;}
+    .under {width: 1200px;height: 100px;background-color: blue;}
+    .one{width: 1200px;height: 500px;}
+    p{display: inline-block;
+    }
+p:first-child{
+  width: 20%; height: 500px;
+  background-color: green;
+float: left;}
+  p:nth-child(2){width: 70%; height: 500px; background-color: pink;}
+  p:nth-child(3)  {width: 10%; height: 500px; background-color: green; float: right;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <h1>가로 1200px 세로 100px </h1>
+    </div>
+    <div class="under">
+      <h2>가로 1200px 세로 100px</h2>
+    </div>
+    <div class="one">
+    <p>가로 20% 세로 500px</p>
+    <p>가로 70% 세로 500px</p>
+    <p>가로 10% 세로 500px</p>
+    </div>
+    <div class="under">
+      <h2>가로 1200px 세로 100px</h2>
+    </div>
+  </div>
+</body>
+</html>
