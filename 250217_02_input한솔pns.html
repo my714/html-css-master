@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      input {
+        display: none;
+      }
+      .con {
+        position: relative;
+      }
+      .con p {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      .menu1:checked ~ div .con p:first-child img,
+      .menu2:checked ~ div .con p:nth-child(2) img,
+      .menu3:checked ~ div .con p:nth-child(3) img,
+      .menu4:checked ~ div .con p:nth-child(4) img,
+      .menu5:checked ~ div .con p:nth-child(5) img,
+      .menu6:checked ~ div .con p:nth-child(6) img {
+        display: none;
+      }
+
+      #menu1:checked ~ div .con p:first-child,
+      #menu2:checked ~ div .con p:nth-child(2),
+      #menu3:checked ~ div .con p:nth-child(3),
+      #menu4:checked ~ div .con p:nth-child(4),
+      #menu5:checked ~ div .con p:nth-child(5),
+      #menu6:checked ~ div .con p:nth-child(6) {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="radio" name="Industry" id="menu1" />
+    <input type="radio" name="Industry" id="menu2" />
+    <input type="radio" name="Industry" id="menu3" />
+    <input type="radio" name="Industry" id="menu4" />
+    <input type="radio" name="Industry" id="menu5" />
+    <input type="radio" name="Industry" id="menu6" />
+    <div class="menu">
+      <label for="menu1">반도체</label>
+      <label for="menu2">전기/전자</label>
+      <label for="menu3">2차전지</label>
+      <label for="menu4">식음료/제약</label>
+      <label for="menu5">화학</label>
+      <label for="menu6">기계/금속</label>
+    </div>
+    <div class="con">
+      <p>
+        <img
+          src="https://www.hansolpns.com/assets/resources/front/images/contents/smart_factory/industry-01.jpg"
+          alt=""
+        />
+      </p>
+      <p>
+        <img
+          src="https://www.hansolpns.com/assets/resources/front/images/contents/smart_factory/industry-02.jpg"
+          alt=""
+        />
+      </p>
+      <p>
+        <img
+          src="https://www.hansolpns.com/assets/resources/front/images/contents/smart_factory/industry-03.jpg"
+          alt=""
+        />
+      </p>
+      <p>
+        <img
+          src="https://www.hansolpns.com/assets/resources/front/images/contents/smart_factory/industry-04.jpg"
+          alt=""
+        />
+      </p>
+      <p>
+        <img
+          src="https://www.hansolpns.com/assets/resources/front/images/contents/smart_factory/industry-05.jpg"
+          alt=""
+        />
+      </p>
+      <p>
+        <img
+          src="https://www.hansolpns.com/assets/resources/front/images/contents/smart_factory/industry-06.jpg"
+          alt=""
+        />
+      </p>
+    </div>
+  </body>
+</html>

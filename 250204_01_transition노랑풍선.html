@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      ul.yellow {
+        width: 1480px;
+        margin: 50px auto;
+        height: 500px;
+        display: flex;
+        /* justify-content: space-between; */
+        gap: calc(112px / 7);
+      }
+
+      ul.yellow li {
+        width: 171px;
+        height: 100%;
+        border-radius: 12px;
+        display: flex; /*<<< flex는 부모한테만 줘야함 */
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+        transition: 0.5s;
+      }
+
+      ul.yellow li:nth-child(1) {
+        background: url(https://company.ybtour.co.kr/images/bg/bg_category_1.jpg)
+          center/cover;
+      }
+      ul.yellow li:nth-child(2) {
+        background: url(https://company.ybtour.co.kr/images/bg/bg_category_2.jpg)
+          center/cover;
+      }
+      ul.yellow li:nth-child(3) {
+        background: url(https://company.ybtour.co.kr/images/bg/bg_category_4.jpg)
+          center/cover;
+      }
+      ul.yellow li:nth-child(4) {
+        background: url(https://company.ybtour.co.kr/images/bg/bg_category_5.jpg)
+          center/cover;
+      }
+      ul.yellow li:nth-child(5) {
+        background: url(https://company.ybtour.co.kr/images/bg/bg_category_6.jpg)
+          center/cover;
+      }
+      ul.yellow li:nth-child(6) {
+        background: url(https://company.ybtour.co.kr/images/bg/bg_category_3.jpg)
+          center/cover;
+      }
+      ul.yellow li:nth-child(7) {
+        background: url(https://company.ybtour.co.kr/images/bg/bg_category_7.jpg)
+          center/cover;
+      }
+      ul.yellow li:nth-child(8) {
+        background: url(https://company.ybtour.co.kr/images/bg/bg_category_8.jpg)
+          center/cover;
+      }
+
+      ul.yellow li div {
+        width: 80%;
+        position: relative;
+      }
+      ul.yellow li:hover div {
+      }
+      ul.yellow li div p {
+        word-break: keep-all;
+      }
+
+      ul.yellow li div p:last-child {
+        display: none;
+      }
+      ul.yellow li:hover div p:last-child {
+        display: block;
+      }
+
+      ul.yellow li:hover {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="yellow">
+      <li>
+        <div>
+          <p>Package</p>
+          <p>
+            전세계 맞춤 패키지여행으로 연인, 친구, 가족과 함께 행복한 추억을
+            만듭니다.
+          </p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p>Honeymoon</p>
+          <p>
+            신혼부부의 취향과 조건에 맞춘 특별한 여행으로 낭만적인 순간을
+            함께합니다.
+          </p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p>
+            Golf <br />
+            & Theme
+          </p>
+          <p>
+            골프투어, 가족여행, 크루즈여행, 휴양여행, 성지순례, 문화탐방 등
+            원하는 테마로 여행할 수 있습니다.
+          </p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p>Air Ticket</p>
+          <p>
+            세계 주요 도시 및 국내 항공 권 예약·발권과 단체 그룹 예약까지
+            가능합니다.
+          </p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p>Hotel</p>
+          <p>
+            마음에 맞는 전세계 및 국내 호텔을 쉽고 빠르게 예약할 수 있습니다.
+          </p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p>Tour & Ticket</p>
+          <p>
+            배낭여행 및 개별여행을 위한 유레일 패스 등 교통권과 현지투어,
+            입장티켓을 예약할 수 있습니다.
+          </p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p>Domestic</p>
+          <p>
+            국내의 문화유적, 제주 패키지, 골프 및 렌터카, 특급 호텔 예약을
+            제공합니다.
+          </p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p>Incentive</p>
+          <p>
+            국제회의 및 박람회, 기업·단체 연수 단체 포상, 대학교, 지역 모임 등
+            인센티브 여행을 함께합니다.
+          </p>
+        </div>
+      </li>
+    </ul>
+  </body>
+</html>

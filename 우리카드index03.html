@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        margin: 5px auto 0;
+        list-style: none;
+        display: flex;
+      }
+      ul li {
+        position: relative;
+        width: 270px;
+        text-align: center;
+        /* border-right: 1px solid #e0e0e0; */
+      }
+      ul li::before {
+        position: absolute;
+        content: "";
+        right: 0;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background: #d9d9d9;
+      }
+
+      a {
+        text-decoration: none;
+        color: #222222;
+      }
+
+      ul li:first-child img {
+        width: 95%;
+        margin-bottom: 50px;
+      }
+
+      ul li a h4 {
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -2px;
+        margin-bottom: 30px;
+      }
+      ul li a p {
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <a href="">
+          <p>
+            <img
+              src="https://pc.wooricard.com/dcpc/img/pc/content/special_mbnf_1_obj.png"
+              alt="mbnf1"
+            />
+          </p>
+          <h4>해외이용의 정석</h4>
+          <p>
+            여행, 직구, 항공 <br />
+            무엇이든 우리카드로
+          </p>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <p>
+            <img
+              src="https://pc.wooricard.com/dcpc/img/pc/content/special_mbnf_2_obj.png"
+              alt="mbnf2"
+            />
+          </p>
+          <h4>MY Pick 서비스</h4>
+          <p>
+            혜택도 맞춤! <br />
+            나만을 위한 맞춤 혜택
+          </p>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <p>
+            <img
+              src="https://pc.wooricard.com/dcpc/img/pc/content/special_mbnf_3_obj.png"
+              alt="mbnf3"
+            />
+          </p>
+          <h4>우리V클럽</h4>
+          <p>
+            특별함을 원하는 <br />
+            고객을 위한 VIP우대 혜택
+          </p>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <p>
+            <img
+              src="https://pc.wooricard.com/dcpc/img/pc/content/special_mbnf_4_obj.png"
+              alt="mbnf4"
+            />
+          </p>
+          <h4>우리 Point</h4>
+          <p>
+            차곡차곡 쌓아 <br />
+            다양한 곳에서 사용가능
+          </p>
+        </a>
+      </li>
+    </ul>
+  </body>
+</html>

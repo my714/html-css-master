@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @font-face {
+        font-family: "pretendard";
+        src: url(/webfonts/Pretendard-Light.woff) format("woff");
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+
+      ul.main {
+        width: 1760px;
+        height: 630px;
+        margin: 50px auto;
+        display: flex;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      ul.main li {
+        width: 344px;
+        height: 630px;
+        position: relative;
+      }
+
+      ul.main li .txt {
+        position: absolute;
+        top: 0;
+        margin-top: 200px;
+        white-space: nowrap;
+        padding: 50px;
+      }
+
+      /* ul.main li .txt p:last-child {
+        display: none;
+      } */
+
+      ul.main li:hover {
+        width: 688px;
+        height: 630px;
+        transition: 1s;
+      }
+      ul.main li:hover .txt h1 {
+        font-size: 50px;
+      }
+      ul.main li .txt h1::after {
+        content: url(https://www.samsungshi.com/images/main/mSolution_arrow.png);
+        position: absolute;
+        left: 130px;
+        top: 100px;
+      }
+
+      ul.main li:hover .txt p {
+        display: block;
+      }
+
+      ul.main li:hover .txt a {
+        display: inline-block;
+      }
+
+      ul.main li .txt h1 {
+        font-family: "pretendard";
+        font-size: 35px;
+        padding-bottom: 30px;
+        color: #fff;
+      }
+
+      ul.main li .txt p {
+        font-family: "pretendard";
+        font-size: 20px;
+        color: #fff;
+        margin-bottom: 50px;
+      }
+
+      ul.main li .txt a {
+        margin-top: 60px;
+        color: #fff;
+        border-bottom: 4px solid;
+        border-color: #fff;
+        text-decoration: none;
+      }
+
+      ul.main li .txt p,
+      a {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="main">
+      <li>
+        <p>
+          <img
+            src="https://www.samsungshi.com/images/main/mSolution_bg_01.jpg"
+            alt=""
+          />
+        </p>
+        <div class="txt">
+          <h1>제품 | 서비스</h1>
+          <p>
+            끊임없는 제품 혁신과 <br />
+            엔지니어링 역량 강화
+          </p>
+
+          <a href="">자세히</a>
+        </div>
+      </li>
+      <li>
+        <p>
+          <img
+            src="https://www.samsungshi.com/images/main/mSolution_bg_02.jpg"
+            alt=""
+          />
+        </p>
+
+        <div class="txt">
+          <h1>그린 솔루션</h1>
+          <p>
+            지구를 위한 조선·해양 <br />
+            탄소중립 기술 개발
+          </p>
+          <a href="">자세히 </a>
+        </div>
+      </li>
+      <li>
+        <p>
+          <img
+            src="https://www.samsungshi.com/images/main/mSolution_bg_03.jpg"
+            alt=""
+          />
+        </p>
+        <div class="txt">
+          <h1>디지털 솔루션</h1>
+          <p>
+            미래 디지털 기술 <br />
+            시장 선도
+          </p>
+
+          <a href="">자세히</a>
+        </div>
+      </li>
+      <li>
+        <p>
+          <img
+            src="https://www.samsungshi.com/images/main/mSolution_bg_04.jpg"
+            alt=""
+          />
+        </p>
+        <div class="txt">
+          <h1>스마트야드 솔루션</h1>
+          <p>
+            미래형 조선소로 <br />
+            패러다임 전환
+          </p>
+
+          <a href="">자세히</a>
+        </div>
+      </li>
+    </ul>
+  </body>
+</html>
