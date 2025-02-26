@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        position: relative;
+      }
+      input {
+        display: none;
+      }
+      .main {
+        margin: 0 auto;
+
+        height: 500px;
+        background: url(./두산로보틱스/images/sub-bg13.jpg);
+      }
+      .txt {
+        text-align: center;
+      }
+      .txt h1 {
+        font-size: 56px;
+        color: #fff;
+      }
+      .menu {
+        width: 500px;
+        height: 60px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #444;
+        border-radius: 8px;
+      }
+
+      .menu p img {
+        width: 18px;
+        height: 16px;
+      }
+      .menu p a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .menu p:first-child {
+        width: 60px;
+      }
+      .menu p:nth-child(2),
+      .menu p:nth-child(3) {
+        flex: 1;
+        font-style: 17px;
+      }
+      span img {
+        width: 10px;
+        height: 10px;
+      }
+      .sub {
+        text-align: center;
+        width: 500px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        position: relative;
+      }
+      .sub > ul {
+        width: 220px;
+        opacity: 0;
+        background: #fff;
+        position: absolute;
+      }
+
+      ul.list1 {
+        left: 50px;
+      }
+      ul.list2 {
+        left: 280px;
+      }
+
+      #menu1:checked ~ .main .sub > ul.list1,
+      #menu2:checked ~ .main .sub > ul.list2 {
+        opacity: 1;
+      }
+
+      ul {
+        list-style: none;
+      }
+      ul li {
+      }
+      ul li a {
+        text-decoration: none;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="radio" name="con" id="menu1" />
+    <input type="radio" name="con" id="menu2" />
+
+    <div class="main">
+      <div class="txt">
+        <h1>두산 로봇 교육</h1>
+
+        <div class="menu">
+          <p>
+            <a href="">
+              <img
+                src="https://www.doosanrobotics.com/images/icon-home.svg"
+                alt=""
+              />
+            </a>
+          </p>
+
+          <p>
+            <a href="">
+              <label for="menu1"
+                >교육&서비스<span
+                  ><img
+                    src="./두산로보틱스/images/arrow-down-light.svg"
+                    alt="" /></span
+              ></label>
+            </a>
+          </p>
+
+          <p>
+            <a href="">
+              <label for="menu2"
+                >두산 로봇 교육<span
+                  ><img
+                    src="./두산로보틱스/images/arrow-down-light.svg"
+                    alt="" /></span
+              ></label>
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="sub">
+        <ul class="list1">
+          <li><a href="">제품&솔루션</a></li>
+          <li><a href="">교육&서비스</a></li>
+          <li><a href="">투자정보</a></li>
+          <li><a href="">회사소개</a></li>
+        </ul>
+        <ul class="list2">
+          <li><a href="">두산 로봇 교육</a></li>
+          <li><a href="">다운로드 센터</a></li>
+          <li><a href="">A/S신청</a></li>
+          <li><a href="">파트너 서비스</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

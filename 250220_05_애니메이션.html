@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      input {
+        display: none;
+      }
+      .ani {
+        text-align: center;
+      }
+
+      .con {
+        text-align: center;
+        width: 500px;
+        height: 500px;
+        margin: 0 auto;
+      }
+      .con p {
+        position: absolute;
+      }
+
+      .btn {
+        margin-top: 100px;
+      }
+      .btn label {
+        padding: 10px 20px;
+        border-radius: 30px;
+        border: 1px solid #000;
+        cursor: pointer;
+      }
+      #left:checked ~ .con p:nth-child(2) img {
+        animation: left 2s linear infinite;
+      }
+      @keyframes left {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(-1080deg);
+        }
+      }
+      #right:checked ~ .con p:nth-child(2) img {
+        animation: right 2s linear infinite;
+      }
+      @keyframes right {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(1080deg);
+        }
+      }
+      #off:checked ~ .con p:nth-child(2) img {
+        animation-play-state: paused;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ani">
+      <input type="radio" name="btn" id="left" />
+      <input type="radio" name="btn" id="right" />
+      <input type="radio" name="btn" id="off" />
+      <div class="con">
+        <p><img src="./images/pipe.png" alt="" /></p>
+        <p><img src="./images/propeller.png" alt="" /></p>
+      </div>
+      <div class="btn">
+        <label for="left">Turn left</label>
+        <label for="right">Turn right</label>
+        <label for="off">off</label>
+      </div>
+    </div>
+  </body>
+</html>

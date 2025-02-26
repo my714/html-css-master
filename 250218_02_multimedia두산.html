@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overflow: hidden;
+      }
+      .bg {
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+      }
+
+      .bg video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .con {
+        color: #fff;
+        padding: 250px 0 0 150px;
+      }
+      .con h1 {
+        font-size: 70px;
+      }
+      .con p {
+        font-size: 28px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg">
+      <video autoplay muted loop>
+        <source
+          src="https://www.doosan-iv.com/common/images/main/main-visual-video3.mp4"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+    <div class="con">
+      <h1>
+        BUILT TO LAST <br />
+        MADE TO PERFORM
+      </h1>
+      <p>
+        뛰어난 성능과 효율성으로 믿을 수 있는 두산밥캣 지게차를 직접 경험해
+        보세요.
+      </p>
+    </div>
+  </body>
+</html>

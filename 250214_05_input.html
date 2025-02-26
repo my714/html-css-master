@@ -10,389 +10,263 @@
         margin: 0;
         padding: 0;
       }
+      ul {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: #333;
+      }
       input {
         display: none;
       }
-
-      div {
+      .brand {
+        width: 1280px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .brand .menu {
+        margin: 50px 0;
+      }
+      .brand .menu ul {
         display: flex;
+        justify-content: center;
+        gap: 10px;
       }
-      div.con {
+      .brand .menu ul li {
+        position: relative;
+        padding: 0 20px;
+        /* margin: 0 10px; */
       }
-      div.con p {
-
+      .brand .menu ul li a:hover {
+        color: green;
       }
-      div.con p img {
-        width: 218px;
+      .brand .menu ul li a label {
+        cursor: pointer;
+      }
+      .brand .con {
+        position: relative;
         height: 218px;
       }
-      .menu label:checked
-
-      /* #juice:checked ~ .con:first-child,
-      #tea:checked ~ .con:nth-child(2) img,
-      #grain:checked ~ .con:nth-child(3) img,
-      #child:checked ~ .con:nth-child(4) img,
-      #water:checked ~ .con:nth-child(5) img,
-      #health:checked ~ .con:nth-child(6) img,
-      #baking:checked ~ .con:nth-child(7) img,
-      #import:checked ~ .con:nth-child(8) img {
-        display: block;
-      }
-      #juice:checked ~ .con label:first-child,
-      #tea:checked ~ .con label:nth-child(2),
-      #grain:checked ~ .con label:nth-child(3),
-      #child:checked ~ .con label:nth-child(4),
-      #water:checked ~ .con label:nth-child(5),
-      #health:checked ~ .con label:nth-child(6)
-      #baking:checked ~ .con label:nth-child(7)
-      #import:checked ~ .con label:nth-child(8) */
-
-      /* .photo {
-        width: 500px;
-        height: 300px;
-        position: relative;
-      }
-      .photo p {
+      .brand .con ul {
         position: absolute;
         left: 0;
         top: 0;
-        width: 100%;
-        height: 100%;
-      }
-      .photo p img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: none;
-      }
-      .menu {
-        width: 500px;
         display: flex;
+        gap: 47px;
+        opacity: 0;
       }
-      .menu label {
-        text-align: center;
-        flex: 1;
-        background: #9cc;
-        padding: 20px 0;
+      .brand .con ul img {
+        width: 218px;
       }
-
-      #juice:checked ~ .con label:first-child,
-
-      #photo3:checked ~ .photo p:nth-child(3) img,
-      #photo4:checked ~ .photo p:nth-child(4) img,
-      #photo5:checked ~ .photo p:nth-child(5) img,
-      #photo6:checked ~ .photo p:nth-child(6) img {
-        display: block;
+      #a01:checked ~ .brand .menu ul li:first-child a,
+      #a02:checked ~ .brand .menu ul li:nth-child(2) a,
+      #a03:checked ~ .brand .menu ul li:nth-child(3) a,
+      #a04:checked ~ .brand .menu ul li:nth-child(4) a,
+      #a05:checked ~ .brand .menu ul li:nth-child(5) a,
+      #a06:checked ~ .brand .menu ul li:nth-child(6) a,
+      #a07:checked ~ .brand .menu ul li:nth-child(7) a,
+      #a08:checked ~ .brand .menu ul li:nth-child(8) a {
+        /* width: 100%;
+        display: block; */
+        /* padding: 0 20px 20px; */
+        color: green;
+        /* border-bottom: 3px solid green; */
       }
-      #juice:checked ~ .con label:first-child,
-      #photo2:checked ~ .menu label:nth-child(2),
-      #photo3:checked ~ .menu label:nth-child(3),
-      #photo4:checked ~ .menu label:nth-child(4),
-      #photo5:checked ~ .menu label:nth-child(5),
-      #photo6:checked ~ .menu label:nth-child(6) {
-        background: #699;
+      .brand .menu ul li::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -20px;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 3px;
+        background: green;
+        opacity: 0;
       }
-
-      .menu label:hover {
-        cursor: pointer;
-        background: #669;
-      } */
+      #a01:checked ~ .brand .menu ul li:first-child:after,
+      #a02:checked ~ .brand .menu ul li:nth-child(2):after,
+      #a03:checked ~ .brand .menu ul li:nth-child(3):after,
+      #a04:checked ~ .brand .menu ul li:nth-child(4):after,
+      #a05:checked ~ .brand .menu ul li:nth-child(5):after,
+      #a06:checked ~ .brand .menu ul li:nth-child(6):after,
+      #a07:checked ~ .brand .menu ul li:nth-child(7):after,
+      #a08:checked ~ .brand .menu ul li:nth-child(8):after {
+        opacity: 1;
+      }
+      #a01:checked ~ .brand .con ul:first-child,
+      #a02:checked ~ .brand .con ul:nth-child(2),
+      #a03:checked ~ .brand .con ul:nth-child(3),
+      #a04:checked ~ .brand .con ul:nth-child(4),
+      #a05:checked ~ .brand .con ul:nth-child(5),
+      #a06:checked ~ .brand .con ul:nth-child(6),
+      #a07:checked ~ .brand .con ul:nth-child(7),
+      #a08:checked ~ .brand .con ul:nth-child(8) {
+        opacity: 1;
+      }
+      .con::before {
+        content: "";
+        position: absolute;
+        left: -50px;
+        top: 50%;
+        width: 20px;
+        height: 20px;
+        border-width: 0 0 2px 2px;
+        border-style: solid;
+        transform: rotate(45deg) translateY(-50%);
+      }
+      .con::after {
+        content: "";
+        position: absolute;
+        right: -50px;
+        top: 50%;
+        width: 20px;
+        height: 20px;
+        border-width: 2px 2px 0 0;
+        border-style: solid;
+        transform: rotate(45deg) translateY(-50%);
+      }
     </style>
   </head>
   <body>
-    <div class="menu">
-      <label for="juice">주스</label>
-      <label for="tea">차</label>
-      <label for="grain">곡물</label>
-      <label for="child">어린이</label>
-      <label for="water">생수/탄산/이온</label>
-      <label for="health">홍삼/건강/드링크</label>
-      <label for="baking">제과</label>
-      <label for="import">해외수입제품</label>
+    <input type="radio" name="brand" id="a01" checked />
+    <input type="radio" name="brand" id="a02" />
+    <input type="radio" name="brand" id="a03" />
+    <input type="radio" name="brand" id="a04" />
+    <input type="radio" name="brand" id="a05" />
+    <input type="radio" name="brand" id="a06" />
+    <input type="radio" name="brand" id="a07" />
+    <input type="radio" name="brand" id="a08" />
+    <div class="brand">
+      <h1>웅진 브랜드</h1>
+      <p>맛있고 건강한 웅진식품 대표 브랜드를 확인해보세요.</p>
+      <div class="menu">
+        <ul>
+          <li>
+            <a href="#"><label for="a01">주스</label></a>
+          </li>
+          <li>
+            <a href="#"><label for="a02">차</label></a>
+          </li>
+          <li>
+            <a href="#"><label for="a03">곡물</label></a>
+          </li>
+          <li>
+            <a href="#"><label for="a04">어린이</label></a>
+          </li>
+          <li>
+            <a href="#"><label for="a05">생수/탄산/이온 </label></a>
+          </li>
+          <li>
+            <a href="#"><label for="a06">홍삼/건강/드링크 </label></a>
+          </li>
+          <li>
+            <a href="#"><label for="a07">제과 </label></a>
+          </li>
+          <li>
+            <a href="#"><label for="a08"> 해외수입제품</label></a>
+          </li>
+        </ul>
+      </div>
+      <div class="con">
+        <ul>
+          <li>
+            <p><img src="./images/a01.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/a02.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/a03.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/a04.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/a05.png" alt="" /></p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p><img src="./images/b01.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/b02.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/b03.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/b04.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/b05.png" alt="" /></p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p><img src="./images/c01.png" alt="" /></p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p><img src="./images/d01.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/d02.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/d03.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/d04.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/d05.png" alt="" /></p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p><img src="./images/e01.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/e02.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/e03.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/e04.png" alt="" /></p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p><img src="./images/f01.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/f02.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/f03.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/f04.png" alt="" /></p>
+          </li>
+          <li>
+            <p><img src="./images/f05.png" alt="" /></p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p><img src="./images/g01.png" alt="" /></p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p><img src="./images/h01.png" alt="" /></p>
+          </li>
+        </ul>
+      </div>
     </div>
-
-    <input type="radio" name="juice" id="juice" />
-    <input type="radio" name="tea" id="tea" />
-    <input type="radio" name="grain" id="grain" />
-    <input type="radio" name="child" id="child" />
-    <input type="radio" name="water" id="water" />
-    <input type="radio" name="health" id="health" />
-    <input type="radio" name="baking" id="baking" />
-    <input type="radio" name="import" id="import" />
-
-    <div class="con">
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/988f4c9d-4968-4fff-ac87-bee8bf0ca79d.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/dad9b103-f115-42a0-b0a5-cfd25561c3be.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="	https://www.wjfood.co.kr/uploads/brand/ab012b6f-ce24-4d5b-ac20-76541c911f0f.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/a3d59de4-4bcd-4a12-ac0d-1a5608544137.png
-          "
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/a5699127-9db4-4568-9d60-305e0f20009c.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="	https://www.wjfood.co.kr/uploads/brand/dabae1f3-d620-43af-80ce-a2c66443b930.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="	https://www.wjfood.co.kr/uploads/brand/26119eae-8f32-42c4-9465-385ba4264f4c.png"
-          alt=""
-        />
-      </p>
-    </div>
-
-    <div class="con">
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/25c76a16-a07f-46b9-b7a4-08d273053a5c.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/e30619e8-fe12-4aa9-ab8c-265f01436e49.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/eafaa3c6-4a4d-4221-b31a-c36e14bfd3f7.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/bf2c7c9a-cd93-4470-b1e3-b0f59e33e6a9.png
-          "
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/17e5ada2-b3ee-4573-928f-91a25c1920b5.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/3f3d8514-4d5e-49ea-8653-8db37730e506.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/88941031-fcc7-4e24-b0e8-a963f19a9d7b.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/716acb07-21eb-434a-9db6-4310e0c134e9.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="	https://www.wjfood.co.kr/uploads/brand/560863d8-2c6a-4e52-8c98-d8360b928b3c.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="	https://www.wjfood.co.kr/uploads/brand/3df8a1c8-07bb-44c1-98b7-b34b00dcb4a4.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="	https://www.wjfood.co.kr/uploads/brand/49145414-c1d0-44a8-bfe2-83b95cf0e887.png"
-          alt=""
-        />
-      </p>
-    </div>
-
-    <div class="con">
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/be03c11b-dbac-4ec9-984f-67a2f9772452.png"
-          alt=""
-        />
-      </p>
-    </div>
-
-    <div class="con">
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/fd015622-9e18-4d71-8d87-c446c80e01cc.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/e75b40f1-12ad-4642-acfd-823845df9283.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/9827e987-5dde-4fd2-9d89-c7a28a4c9618.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/35514abd-8acd-45ac-8660-3175bd56bdc1.png
-          "
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/d6fabdcd-a8b9-4ce9-b461-ec0882658233.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/0166276b-7d6d-4dde-bc24-71559471ebe5.png"
-          alt=""
-        />
-      </p>
-    </div>
-
-    <div class="con">
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/e12c803a-aa7a-45a0-bb5f-7cbc53621087.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/4b9a2a4c-a257-48a8-b4da-f63bbd4fe651.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/7507b95a-e5fc-474d-b254-8f76f0fffa7f.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/f4c90fe7-a1db-4c32-b804-677066facc82.png
-          "
-          alt=""
-        />
-      </p>
-    </div>
-
-    <div class="con">
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/101db18c-d5b8-4c0b-b401-bdae05dec587.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/68a17608-0532-4e7a-89bf-5e002b5fdfe5.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/8b60c790-47e2-4e46-85ac-7fd95a192a7b.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/d1cec35e-a60c-4aef-962f-9f3a2ba497e5.png
-          "
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/7189de5b-92ca-4a6b-8b7e-080b43fae7ff.png"
-          alt=""
-        />
-      </p>
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/e2642647-a783-4d73-81e2-326c68ffca3d.png"
-          alt=""
-        />
-      </p>
-    </div>
-
-    <div class="con">
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/ebf54189-0e17-4376-89ce-842511533d2d.png"
-          alt=""
-        />
-      </p>
-    </div>
-
-    <div class="con">
-      <p>
-        <img
-          src="https://www.wjfood.co.kr/uploads/brand/4733126d-f06f-47b5-ab27-1944b7a540e6.png"
-          alt=""
-        />
-      </p>
-    </div>
-
-    <!-- <input type="radio" name="photo" id="photo1" checked />
-    <input type="radio" name="photo" id="photo2" />
-    <input type="radio" name="photo" id="photo3" />
-    <input type="radio" name="photo" id="photo4" />
-    <input type="radio" name="photo" id="photo5" />
-    <input type="radio" name="photo" id="photo6" />
-
-    <div class="photo">
-      <p><img src="./images/photo1.jpg" alt="" /></p>
-      <p><img src="./images/photo2.jpg" alt="" /></p>
-      <p><img src="./images/photo3.jpg" alt="" /></p>
-      <p><img src="./images/photo4.jpg" alt="" /></p>
-      <p><img src="./images/photo5.jpg" alt="" /></p>
-      <p><img src="./images/photo6.jpg" alt="" /></p>
-    </div>
-
-    <div class="menu">
-      <label for="photo1">Photo1</label>
-      <label for="photo2">Photo2</label>
-      <label for="photo3">Photo3</label>
-      <label for="photo4">Photo4</label>
-      <label for="photo5">Photo5</label>
-      <label for="photo6">Photo6</label> -->
   </body>
 </html>

@@ -1,0 +1,612 @@
+var GartnerPI_Widget = function (obj) {
+  var Widget = function (obj) {
+    var _self = this;
+
+    var _baseDomain = "//www.gartner.com";
+    var _basePI_URL = "/reviews/home";
+    var _basePath = "/peer-insights/vendor-portal/public/Widget/";
+
+    var _log = function (msg) {
+      // utility method to protect against <=IE9 script errors
+      if (!!console && console.log instanceof Function) {
+        console.log(msg);
+      }
+    };
+    var _init = function (obj) {
+      _addDOMPurify();
+      obj = obj || {};
+      // set widget props for size, theme and container as well as widget id
+      _self.widget_id = obj.widget_id;
+      if (!_self.widget_id) {
+        _log("widget_id argument is required");
+        return;
+      }
+
+      _self.size =
+        !!obj.size &&
+        (obj.size === "small" || obj.size === "large" || obj.size === "line")
+          ? obj.size
+          : "small";
+      _self.theme =
+        !!obj.theme && (obj.theme === "light" || obj.theme === "dark")
+          ? obj.theme
+          : "light";
+      _self.sourcingLink = obj.sourcingLink || null;
+      _self.version = obj.version || 1;
+
+      if (
+        obj.container &&
+        obj.container.nodeType &&
+        obj.container.nodeType === 1
+      ) {
+        // set container and render base HTML
+        _self.container = obj.container;
+        _addStyles();
+        _setEvents();
+        _render();
+        _addDataCollector();
+      } else {
+        // container (DOM element) is required
+        _log(
+          "Required: You must specify a DOM element for the widget to render in"
+        );
+        return;
+      }
+    };
+
+    var _addDOMPurify = function () {
+      var DP_LINK =
+        "https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.3/purify.min.js";
+
+      var script = document.createElement("script");
+      script.setAttribute("src", DP_LINK);
+      script.setAttribute("type", "text/javascript");
+
+      document.getElementsByTagName("head")[0].appendChild(script);
+    };
+
+    var _addStyles = function () {
+      var styles = document.getElementById("gartner-pi-styles");
+      if (!styles) {
+        // add widget CSS
+        var link = document.createElement("link");
+        link.setAttribute("rel", "stylesheet");
+        link.setAttribute("id", "gartner-pi-styles");
+        link.setAttribute("type", "text/css");
+        link.setAttribute("href", _getBaseURL() + _basePath + "css/widget.css");
+
+        document.getElementsByTagName("head")[0].appendChild(link);
+      }
+    };
+
+    var _addDataCollector = function () {
+      // creates iframe that will enable cross domain ajax requests
+      _self.dataContainer =
+        _self.version < 2
+          ? document.getElementById("gartner-pi-datacontainer")
+          : document.getElementById(
+              "gartner-pi-datacontainer-" + _self.widget_id
+            );
+      const widgetDataClassName =
+        _self.version < 2
+          ? "gartner-pi-widget-data"
+          : "gartner-pi-widget-data-" + _self.widget_id;
+
+      if (window.postMessage instanceof Function) {
+        var params = ["data?widget_id=", _self.widget_id, "&size=", _self.size];
+        var iframe = document.createElement("iframe");
+        iframe.setAttribute("src", _getBaseURL() + _basePath + params.join(""));
+        iframe.setAttribute("width", 0);
+        iframe.setAttribute("height", 0);
+        iframe.setAttribute("frameborder", 0);
+        iframe.setAttribute("id", widgetDataClassName);
+        iframe.setAttribute("title", "Read reviews on Gartner Peer Insights");
+        iframe.setAttribute("aria-label", "Read reviews on Gartner Peer Insights");
+        _self.container.appendChild(iframe);
+      } else {
+        // render content for older browser that does not support the HTML Message API
+        _self.dataContainer.appendChild(_renderNoDataMsg());
+        _log("Message API not supported");
+      }
+    };
+
+    var _animate = function () {
+      if (!_self.list) {
+        // get list container only once
+        _self.list = _self.dataContainer.getElementsByTagName("ul")[0];
+      }
+
+      var li = _self.list.getElementsByTagName("li")[0];
+      var height = li.offsetHeight;
+      var scrollTop;
+      var offset = 10;
+      var reviewContainer =
+        _self.dataContainer.getElementsByClassName("gartner-pi-reviews")[0];
+
+      var sInt = setInterval(function () {
+        scrollTop = Math.round(reviewContainer.scrollTop);
+        if (scrollTop === height) {
+          // stop scroll animation
+          clearInterval(sInt);
+          // move top list item to the bottom of the lsit
+          _self.list.appendChild(li);
+          // start new scroll animation
+          setTimeout(_animate, 10000);
+        } else if (scrollTop > height) {
+          // user has scrolled the list, move to top
+          reviewContainer.scrollTop -= 20;
+        } else {
+          // scroll list item #2 to the top
+          reviewContainer.scrollTop +=
+            scrollTop + offset > height ? height - scrollTop : offset;
+        }
+      }, 55);
+    };
+
+    const getDomain = function (domain) {
+      var approved = new Set([
+        "gcom.pdodev.aws.gartner.com",
+        "gcom.pdoqa.aws.gartner.com",
+        "gartner.com",
+        "www.gartner.com",
+        "external.pidevb.pdodev.aws.gartner.com",
+        "external.pi.pdoqa.aws.gartner.com",
+        "developer.user.fe.gartner.com",
+        "external.pi.gpidev.aws.gartner.com",
+        "external.pi.gpiqa.aws.gartner.com"
+      ]);
+
+      try {
+        var url = new URL(domain).hostname;
+        if (approved.has(url)) {
+          return "APPROVED_URL";
+        } else {
+          return "INVALID_URL";
+        }
+      } catch (e) {
+        return "INVALID_URL";
+      }
+    };
+
+    var handleDataResponse = function (event) {
+      if (getDomain(event.origin) == "APPROVED_URL") {
+        _renderData(event.data);
+      } else {
+        _log("denied.");
+      }
+    };
+
+    var _setEvents = function () {
+      // listener for async data
+      window.addEventListener("message", handleDataResponse);
+    };
+
+    var _removeEvents = function () {
+      window.removeEventListener("message", handleDataResponse);
+      clearTimeout(self.animateId);
+    };
+
+    var _getBaseURL = function (url) {
+      url = url || "";
+      var protocol = window.location.protocol;
+      if (protocol === "file:") {
+        // necessary for local development
+        protocol = "http:";
+      }
+      var host = window.location.host;
+      var domain = host.indexOf("gartner.com") > -1 ? "//" + host : _baseDomain;
+
+      return protocol + domain + url;
+    };
+
+    let _getBaseURLForWidgetURL = function (url) {
+      url = url || "";
+      let protocol = window.location.protocol;
+      if (protocol === "file:") {
+        // necessary for local development
+        protocol = "http:";
+      }
+      let host = window.location.host;
+      if(host.includes("external.pidevb") || host.includes("developer.user.fe.gartner.com")
+      || host.includes("external.pi.gpidev") ){
+        host = "gcom.pdodev.aws.gartner.com";
+      } else if(host.includes("external.pi.pdoqa") || host.includes("external.pi.gpiqa")){
+        host = "gcom.pdoqa.aws.gartner.com";
+      }
+
+      let domain = host.indexOf("gartner.com") > -1 ? "//" + host : _baseDomain;
+
+      return protocol + domain + url;
+    };
+
+    var _getUrl = function (url, vendorName) {
+      vendorName = vendorName || "vendor";
+      return (
+        url +
+        "?utm_source=" +
+        vendorName +
+        "&utm_medium=referral&utm_campaign=widget&utm_content=" +
+        _self.widget_id
+      );
+    };
+
+    var _setUrl = function (url, seoName) {
+      if (!!url) {
+        var link =
+          _self.version < 2
+            ? document.getElementById("gartner-pi-link")
+            : document.getElementById("gartner-pi-link-" + _self.widget_id);
+        link.href = _getBaseURLForWidgetURL(_getUrl(url, seoName));
+        link.setAttribute("onclick",'location.href="'+_getBaseURL(_getUrl(url, seoName))+'"');
+      }
+    };
+
+    var _parseDateStamp = function (date) {
+      var _months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+
+      var d = new Date(date);
+      // error handling for invalid dates
+      if (Object.prototype.toString.call(d) === "[object Date]") {
+        var dd = d.getDate();
+        var yyyy = d.getFullYear();
+        var mm = _months[d.getMonth()];
+
+        return mm + " " + dd + ", " + yyyy;
+      } else {
+        return "";
+      }
+    };
+
+    var _parseAsOfDate = function () {
+      var _months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ];
+
+      var today = new Date();
+
+      var dd = today.getDate();
+      var yyyy = today.getFullYear();
+      var mm = _months[today.getMonth()];
+
+      return dd + " " + mm + " " + yyyy;
+    };
+
+    var _renderNoDataMsg = function () {
+      // content to be rendered in older browsers and when AJAX requests fails
+      var div = document.createElement("div");
+      div.setAttribute("class", "gartner-pi-static-content");
+
+      var html = [];
+      html.push('<div class="gartner-pi-no-data">');
+      html.push('<div class="gartner-pi-logo"></div>');
+      html.push(
+        '<div class="gartner-pi-default-msg gartner-pi-h1">Please visit Peer Insights to read and write reviews. '
+      );
+      html.push('<span class="gartner-pi-url">gartner.com/reviews</span>');
+      html.push("</div>");
+      html.push("</div>");
+
+      div.innerHTML = html.join("");
+
+      return div;
+    };
+
+    var _renderDataContainer = function () {
+      // placeholder container for async data
+      const dataContainerClassName =
+        _self.version < 2
+          ? "gartner-pi-datacontainer"
+          : "gartner-pi-datacontainer-" + _self.widget_id;
+      return '<div id="' + dataContainerClassName + '"></div>';
+    };
+
+    var _renderLogo = function () {
+      return '<div class="gartner-pi-logo"></div>';
+    };
+
+    var _renderStars = function (rating) {
+      var pct = Math.round((rating / 5) * 100);
+      var html = ['<span class="gartner-pi-star-rating">'];
+      html.push(
+        '<span class="gartner-pi-star-rating-score" style="width:' +
+          pct +
+          '%"></span>'
+      );
+      html.push("</span>");
+
+      return html.join("");
+    };
+
+    var _renderData = function (data) {
+      data = typeof data !== "object" ? JSON.parse(data) : null;
+
+      //If the response's widgetId does not match this widget's widgetId, ignore it
+      if (!data || !data.widgetId || data.widgetId !== _self.widget_id) {
+        return;
+      }
+
+      if (data && data.error) {
+        _self.dataContainer.appendChild(_renderNoDataMsg());
+      } else if (data !== null && _self.dataContainer) {
+        if (_self.size === "line") {
+          _renderLineWidget(data);
+        } else if (_self.size === "large") {
+          _renderLargeWidget(data);
+          if (!!data.vendor) {
+            var url = _validateUrl(data.vendor.url);
+            var seoName = _validateSeoName(data.vendor.seoName);
+            _setUrl(url, seoName);
+          }
+          if (!!data.reviews && data.reviews.length) {
+            self.animateId = setTimeout(_animate, 10000);
+          }
+        } else {
+          _renderSmallWidget(data);
+        }
+      }
+    };
+
+    var _renderSmallWidget = function (data) {
+      var html = _renderWidgetCard(data);
+
+      _self.dataContainer.innerHTML = html.join("");
+      var url = _validateUrl(data.url);
+      var seoName = _validateSeoName(data.seoName);
+      _setUrl(url, seoName);
+    };
+
+    var _renderLargeWidget = function (data) {
+      var reviews = data.reviews;
+      var vendor = data.vendor;
+      var html = _renderWidgetCard(vendor);
+      let seoName = '';
+      if(data.vendor && data.vendor.seoName){
+         seoName = _validateSeoName(data.vendor.seoName);
+      }
+
+      html.push('<div class="gartner-pi-reviews">');
+      html.push("<ul>");
+
+      for (var i = 0; i < reviews.length; i++) {
+        var dObj = reviews[i];
+        var headline = _sanitizeString(dObj.headline);
+        html.push("<li>");
+        html.push('<div class="gartner-pi-rating-container">');
+        html.push(_renderStars(_validateNumber(dObj.rating)));
+        html.push('<span class="gartner-pi-datestamp">');
+        html.push("Reviewed " + _parseDateStamp(dObj.date));
+        html.push("</span>");
+        html.push("</div>");
+        html.push('<p class="gartner-pi-quote">"' + headline + '..." ');
+        html.push('<a href="'+ _getBaseURLForWidgetURL(_getUrl(dObj.reviewUrl, seoName)) +'" onclick="event.stopPropagation();" target="_blank" rel="nofollow">(read more)</a></p>');
+        html.push("</li>");
+      }
+
+      html.push("</ul>");
+      html.push("</div>");
+
+      _self.dataContainer.innerHTML = html.join("");
+    };
+
+
+
+    var _renderWidgetCard = function (data) {
+      var html = [];
+
+      var rating = _validateNumber(data.rating);
+      var score = _validateNumber(data.score);
+      var reviewCount = _validateNumber(data.reviewCount);
+      var vendorName = _sanitizeString(data.name);
+      var marketName = _sanitizeString(data.market);
+
+      html.push('<div class="gartner-pi-card">');
+      html.push('<div class="gartner-pi-logo"></div>');
+      html.push('<div class="gartner-pi-header">');
+      html.push('<div class="gartner-pi-h1">' + vendorName + "</div>");
+      html.push('<div class="gartner-pi-h2">' + marketName + "</div>");
+      html.push("</div>");
+      html.push('<div class="gartner-pi-stats">');
+      html.push('<div class="gartner-pi-alignLeft">');
+      html.push('<div class="gartner-pi-overall-rating">');
+      html.push('<span class="gartner-pi-score">' + rating + "</span>");
+      html.push(_renderStars(rating));
+      html.push("</div>");
+      html.push('<div class="gartner-pi-reviews-link">');
+      html.push(
+        "<span>" + reviewCount + " Rating" + (reviewCount > 1 ? "s" : "") + " "
+      );
+      html.push('<span class="gartner-pi-chevron"></span>');
+      html.push("</span>");
+      html.push("</div>");
+      html.push("</div>");
+      html.push('<div class="gartner-pi-alignRight">');
+      if (_self.sourcingLink) {
+        html.push('<div class="gartner-pi-sourcing-link">');
+        html.push(
+          '<a id="' +
+            _self.sourcingLink +
+            '" href="' +
+            _self.sourcingLink +
+            '"  onclick="event.stopPropagation();" target="_blank">Submit a review</a>'
+        );
+        html.push('<span class="gartner-pi-chevron"></span>');
+        html.push("</div>");
+      } else {
+        html.push("<div>");
+        html.push('<div class="gartner-pi-overall-rating">');
+        html.push('<span class="gartner-pi-score">' + score + "%</span>");
+        html.push('<span class="gartner-pi-thumbs-up"></span>');
+        html.push('<div class="gartner-pi-reviews-link">');
+        html.push("<span>Recommend</span>");
+        html.push("</div>");
+        html.push("</div>");
+        html.push("</div>");
+      }
+      html.push("</div>");
+      html.push(
+        '<div class="gartner-pi-as-of-date" title="As of ' +
+          _parseAsOfDate() +
+          '">As of ' +
+          _parseAsOfDate() +
+          "</div>"
+      );
+      html.push("</div>");
+      html.push("</div>");
+      return html;
+    };
+
+    var _renderLineWidget = function (data) {
+      var html = [];
+
+      var rating = _validateNumber(data.rating);
+      var reviewCount = _validateNumber(data.reviewCount);
+      var url = _validateUrl(data.url);
+      var seoName = _validateSeoName(data.seoName);
+
+      html.push('<div class="gartner-pi-card">');
+      html.push('<div class="gartner-pi-stats">');
+      html.push('<div class="gartner-pi-overall-rating">');
+      html.push('<span class="gartner-pi-score">' + rating + "</span>");
+      html.push('<div class="gartner-pi-translate">');
+      html.push(_renderStars(rating));
+      html.push('<div class="gartner-pi-reviews-link">');
+      html.push(
+        "<span>" +
+          reviewCount +
+          " Rating" +
+          (reviewCount > 1 ? "s" : "") +
+          "</span>"
+      );
+      html.push(" on Gartner Peer Insights</div>");
+      if (_self.sourcingLink) {
+        html.push('<div class="gartner-pi-sourcing-link">');
+        html.push(
+          '<a id="' +
+            _self.sourcingLink +
+            '" href="' +
+            _self.sourcingLink +
+            '"  onclick="event.stopPropagation();" target="_blank">(Submit a review)</a>'
+        );
+        html.push("</div>");
+      }
+      html.push("</div>");
+      html.push("</div>");
+      html.push("</div>");
+      html.push(
+        '<div class="gartner-pi-as-of-date" title="As of ' +
+          _parseAsOfDate() +
+          '">As of ' +
+          _parseAsOfDate() +
+          "</div>"
+      );
+      html.push("</div>");
+
+      _self.dataContainer.innerHTML = html.join("");
+      _setUrl(url, seoName);
+    };
+
+    var _render = function () {
+      let url = _getUrl(_getBaseURLForWidgetURL(_basePI_URL));
+
+      const linkClassName =
+        _self.version < 2
+          ? "gartner-pi-link"
+          : "gartner-pi-link-" + _self.widget_id;
+      const widgetClassName =
+        _self.version < 2
+          ? "gartner-pi-widget"
+          : "gartner-pi-widget-" + _self.widget_id;
+      var html = [
+        '<div id="' +
+          linkClassName +
+          '" onclick=location.href="' +
+          url +
+          '" class="gartner-pi-link" target="_blank" rel="nofollow" >',
+      ];
+      html.push(_renderDataContainer());
+
+      html.push("</div>");
+
+      var div = document.createElement("div");
+      div.setAttribute("id", widgetClassName);
+      div.setAttribute("data-size", _self.size);
+      div.setAttribute("data-theme", _self.theme);
+
+      div.innerHTML = html.join("");
+
+      _self.container.appendChild(div);
+    };
+
+    var _validateNumber = function (input) {
+      if (!input) return 0;
+      return isNaN(input) ? 0 : parseFloat(input, 10);
+    };
+
+    var _validateUrl = function (input) {
+      const urlRegex = /^[a-zA-Z0-9-/]+$/;
+      if (typeof input === "string" || input instanceof String)
+        return input.match(urlRegex) ? input : "";
+      return "";
+    };
+
+    var _validateSeoName = function (input) {
+      const seoNameRegex = /^[a-zA-Z0-9-]+$/;
+      if (typeof input === "string" || input instanceof String)
+        return input.match(seoNameRegex) ? input : "";
+      return "";
+    };
+
+    var _sanitizeString = function (input) {
+      if (typeof DOMPurify != "undefined") {
+        return DOMPurify.sanitize(input);
+      } else {
+        return _basicSanitize(input);
+      }
+    };
+
+    var _basicSanitize = function (input) {
+      return input
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll("/", "&#x2F;")
+        .replaceAll("'", "&#x27;")
+        .replaceAll('"', "&quot;");
+    };
+
+    _init(obj);
+
+    return {
+      stop: _removeEvents,
+      size: _self.size,
+      theme: _self.theme,
+      widget_id: _self.widget_id,
+    };
+  };
+
+  return new Widget(obj);
+};

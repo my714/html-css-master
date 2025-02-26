@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      div {
+        position: relative;
+        width: 960px;
+        height: 640px;
+      }
+      div p {
+        clip-path: url(#olive);
+      }
+      svg {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+      }
+      #olive {
+        transform-origin: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>
+        <img src="./images/photo1.jpg" alt="" />
+      </p>
+      <svg>
+        <clipPath id="olive">
+          <path class="st0" d="M298,420.5" />
+          <path
+            class="st1"
+            d="M367.79,363.08c0.8,3.4,1.55,6.8,2.24,10.18c4.7-13.95,10.5-27.96,17.42-41.83
+	c55.19-110.53,161.06-170.99,236.48-135.05c75.42,35.93,91.83,154.65,36.65,265.18C605.39,572.1,499.52,632.55,424.1,596.62
+	c-29.97-14.28-50.63-41.63-61.17-76.35c-17.03,48.51-49.3,83.71-92.08,93.34c-81.88,18.45-171.28-63.78-199.64-183.7
+	c-1.27-5.35-2.4-10.74-3.4-16.15c-3.1,8.95-6.77,17.69-11,26.16C20.08,513.68-50.4,554.04-100.62,530.06
+	c-50.22-23.98-61.14-103.23-24.4-176.99c36.73-73.76,107.21-114.11,157.43-90.13c16.04,7.66,28.07,20.96,35.82,37.92
+	c13.32-62.78,49.25-110.06,99.92-121.47C250.03,160.93,339.43,243.16,367.79,363.08z"
+          />
+        </clipPath>
+      </svg>
+    </div>
+  </body>
+</html>

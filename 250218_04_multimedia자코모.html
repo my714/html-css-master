@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+      }
+      section .bg {
+        width: 100%;
+        height: 100%;
+      }
+      section .bg video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      section .con {
+        width: 100%;
+        height: 100%;
+        left: 200px;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+      }
+      section .con h1 {
+        color: #fff;
+        font-size: 47.5px;
+      }
+      section .con p {
+        margin-top: 50px;
+        font-size: 20px;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="bg">
+        <video autoplay muted loop>
+          <source
+            src="https://www.jakomosofa.com/_File/popBanner//file_1736235204_0.mp4"
+          />
+        </video>
+      </div>
+      <div class="con">
+        <h1>
+          프리미엄 소파의 압도적 기준 <br />
+          소파는 결국, 자코모
+        </h1>
+
+        <p>We Make Quality JAKOMO.</p>
+      </div>
+    </section>
+  </body>
+</html>

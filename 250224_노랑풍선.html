@@ -18,22 +18,21 @@
         margin: 50px auto;
         height: 500px;
         display: flex;
-        /* justify-content: space-between; */
         gap: calc(112px / 7);
       }
-
       ul.yellow li {
+        position: relative;
         width: 171px;
         height: 100%;
         border-radius: 12px;
-        display: flex; /*<<< flex는 부모한테만 줘야함 */
+        display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
         color: #fff;
         transition: 0.5s;
+        overflow: hidden;
       }
-
       ul.yellow li:nth-child(1) {
         background: url(https://company.ybtour.co.kr/images/bg/bg_category_1.jpg)
           center/cover;
@@ -66,27 +65,56 @@
         background: url(https://company.ybtour.co.kr/images/bg/bg_category_8.jpg)
           center/cover;
       }
-
       ul.yellow li div {
         width: 90%;
         position: relative;
         height: 100%;
         z-index: 1;
       }
-
       ul.yellow li div p {
         word-break: keep-all;
+        position: absolute;
+        width: 100%;
       }
-
+      ul.yellow li div p:first-child {
+        font-size: 24px;
+        font-weight: bold;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      ul.yellow li:hover div p:first-child {
+        top: 43%;
+        font-size: 32px;
+        transition: top 0.1s ease-out 0.5s;
+      }
+      ul.yellow li:nth-child(3):hover div p:first-child,
+      ul.yellow li:nth-child(6):hover div p:first-child {
+        top: 40%;
+      }
       ul.yellow li div p:last-child {
-        display: none;
+        opacity: 0;
+        top: 50%;
+        line-height: 20px;
       }
       ul.yellow li:hover div p:last-child {
-        display: block;
-      }
+        opacity: 1;
 
+        transition: 0.5s 0.5s;
+      }
       ul.yellow li:hover {
         width: 300px;
+      }
+      ul.yellow li::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.1);
+        left: 0;
+        top: 0;
+      }
+      ul.yellow li:hover::after {
+        background: rgba(0, 0, 0, 0.6);
       }
     </style>
   </head>
@@ -113,7 +141,7 @@
       <li>
         <div>
           <p>
-            Golf <br />
+            Golf<br />
             & Theme
           </p>
           <p>

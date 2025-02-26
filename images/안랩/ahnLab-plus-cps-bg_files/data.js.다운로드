@@ -1,0 +1,146 @@
+
+var getQSParams = function() {
+	var qsParams = window.location.search.substring(1).split('&');
+	
+	var item, params = {};
+	for (var i=0;i<qsParams.length;i++) {
+		item = qsParams[i];
+		var temp = item.split('=');
+		params[temp[0]] = temp[1];
+	};
+
+	return params;
+}
+
+var getURL = function() {
+	var qs = getQSParams() || {};
+
+	var API_key = 'ZTU3MThjMWEtOTc1ZS00YzgwLWIzZGEtNDg0ODlkMDc0ODRk';
+	let pathname = '/api?apiKey=' + API_key + '&paramsKey=' + qs.widget_id;
+	let url = typeof window != 'undefined' ? window.TPT_API_HOST + pathname : '';
+	var obj = {
+		size: qs.size,
+		url: url
+	}
+
+	return obj;
+}
+
+var getData = function() {
+	var request = getURL();
+
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+		if (this.readyState == 4) {
+			if (this.status == 200) {
+				postData(request.size, xhr.responseText);
+			} else {
+				postError();
+			}
+		}
+	};
+	xhr.onerror = function() { postError(); };
+	xhr.open('GET', request.url);
+	xhr.send();
+}
+
+var postError = function() {
+	parent.postMessage(JSON.stringify({
+		error: true
+	}), '*');
+}
+
+var getVendorData = function(data) {
+	data = data || {};
+
+	if (!!data.vendorReviews && data.vendorReviews[0]) {
+		return data.vendorReviews[0];
+	}
+
+	return null;
+}
+
+var getScoreData = function(data) {
+	data = data || {};
+
+	if (!!data.vendorValues && !!data.vendorValues['would-recommend'] && !!data.vendorValues['would-recommend'][0]) {
+		return data.vendorValues['would-recommend'][0];
+	}
+
+	return null;
+}
+
+var processSmallWidgetData = function(data) {
+	data = data || {};
+	var vendorData = getVendorData(data);
+	var scoreData = getScoreData(data);
+
+	var dObj = {};
+
+	if (!!vendorData && !!scoreData && !!scoreData.count) {
+		dObj = {
+			url: vendorData.readUrl,
+			seoName: vendorData.seoName,
+			rating: vendorData.avgRating,
+			reviewCount: vendorData.reviewCount,
+			name: vendorData.name,
+			market: data.name,
+			score: scoreData.value,
+			numRecommended: scoreData.count
+		}
+	}
+	
+	return dObj;
+}
+
+var processLargeWidgetData = function(data) {
+	data = data || {};
+	var reviews = [];
+	var vendorData = getVendorData(data);
+
+	if (!!vendorData) {		
+		for (var i=0;i<vendorData.reviews.length;i++) {
+			var dObj = vendorData.reviews[i];
+			reviews.push({
+				headline: dObj.headline,
+				rating: dObj.rating,
+				date: dObj.dateReviewed,
+				reviewUrl: dObj.reviewUrl
+			});
+		}
+	}
+
+	return {
+		vendor: processSmallWidgetData(data),
+		reviews: reviews
+	};
+}
+
+var postData = function(size, resp) {
+	var dObj = JSON.parse(resp);
+
+	var data = {};
+	if (dObj) {
+		if (dObj.data) {
+			if (size === 'large') {
+				data = processLargeWidgetData(dObj.data);
+				data.error = (Object.keys(data.vendor).length == 0) ? true : false;
+			} else {
+				data = processSmallWidgetData(dObj.data);
+	
+				//If data is empty, there are no reviews for this market/vendor to display in widget
+				data.error = (Object.keys(data).length == 0) ? true : false;
+			}
+		} else {
+			data.error = true;
+		}
+
+		if (dObj.widgetId) {
+			data.widgetId = dObj.widgetId;
+		}
+	} else {
+		data.error = true;
+	}
+
+	parent.postMessage(JSON.stringify(data), '*');
+}

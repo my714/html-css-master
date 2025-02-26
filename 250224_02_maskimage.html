@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      ul li {
+        width: 367px;
+        padding: 0 20px;
+        line-height: 80px;
+      }
+      ul li:first-child a {
+        border-color: #be8556;
+        color: #be8556;
+      }
+
+      ul li a {
+        width: 100%;
+        display: flex;
+        text-decoration: none;
+        color: #222;
+        justify-content: space-between;
+        border-bottom: 2px solid #222;
+        align-items: center;
+        font-weight: 700;
+        font-size: 21px;
+      }
+      ul li a:hover {
+        border-color: #be8556;
+        color: #be8556;
+      }
+
+      ul li .ico {
+        width: 72px;
+        height: 72px;
+        background-color: #000;
+      }
+
+      ul li img {
+        vertical-align: middle;
+      }
+      ul li:first-child .ico {
+        mask-image: url(./images/ico_business_item01.svg);
+        background-color: #be8556;
+      }
+
+      ul li:hover .ico {
+        mask-image: url(./images/ico_business_item01.svg);
+        background-color: #be8556;
+      }
+      ul li:nth-child(1) .ico {
+        mask-image: url(./images/ico_business_item01.svg);
+      }
+      ul li:hover p:nth-child(2) span:last-child {
+        vertical-align: middle;
+        content: url(./images/ico_circle_arrow_active.png);
+      }
+
+      ul li:nth-child(2) .ico {
+        mask-image: url(./images/ico_business_item02.svg);
+      }
+
+      ul li:nth-child(3) .ico {
+        mask-image: url(./images/ico_business_item03.svg);
+      }
+
+      ul li:nth-child(4) .ico {
+        mask-image: url(./images/ico_business_item04.svg);
+      }
+
+      ul li:nth-child(5) .ico {
+        mask-image: url(./images/ico_business_item05.svg);
+      }
+
+      ul li:nth-child(6) .ico {
+        mask-image: url(./images/ico_business_item06.svg);
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <a href="">
+          <p class="ico"></p>
+          <p>
+            <span>건축</span>
+            <span
+              ><img src="./images/ico_circle_arrow_active.png" alt="arrow"
+            /></span>
+          </p>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <p class="ico"></p>
+          <p>
+            <span>선박·해양플랜트</span>
+            <span><img src="./images/ico_circle_arrow.png" alt="arrow" /></span>
+          </p>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <p class="ico"></p>
+          <p>
+            <span>플랜트</span>
+            <span><img src="./images/ico_circle_arrow.png" alt="arrow" /></span>
+          </p>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <p class="ico"></p>
+          <p>
+            <span>자동차</span>
+            <span><img src="./images/ico_circle_arrow.png" alt="arrow" /></span>
+          </p>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <p class="ico"></p>
+          <p>
+            <span>전자·가전·전기</span>
+            <span><img src="./images/ico_circle_arrow.png" alt="arrow" /></span>
+          </p>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <p class="ico"></p>
+          <p>
+            <span>산업 기타</span>
+            <span><img src="./images/ico_circle_arrow.png" alt="arrow" /></span>
+          </p>
+        </a>
+      </li>
+    </ul>
+  </body>
+</html>
