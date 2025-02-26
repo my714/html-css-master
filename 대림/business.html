@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      input {
+        display: none;
+      }
+      ul {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: #222;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .top p {
+        margin-top: 50px;
+        text-align: center;
+      }
+      .top p:first-child {
+        font-size: 46px;
+      }
+      .top p:last-child {
+        font-size: 16px;
+        margin-top: 20px;
+      }
+      .con {
+        margin-top: 200px;
+      }
+      .con ul {
+        position: relative;
+        height: 300px;
+      }
+      .con ul li {
+        position: absolute;
+        width: 1904px;
+        height: 300px;
+        background-position: center;
+        opacity: 0;
+        transition: 1s;
+      }
+      .con ul li:nth-child(1) {
+        background-image: url(./business_daelim2.png), url(./business01.png);
+      }
+      .con ul li:nth-child(2) {
+        background-image: url(./business_daelim2.png), url(./business02.png);
+      }
+      .con ul li:nth-child(3) {
+        background-image: url(./business_daelim2.png), url(./business03.png);
+      }
+      .con ul li:nth-child(4) {
+        background-image: url(./business_daelim2.png), url(./business04.png);
+      }
+      .con ul li:nth-child(5) {
+        background-image: url(./business_daelim2.png), url(./business05.png);
+      }
+      .con ul li:nth-child(6) {
+        background-image: url(./business_daelim2.png), url(./business06.png);
+      }
+      .con ul li:nth-child(7) {
+        background-image: url(./business_daelim2.png), url(./business07.png);
+      }
+      .con ul li img {
+        position: absolute;
+        left: 1002px;
+        top: -194px;
+      }
+      .btn ul {
+        padding-top: 70px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+      .btn ul li {
+        width: 180px;
+        border: 1px solid #b5b5b5;
+      }
+      .btn label {
+        display: block;
+        width: 100%;
+        padding: 20px 0;
+        color: #000;
+        text-align: center;
+        background: #fff;
+      }
+
+      #menu1:checked ~ .con ul li:nth-child(1),
+      #menu2:checked ~ .con ul li:nth-child(2),
+      #menu3:checked ~ .con ul li:nth-child(3),
+      #menu4:checked ~ .con ul li:nth-child(4),
+      #menu5:checked ~ .con ul li:nth-child(5),
+      #menu6:checked ~ .con ul li:nth-child(6),
+      #menu7:checked ~ .con ul li:nth-child(7) {
+        opacity: 1;
+      }
+
+      #menu1:checked ~ .btn li:first-child label,
+      #menu2:checked ~ .btn li:nth-child(2) label,
+      #menu3:checked ~ .btn li:nth-child(3) label,
+      #menu4:checked ~ .btn li:nth-child(4) label,
+      #menu5:checked ~ .btn li:nth-child(5) label,
+      #menu6:checked ~ .btn li:nth-child(6) label,
+      #menu7:checked ~ .btn li:nth-child(7) label {
+        border: 1px solid #1b2e59;
+        background: #1b2e59;
+        color: #fff;
+      }
+
+      .txt {
+        width: 900px;
+        height: 100px;
+        position: relative;
+        text-align: center;
+        margin: 52px auto;
+      }
+      .txt p {
+        width: 100%;
+        height: 100px;
+        color: #666666;
+        background: #fff;
+        position: absolute;
+        opacity: 0;
+        letter-spacing: -1px;
+      }
+      #menu1:checked ~ .txt p:first-child,
+      #menu2:checked ~ .txt p:nth-child(2),
+      #menu3:checked ~ .txt p:nth-child(3),
+      #menu4:checked ~ .txt p:nth-child(4),
+      #menu5:checked ~ .txt p:nth-child(5),
+      #menu6:checked ~ .txt p:nth-child(6),
+      #menu7:checked ~ .txt p:nth-child(7) {
+        opacity: 1;
+      }
+      .view {
+        display: flex;
+        justify-content: center;
+      }
+      .view a {
+        font-size: 18px;
+        border: 2px solid #000;
+        padding: 10px 50px;
+      }
+      .view a:hover {
+        border-color: #1b2e59;
+        background: #1b2e59;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top">
+      <p>Business Area</p>
+      <p>㈜대림은 지속적인 성장과 차별화된 고객가치를 실현하고 있습니다.</p>
+    </div>
+
+    <input type="radio" name="btn" id="menu1" checked />
+    <input type="radio" name="btn" id="menu2" />
+    <input type="radio" name="btn" id="menu3" />
+    <input type="radio" name="btn" id="menu4" />
+    <input type="radio" name="btn" id="menu5" />
+    <input type="radio" name="btn" id="menu6" />
+    <input type="radio" name="btn" id="menu7" />
+
+    <div class="con">
+      <ul>
+        <li><img src="./business_img01.png" alt="" /></li>
+        <li><img src="./business_img02.png" alt="" /></li>
+        <li><img src="./business_img03.png" alt="" /></li>
+        <li><img src="./business_img04.png" alt="" /></li>
+        <li><img src="./business_img05.png" alt="" /></li>
+        <li><img src="./business_img06.png" alt="" /></li>
+        <li><img src="./business_img07.png" alt="" /></li>
+      </ul>
+    </div>
+    <div class="btn">
+      <ul>
+        <li>
+          <a href=""><label for="menu1">트레이딩</label></a>
+        </li>
+        <li>
+          <a href=""><label for="menu2">PI</label></a>
+        </li>
+        <li>
+          <a href=""><label for="menu3">물류</label></a>
+        </li>
+        <li>
+          <a href=""><label for="menu4">탱크컨테이너</label></a>
+        </li>
+        <li>
+          <a href=""><label for="menu5">건설정보화</label></a>
+        </li>
+        <li>
+          <a href=""><label for="menu6">IT서비스</label></a>
+        </li>
+        <li>
+          <a href=""><label for="menu7">투자</label></a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="txt">
+      <p>
+        기초 유화(Naphtha)에서 폴리머 제품까지 전방위로 Trading Business를
+        확장하고 있으며, <br />
+        국내 및 해외 100여개 국가에 판매하고 있습니다. 당사는 석유화학 트레이딩
+        전문 기업으로 고객 가치 및 성과를 창출하고 있습니다.
+      </p>
+      <p>
+        ㈜대림의 독자적인 기술로 만든 폴리이미드 제품을 <br />
+        반도체, 디스플레이, 우주/항공, 방산, 자동차 등 여러 산업 내 공급하고
+        있습니다.
+      </p>
+      <p>
+        전세계를 연결하는 글로벌 네트워크 바탕으로 차별화 된 대림만의 물류
+        서비스가 <br />
+        경쟁력 있는 운임과 다양한 운송 방법으로 고객에게 서비스를 실현하고
+        있습니다.
+      </p>
+      <p>
+        탱크컨테이너 국내 M/S 1위, Fleet 보유 대수 1위의 전문 탱크컨테이너
+        Operator로서 <br />
+        업계 최고의 Know-how와 글로벌 네트워크를 바탕으로 경쟁력 있는 운송
+        운임과 고객 맞춤형 서비스를 제공합니다.
+      </p>
+      <p>
+        건설 자체의 부가가치 상승과 주택, 터널, 항만, 철도, 교량 등 <br />
+        건축물에 대한 기획부터 설계, 시공, A/S로 이어지는 Total Service를
+        제공합니다.
+      </p>
+      <p>
+        (주)대림은 IT 시스템 통합, 유지보수 및 대내외 SI사업으로 지속성장
+        해왔습니다.
+      </p>
+      <p>
+        자체 주거 상품 및 브랜드 개발, 투자, 운용, 관리까지 <br />
+        부동산 디벨로퍼 전 영역의 사업을 진행하고 있습니다.
+      </p>
+    </div>
+    <p class="view">
+      <a href=""><span>VIEW</span></a>
+    </p>
+  </body>
+</html>
