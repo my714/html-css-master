@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+      }
+      .one {
+        width: 100%;
+        background: #f3f3f3;
+      }
+      .one p {
+        text-align: center;
+        font-size: 25px;
+        font-weight: 600;
+        padding-bottom: 48px;
+      }
+
+      .one p img {
+        max-width: 100%;
+      }
+      @media screen and (max-width: 960px) {
+        .one p {
+          width: 100%;
+
+          font-size: 16px;
+        }
+      }
+
+      .two > p {
+        text-align: center;
+        padding-top: 86px;
+        font-size: 25px;
+        font-weight: 600;
+      }
+      .two .con {
+        width: 940px;
+        margin: 0 auto;
+      }
+      .two .con ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+      }
+      .two .con ul li {
+        width: calc(50% - 20px);
+        padding-top: 43px;
+      }
+      .two .con p img {
+        border: 1px solid #acacac;
+        max-width: 100%;
+      }
+      .two .con ul li a {
+        font-size: 15px;
+        color: #fff;
+        background: #aeaeae;
+        padding: 2px 12px;
+        border-radius: 2px;
+        font-weight: 700;
+      }
+
+      .two .con ul li .txt p:nth-child(1) {
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 35px;
+        padding-bottom: 5px;
+      }
+      .two .con ul li .txt p:nth-child(2) {
+        font-size: 15px;
+        line-height: 29px;
+      }
+      .two .con ul li span,
+      .two .con ul li .txt p:nth-child(1),
+      .two .con ul li .txt p:nth-child(2) {
+        padding-left: 18px;
+      }
+      .two .con ul li .txt {
+        border-left: 3px solid #cbcbcb;
+        margin-top: 43px;
+      }
+      @media screen and (max-width: 960px) {
+        .two .con {
+          width: 100%;
+        }
+        .two > p {
+          font-size: 16px;
+        }
+        .two .con ul li .txt {
+          font-size: 14px;
+        }
+      }
+      @media screen and (max-width: 640px) {
+        .two .con ul li {
+          flex-basis: 80%;
+        }
+        .two .con p img {
+          width: 607px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="one">
+      <p>친환경경영 의사결정 조직</p>
+      <p>
+        <img
+          src="https://www.shinsegaefood.com/images/background/bg_evf_graph.png"
+          alt=""
+        />
+      </p>
+    </div>
+    <div class="two">
+      <p>친환경 활동 실천</p>
+      <div class="con">
+        <ul>
+          <li>
+            <p>
+              <img
+                src="https://www.shinsegaefood.com/images/background/bg_evf_img_01.png"
+                alt=""
+              />
+            </p>
+            <div class="txt">
+              <p>음성공장 태양열발전</p>
+              <p>
+                음성공장 상부 유휴부지를 활용하여 신재생에너지를 생산하여<br />
+                가스(LNG)를 대체하여 사용하고 있습니다.
+              </p>
+              <span><a href="#">태양열에너지 사용현황</a></span>
+            </div>
+          </li>
+          <li>
+            <p>
+              <img
+                src="https://www.shinsegaefood.com/images/background/bg_evf_img_02.png"
+                alt=""
+              />
+            </p>
+            <div class="txt">
+              <p>친환경패키징 확대</p>
+              <p>
+                식품제조 시 사용되는 용기를 탄소중립형 포장재, <br />
+                대체 플라스틱 적용을 확대하고 있습니다.
+              </p>
+            </div>
+          </li>
+          <li>
+            <p>
+              <img
+                src="https://www.shinsegaefood.com/images/background/bg_evf_img_03.png"
+                alt=""
+              />
+            </p>
+            <div class="txt">
+              <p>대안육제품 개발</p>
+              <p>
+                제품 제조 시 원료육 대신 식물성 원료를 사용하여 가축사육 시
+                <br />
+                발생되는 메탄가스 및 물과 사료의 사용량을 줄여 지속가능한 <br />
+                지구환경에 이바지 하고자 합니다.
+              </p>
+            </div>
+          </li>
+          <li>
+            <p>
+              <img
+                src="https://www.shinsegaefood.com/images/background/bg_evf_img_04.png"
+                alt=""
+              />
+            </p>
+            <div class="txt">
+              <p>(협력회사)친환경 경영 독려</p>
+              <p>
+                2021년부터 (물류 등)협력회사 입찰평가 시 ESG경영 우수 실천
+                <br />
+                협력사 대상 가점 부여를 통해 ESG 영향력 전파에 앞장서고
+                있습니다.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

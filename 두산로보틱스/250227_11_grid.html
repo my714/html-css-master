@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .grid {
+        width: 1680px;
+        margin: 0 auto;
+        height: 780px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 24px;
+        grid-template-areas: "con1 txt con2 con2" "con1 con3 con4 txt2";
+      }
+      .con1 {
+        grid-area: con1;
+      }
+      .txt {
+        grid-area: txt;
+        background: #fff;
+        padding: 48px 40px;
+        letter-spacing: -0.035em;
+        word-break: keep-all;
+      }
+      .con2 {
+        grid-area: con2;
+      }
+      .con3 {
+        grid-area: con3;
+      }
+      .con4 {
+        grid-area: con4;
+      }
+      .txt2 {
+        grid-area: txt2;
+        background: #fff;
+        padding: 48px 40px;
+        letter-spacing: -0.035em;
+        word-break: keep-all;
+      }
+      h4 {
+        font-size: 32px;
+        color: #151515;
+        font-weight: 600;
+      }
+      strong {
+        color: #005eb8;
+      }
+      p {
+        font-size: 18px;
+        color: #444;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div class="con1">
+        <img
+          src="https://www.doosanrobotics.com/images/services/robot-training-img01.png"
+          alt=""
+        />
+      </div>
+      <div class="txt">
+        <h4>현장에서 바로 적용 가능한 <strong>최고의 실습 교육</strong></h4>
+        <p>
+          두산로보틱스에서 개발한 검증된 실무형 교육 커리큘럼으로, 실제 현장에서
+          바로 적용하며 시시각각 발생하는 다양한 문제를 해결할 수 있도록
+          설계되었습니다.
+        </p>
+      </div>
+      <div class="con2">
+        <img
+          src="https://www.doosanrobotics.com/images/services/robot-training-img02.png"
+          alt=""
+        />
+      </div>
+      <div class="con3">
+        <img
+          src="https://www.doosanrobotics.com/images/services/robot-training-img03.png"
+          alt=""
+        />
+      </div>
+      <div class="con4">
+        <img
+          src="https://www.doosanrobotics.com/images/services/robot-training-img04.png
+        "
+          alt=""
+        />
+      </div>
+      <div class="txt2">
+        <h4>초보자부터 전문가까지 <strong>수준별 교육 제공</strong></h4>
+        <p>
+          초보자부터 현업 엔지니어 및 교수까지 수준별로 들을 수 있는 맞춤형
+          교육이 마련돼 있습니다.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

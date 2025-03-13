@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @font-face {
+        font-family: "Pretendard-Regular";
+        src: url(../webfonts/Pretendard-Regular.woff) format("woff");
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+
+      .green {
+        width: 80%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .green ul li {
+        width: 100%;
+        display: flex;
+        gap: 120px;
+        margin-top: 120px;
+      }
+
+      .green ul li:nth-child(2n) {
+        flex-direction: row-reverse;
+      }
+      .green .con img {
+        width: 100%;
+        max-width: 640px;
+      }
+
+      .green .txt {
+        font-family: Pretendard-Regular;
+        word-break: keep-all;
+        letter-spacing: -0.4px;
+      }
+      .green .txt h1 {
+        font-size: 50px;
+        color: #0c4da2;
+        font-weight: bold;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #ccc;
+      }
+      .green .txt p {
+        font-size: 18px;
+        color: #666;
+        line-height: 30px;
+      }
+      .green ul li:nth-child(2n) div {
+        text-align: right;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .txt br {
+          display: none;
+        }
+        .green {
+          width: 96%;
+        }
+
+        .green ul li {
+          gap: 40px;
+          flex-direction: column;
+        }
+        .green ul li:nth-child(2n) {
+          flex-direction: column;
+        }
+        .green ul li:nth-child(2n) div {
+          text-align: left;
+        }
+        .green .txt h1 {
+          font-size: 40px;
+        }
+        .green .txt p {
+          font-size: 20px;
+        }
+      }
+      @media screen and (max-width: 840px) {
+        .green .txt h1 {
+          font-size: 32px;
+          padding-bottom: 16px;
+          margin-bottom: 24px;
+        }
+        .green .txt p {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="green">
+      <ul>
+        <li>
+          <div class="con">
+            <img
+              src="https://www.samsungshi.com/images/sub/green_fuel_lng.png"
+              alt=""
+            />
+          </div>
+          <div class="txt">
+            <h1>LNG</h1>
+            <p>
+              삼성중공업은 LNG Value Chain 전 영역에 앞선 기술력 보유하고
+              있으며, <br />
+              세계 최초 조선·해양 통합 LNG 핵심 기술 대규모 연구개발 단지를
+              조성하여 <br />
+              연구 개발 제품 성능 및 안전성을 검증하고 있습니다.
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="con">
+            <img
+              src="https://www.samsungshi.com/images/sub/green_fuel_methanol.png"
+              alt=""
+            />
+          </div>
+          <div class="txt">
+            <h1>메탄올</h1>
+            <p>
+              삼성중공업은 메탄올 LFSS(Low Flashpoint Fuel Supply <br />
+              System, 저인화점 연료 공급 시스템)을 개발하고, 선박 특성에 <br />
+              따라 공정 및 배치를 최적화하고 있습니다.
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="con">
+            <img
+              src="https://www.samsungshi.com/images/sub/green_fuel_ammonia.png"
+              alt=""
+            />
+          </div>
+          <div class="txt">
+            <h1>암모니아</h1>
+            <p>
+              삼성중공업은 암모니아 기반 기술 상용화를 위해 <br />
+              암모니아 실증설비를 조성하여 핵심 시스템 성능과 품질을 <br />
+              검증하고, 안전성을 확보하고 있습니다.
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="con">
+            <img
+              src="https://www.samsungshi.com/images/sub/green_fuel_battery.png"
+              alt=""
+            />
+          </div>
+          <div class="txt">
+            <h1>연료전지</h1>
+            <p>
+              삼성중공업은 CO2 배출 저감과<br />
+              엔진으로 인한 소음·진동 감소 및 유지보수 비용 절감을 위해 <br />
+              연료전지 기술을 개발하고 있습니다.
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="con">
+            <img
+              src="https://www.samsungshi.com/images/sub/green_fuel_hydrogen.png"
+              alt=""
+            />
+          </div>
+          <div class="txt">
+            <h1>수소</h1>
+            <p>
+              삼성중공업은 수소 경제 활성화에 대비하여 액화 수소 저장/추진/운용
+              등의 <br />
+              핵심 기술을 개발하고 있습니다.
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="con">
+            <img
+              src="https://www.samsungshi.com/images/sub/green_fuel_nuclear.png"
+              alt=""
+            />
+          </div>
+          <div class="txt">
+            <h1>원자력</h1>
+            <p>
+              삼성중공업은 원자력 기반 제품의 핵심 기술을 <br />
+              선제적으로 확보하기 위한 기술을 개발하고 있습니다. <br />
+              연구를 국내외 전문기관(원자력연구원, 한국수력원자력, Seaborg 등)과
+              <br />
+              협업하여 수행하고 있습니다.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

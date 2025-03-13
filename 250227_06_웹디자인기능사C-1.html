@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .grid-container {
+        display: grid;
+        width: 1000px;
+        margin: 0 auto;
+        grid-template-areas:
+          "toplogo slide slide slide slide"
+          "menu slide slide slide slide"
+          "menu notice notice banner go"
+          "menu footlogo footmenu footmenu footmenu"
+          "menu footlogo copyright copyright copyright";
+        grid-template-rows: 100px 250px 200px 50px 50px;
+        grid-template-columns: 200px 200px 200px 300px 300px;
+      }
+      .grid-item {
+        background: #ddd;
+      }
+      .toplogo {
+        grid-area: toplogo;
+        background: #aaa;
+      }
+      .menu {
+        grid-area: menu;
+        background: #bbb;
+      }
+      .slide {
+        grid-area: slide;
+        background: #ccc;
+      }
+      .notice {
+        grid-area: notice;
+        background: #ddd;
+      }
+      .banner {
+        grid-area: banner;
+        background: #eee;
+      }
+      .go {
+        grid-area: go;
+        background: #aaa;
+      }
+      .footlogo {
+        grid-area: footlogo;
+        background: #bbb;
+      }
+      .copyright {
+        grid-area: copyright;
+        background: #ccc;
+      }
+      .footmenu {
+        grid-area: footmenu;
+        background: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="toplogo">logo</div>
+      <div class="menu">menu</div>
+      <div class="slide">slide</div>
+      <div class="notice">공지사항/갤러리</div>
+      <div class="banner">배너</div>
+      <div class="go">바로가기</div>
+      <div class="footlogo">logo</div>
+      <div class="copyright">copyright</div>
+      <div class="footmenu">하단 메뉴</div>
+    </div>
+  </body>
+</html>

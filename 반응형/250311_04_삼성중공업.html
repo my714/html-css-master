@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      .con {
+        width: 96%;
+        max-width: 1400px;
+        margin: 0 auto;
+        word-break: keep-all;
+      }
+      .con .txt h1 {
+        text-align: center;
+        font-size: 50px;
+        margin-bottom: 20px;
+      }
+      .con .txt p {
+        text-align: right;
+        font-size: 18px;
+      }
+      .con .list ul {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 35px 0;
+        width: 100%;
+      }
+      .con .list ul li {
+        width: calc((100% - 4rem) / 3);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 380px;
+        padding: 45px 0;
+      }
+
+      .list ul li p:first-child {
+        font-size: 22px;
+        color: #333;
+        font-weight: 500;
+      }
+      .list ul li p:last-child {
+        font-size: 25px;
+        color: #111;
+        font-weight: bold;
+      }
+      .list ul li:first-child,
+      .list ul li:nth-child(2),
+      .list ul li:nth-child(3) {
+        border-bottom: 4px solid #111;
+      }
+      @media screen and (max-width: 840px) {
+        .con {
+          width: 90%;
+        }
+        .con .txt h1 {
+          font-size: 40px;
+        }
+        .con .txt p {
+          font-size: 14.4px;
+        }
+        .list ul li p:first-child {
+          font-size: 17.6px;
+        }
+        .list ul li p:last-child {
+          font-size: 20px;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .con .list ul li {
+          width: calc((100% - 4rem) / 2);
+          max-width: 380px;
+          border-bottom: 4px solid #111;
+        }
+      }
+      @media screen and (max-width: 640px) {
+        .con .list ul li {
+          flex-direction: column;
+          padding: 24px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="con">
+      <div class="txt">
+        <h1>삼성중공업 주식회사</h1>
+        <p>기준일 2023.12.31</p>
+      </div>
+      <div class="list">
+        <ul>
+          <li>
+            <p>대표이사</p>
+            <p>최성안</p>
+          </li>
+          <li>
+            <p>창립일</p>
+            <p>1974년 8월 5일</p>
+          </li>
+          <li>
+            <p>종업원수</p>
+            <p>9,640명</p>
+          </li>
+          <li>
+            <p>자본금</p>
+            <p>8,801억원</p>
+          </li>
+          <li>
+            <p>매출액</p>
+            <p>79,072억원</p>
+          </li>
+          <li>
+            <p>총자산</p>
+            <p>158,920억원</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

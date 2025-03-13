@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @font-face {
+        font-family: "Roboto_Condensed-Regular";
+        src: url(../webfonts/Roboto_Condensed-Regular.woff) format("woff");
+      }
+      @font-face {
+        font-family: "Pretendard-Regular";
+        src: url(../webfonts/Pretendard-Regular.woff) format("woff");
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
+      }
+      body {
+        font-family: Roboto_Condensed-Regular, Pretendard-Regular;
+      }
+      section {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0px auto;
+        padding: 0 20px;
+        box-sizing: border-box;
+      }
+      section img {
+        width: 100%;
+      }
+      .main {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-top: -120px;
+      }
+
+      .title h1 {
+        font-size: 45px;
+      }
+      .title p {
+        font-size: 18px;
+        margin-top: 15px;
+        color: #666;
+      }
+      .main .left {
+        margin-top: 50px;
+      }
+      .main .right {
+        margin-left: 140px;
+      }
+      .main .txt p:first-child {
+        font-size: 30px;
+        font-weight: bold;
+      }
+      .main .txt p:nth-child(2) {
+        font-size: 18px;
+        color: #666;
+        margin: 10px 0 25px 0;
+      }
+      .main .txt a {
+        color: #000;
+        font-size: 15px;
+        padding: 0 3px;
+        border-bottom: 2px solid #000;
+      }
+      .main .right .two {
+        margin-top: 155px;
+      }
+
+      @media screen and (max-width: 1280px) {
+        .main .txt p:first-child {
+          font-size: 27px;
+        }
+        .main .txt p:nth-child(2) {
+          font-size: 17px;
+        }
+      }
+      @media screen and (max-width: 960px) {
+        .main .txt p:first-child {
+          font-size: 25.65px;
+        }
+        .main .txt p:nth-child(2) {
+          font-size: 16.15px;
+        }
+        .main .txt a {
+          color: #000;
+          font-size: 14.25px;
+        }
+        .main .right {
+          margin-left: 40px;
+        }
+      }
+
+      @media screen and (max-width: 560px) {
+        .main {
+          flex-direction: column;
+          margin-top: 20px;
+        }
+
+        .main .txt p:first-child {
+          font-size: 24.7px;
+        }
+        .main .txt p:nth-child(2) {
+          font-size: 16.15px;
+        }
+        .main .txt a {
+          color: #000;
+          font-size: 14.25px;
+        }
+
+        .main .right {
+          width: 100%;
+          margin-left: 0;
+        }
+        .main .left {
+          width: 100%;
+          margin-bottom: 57px;
+        }
+        .main .left .con {
+          position: relative;
+          padding-bottom: 60%;
+          overflow: hidden;
+          height: 0;
+          width: 100%;
+        }
+        .main .left .con img {
+          position: absolute;
+          left: 0;
+          top: 50%;
+          width: 100%;
+          transform: translateY(-50%);
+        }
+        .main .right .two {
+          margin-top: 57px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="title">
+        <h1>우리의 약속</h1>
+        <p>
+          급격한 대내외 변화에 대응하기 위해 비전과 목표, 체계 등을 수립하고,
+          <br />
+          지속적인 개선활동을 수행하여 ESG 경영 실천에 대한 의지를 표명하고자
+          합니다.
+        </p>
+      </div>
+      <div class="main">
+        <div class="left">
+          <div class="con">
+            <img
+              src="https://www.samsungshi.com/ESG/Kor/images/main/promise_e.jpg"
+              alt=""
+            />
+          </div>
+          <div class="txt">
+            <p>환경</p>
+            <p>
+              사업 전반에 있어서 환경을 먼저 생각하고, 기후변화 대응에 <br />
+              앞장서겠습니다.
+            </p>
+            <a href="#">자세히 보기</a>
+          </div>
+        </div>
+        <div class="right">
+          <div class="one">
+            <div class="con">
+              <img
+                src="https://www.samsungshi.com/ESG/Kor/images/main/promise_s.jpg"
+                alt=""
+              />
+            </div>
+            <div class="txt">
+              <p>사회적 책임</p>
+              <p>이해관계자의 가치를 존중하고, 사회적 책임을 다하겠습니다.</p>
+              <a href="#">자세히 보기</a>
+            </div>
+          </div>
+          <div class="two">
+            <div class="con">
+              <img
+                src="https://www.samsungshi.com/ESG/Kor/images/main/promise_g.jpg"
+                alt=""
+              />
+            </div>
+            <div class="txt">
+              <p>거버넌스</p>
+              <p>
+                투명하고 건전한 거버넌스를 확립하여 깨끗한 문화를
+                정착시키겠습니다.
+              </p>
+              <a href="#">자세히 보기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
