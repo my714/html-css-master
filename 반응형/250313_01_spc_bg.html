@@ -21,6 +21,7 @@
         text-decoration: none;
         color: #333;
       }
+
       .wrap {
         font-family: "Pretendard-Regular";
         width: 100%;
@@ -112,6 +113,8 @@
         font-size: 8vw;
         line-height: 1;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
       .con2 .left p span:nth-child(2),
       .con2 .left p span:nth-child(3) {
@@ -120,6 +123,7 @@
       .con2 .left p span:nth-child(2):hover,
       .con2 .left p span:nth-child(3):hover {
         color: #fff;
+        cursor: pointer;
       }
 
       .con2 .right .txt,
@@ -190,6 +194,7 @@
         color: rgba(225, 225, 225, 0.5);
       }
       .con3 .right p span:nth-child(2):hover {
+        cursor: pointer;
         color: #fff;
       }
       .txt {
@@ -285,11 +290,13 @@
         display: flex;
         padding: 2%;
       }
+      .footer .left {
+        width: 10%;
+      }
       .footer .right {
         display: flex;
         flex: 1;
         grid-column-gap: calc(3.91vw);
-        justify-content: flex-end;
       }
       .footer .right ul li:first-child {
         font-size: 1vw;
