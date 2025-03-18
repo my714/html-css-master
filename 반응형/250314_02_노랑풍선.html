@@ -6,6 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      @font-face {
+        font-family: "NotoSans-Bold";
+        src: url(https://static.ybtour.com/images/company/font/NotoSans-Bold.woff)
+          format("woff");
+      }
+      @font-face {
+        font-family: "NotoSans-Light";
+        src: url(https://static.ybtour.com/images/company/font/NotoSans-Light.woff)
+          format("woff");
+      }
+      @font-face {
+        font-family: "NotoSans-Regular";
+        src: url(https://static.ybtour.com/images/company/font/NotoSans-Regular.woff)
+          format("woff");
+      }
+      @font-face {
+        font-family: "YbFontMedium";
+        src: url(https://static.ybtour.com/images/company/font/YbFontMedium.woff)
+          format("woff");
+      }
       * {
         margin: 0;
         padding: 0;
@@ -21,8 +41,12 @@
         box-sizing: border-box;
       }
       .main .title {
+        font-family: "YbFontMedium";
         text-align: center;
         margin-bottom: 56px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        font-weight: normal;
       }
       .main .title h1 {
         font-size: 36px;
@@ -34,6 +58,7 @@
         gap: 2.5rem;
       }
       .main ul li {
+        align-items: center;
         display: flex;
         gap: 6.5rem;
       }
@@ -45,8 +70,9 @@
         text-align: right;
       }
       .main ul li > p {
+        flex-shrink: 1;
         overflow: hidden;
-        border-radius: 10px;
+        border-radius: 20px;
       }
       .main ul li p img {
         width: 100%;
@@ -54,36 +80,47 @@
         object-fit: cover;
       }
       .main .txt {
+        width: 440px;
+        height: 440px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 440px;
-        height: 440px;
         word-break: keep-all;
+        flex-shrink: 0;
       }
       .main .txt p:nth-child(1) {
+        font-family: "NotoSans-Regular";
         font-size: 24px;
         color: #777;
         margin-bottom: 5px;
-        letter-spacing: -3px;
+        letter-spacing: -2px;
       }
       .main .txt p:nth-child(2) {
+        font-family: "NotoSans-Regular";
         font-size: 48px;
-        letter-spacing: -3.5px;
+        letter-spacing: -2px;
         color: #222;
       }
       .main .txt p:nth-child(3) {
+        font-family: "NotoSans-Bold";
         font-size: 48px;
         font-weight: 700;
         color: #ffc72c;
         line-height: 140%;
+        letter-spacing: -1.2px;
       }
+
       @media screen and (max-width: 1020px) {
         .main .title h1 {
           text-align: left;
           font-size: 24px;
           color: #222;
         }
+        .main .txt {
+          flex-shrink: 1;
+          height: auto;
+        }
+
         .main .txt p:nth-child(1) {
           font-size: 16px;
           margin-bottom: 8px;
@@ -94,14 +131,17 @@
         .main .txt p:nth-child(3) {
           font-size: 22px;
         }
+        .main ul li:nth-child(2n) .txt {
+          text-align: left;
+        }
       }
       @media screen and (max-width: 750px) {
         .main ul {
           width: 100%;
-
           flex-direction: column;
         }
         .main ul li {
+          align-items: center;
           flex-direction: column;
           width: 100%;
           display: flex;
@@ -110,9 +150,7 @@
         .main ul li:nth-child(2n) {
           flex-direction: column;
         }
-        .main ul li:nth-child(2n) .txt {
-          text-align: left;
-        }
+
         .main .txt {
           width: 100%;
           height: 100%;

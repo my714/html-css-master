@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @font-face {
+        font-family: "Pretendard";
+        src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+          format("woff");
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+      .bg {
+        background: #393939;
+      }
+      .main,
+      .main2 {
+        font-family: "Pretendard";
+        width: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding: 120px 80px 140px;
+      }
+      .main .title {
+        padding-left: 25%;
+      }
+      .main .title h1,
+      .main2 .title2 h1 {
+        color: #fff;
+        font-size: 48px;
+        font-weight: bold;
+        line-height: 72px;
+        letter-spacing: -0.5px;
+        word-break: keep-all;
+      }
+      .main .title p,
+      .main2 .title2 p {
+        margin-top: 30px;
+        color: #ffffff;
+        font-size: 18px;
+        line-height: 30px;
+        letter-spacing: -0.18px;
+        opacity: 0.5;
+        word-break: keep-all;
+      }
+      .main .box,
+      .main2 .box2 {
+        padding-top: 80px;
+      }
+      .main .box ul,
+      .main2 .box2 ul {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .main .box ul li,
+      .main2 .box2 ul li {
+        width: 49.8%;
+        height: 600px;
+        min-height: 600px;
+        position: relative;
+        border-radius: 5px;
+        overflow: hidden;
+        background-repeat: no-repeat;
+      }
+      .main .box ul li:hover .txt {
+        transform: translateY(-100%);
+      }
+      .main .box ul li:hover::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #00a651;
+        opacity: 1;
+        transition: 0.3s;
+      }
+      .main .box ul li:nth-child(1) {
+        background: url(https://www.hansolpns.com/assets/resources/front/images/main/main_cloud_imgCon01_bg.png)
+          center/cover;
+      }
+      .main .box li:nth-child(2) {
+        background: url(https://www.hansolpns.com/assets/resources/front/images/main/main_cloud_imgCon02_bg.png)
+          center/cover;
+      }
+      .main .box li:nth-child(3) {
+        background: url(https://www.hansolpns.com/assets/resources/front/images/main/main_cloud_imgCon03_bg.png)
+          center/cover;
+      }
+      .main .box li:nth-child(4) {
+        background: url(https://www.hansolpns.com/assets/resources/front/images/main/main_cloud_imgCon04_bg.png)
+          center/cover;
+      }
+      .main .txt,
+      .main2 .con .txt2 {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 48px;
+        box-sizing: border-box;
+        transform: translateY(-150px);
+        transition: 0.3s;
+      }
+      .main .txt h2,
+      .main2 ul li .txt2 h2 {
+        font-weight: normal;
+        color: #fff;
+        font-size: 36px;
+        line-height: 54px;
+        letter-spacing: -0.36px;
+      }
+      .main .txt p,
+      .main2 ul li .txt2 p {
+        color: #fff;
+        font-size: 18px;
+        line-height: 30px;
+        letter-spacing: -0.18px;
+        opacity: 0.8;
+        margin-top: 48px;
+        word-break: keep-all;
+        font-weight: normal;
+      }
+      .main .txt a,
+      .main2 .txt2 a,
+      .main2 .txt2 .link a {
+        font-size: 14px;
+        color: #fff;
+        padding: 0 40px 0 0px;
+        height: 100%;
+        line-height: 48px;
+        margin-top: 30px;
+      }
+      .main .txt span,
+      .main2 .txt2 span,
+      .main2 .txt2 .link span {
+        display: inline-block;
+        position: relative;
+        width: 50px;
+        height: 50px;
+        opacity: 0.1;
+        background: #fff;
+        border-radius: 50%;
+        justify-items: center;
+      }
+      .main .txt a span::after,
+      .main2 .txt2 a span::after {
+        content: "";
+        width: 25px;
+        height: 25px;
+        background: url(https://www.hansolpns.com/assets/resources/front/images/common/arrow.png);
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ2번째ㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+      .bg2 {
+        background: #171717;
+      }
+
+      .main2 .title2 {
+        padding-left: 50%;
+      }
+
+      .main2 .box2 .con:hover .txt2 {
+        transform: translateY(-100%);
+      }
+      .main2 .box2 .con:hover:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        background: #007dc5;
+        opacity: 1;
+        transition: 0.3s;
+        transform: translateY(50%);
+      }
+      .main2 .box2 ul li:nth-child(1) {
+        background: url(https://www.hansolpns.com/assets/resources/front/images/main/main_business_imgCon01_bg.png)
+          center/cover;
+      }
+      .main2 .box2 li:nth-child(2) {
+        background: url(https://www.hansolpns.com/assets/resources/front/images/main/main_business_imgCon02_bg.png)
+          center/cover;
+      }
+      .main2 .box2 li:nth-child(3) {
+        background: url(https://www.hansolpns.com/assets/resources/front/images/main/main_business_imgCon03_bg.png)
+          center/cover;
+      }
+      .main2 .box2 .none {
+        background: #272727;
+      }
+
+      .main2 .none .txt2 {
+        padding: 60px 48px 48px 48px;
+      }
+      .main2 .none .txt2 .link {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+      }
+      .main2 .none .txt2 .link a {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg">
+      <div class="main">
+        <div class="title">
+          <h1>
+            클라우드 도입의 모든 단계에서 <br />
+            전문적인 가이드를 제공하여 지속적인 혁신을 지원합니다.
+          </h1>
+          <p>
+            한솔PNS의 최신 기술과 업계 최고의 실무 경험을 바탕으로 하여 산업별
+            니즈와 특성을 고려한 종합적인 클라우드 서비스를 제공합니다.
+          </p>
+        </div>
+        <div class="box">
+          <ul>
+            <li>
+              <div class="txt">
+                <h2>클라우드 컨설팅</h2>
+                <p>
+                  전략수립부터 전환계획, 운영모델링 검토, 조직 및 역량설계, 도입
+                  후 운영관리까지의 통합 컨설팅 서비스 제공
+                </p>
+                <a href=""><span></span>자세히 보기</a>
+              </div>
+            </li>
+            <li>
+              <div class="txt">
+                <h2>클라우드 구축</h2>
+                <p>
+                  클라우드 전문가 그룹이 성공/모범사례 기반으로 고객 비즈니스와
+                  IT환경에 최적화 된 클라우드 설계를 제공
+                </p>
+                <a href=""><span></span>자세히 보기</a>
+              </div>
+            </li>
+            <li>
+              <div class="txt">
+                <h2>클라우드 전환</h2>
+                <p>
+                  검증된 솔루션과 다양한 성공사례를 바탕으로 마이그레이션 및 앱
+                  현대화의 과정에서 비즈니스 연속성 확보를 위한 전략적 계획
+                  수립, 수행, 최적화 프로세스를 제공
+                </p>
+                <a href=""><span></span>자세히 보기</a>
+              </div>
+            </li>
+            <li>
+              <div class="txt">
+                <h2>클라우드 관리</h2>
+                <p>
+                  고객사 별 맞춤 운영 효율성과 비즈니스 연속성을 보장하는 최적의
+                  리소스 구성 및 클라우드 관리 제공
+                </p>
+                <a href=""><span></span>자세히 보기</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ2번째ㅡㅡㅡㅡㅡㅡㅡㅡㅡ  -->
+
+    <div class="bg2">
+      <div class="main2">
+        <div class="title2">
+          <h1>
+            고객 맞춤형 IT솔루션과 서비스로 고객의 비즈니스 가치를 제공합니다.
+          </h1>
+          <p>
+            오랜 IT서비스로 축적된 컨설팅 역량과 다양한 사업 분야에 적용한
+            노하우를 바탕으로 고객사에게 최적화된 서비스 도입방안을 제시합니다.
+          </p>
+        </div>
+        <div class="box2">
+          <ul>
+            <li class="con">
+              <div class="txt2">
+                <h2>ITO</h2>
+                <p>
+                  25년 이상 다양한 업종의 풍부한 현장 경험과 효율적인 IT솔루션
+                  투자전략을 통해 기업에 최적화된 IT솔루션을 구축합니다.
+                </p>
+                <a href=""><span></span>자세히 보기</a>
+              </div>
+            </li>
+            <li class="con">
+              <div class="txt2">
+                <h2>ERP</h2>
+                <p>
+                  경영에 필요한 모든 요소들의 체계적인 연결과 지능적인 데이터
+                  통합을 통해 기업의 혁신을 주도합니다.
+                </p>
+                <a href=""><span></span>자세히 보기</a>
+              </div>
+            </li>
+            <li class="con">
+              <div class="txt2">
+                <h2>RPA</h2>
+                <p>
+                  글로벌 No.1 RPA 기술을 기반으로 한 비즈니스 자동화 플랫폼을
+                  통해 기업의 디지털 전환을 시작하세요!
+                </p>
+                <a href=""><span></span>자세히 보기</a>
+              </div>
+            </li>
+
+            <li class="none">
+              <div class="txt2">
+                <h2>
+                  제공되는 고객 맞춤 서비스를 <br />
+                  더 알고 싶나요?
+                </h2>
+                <p>
+                  국내외 파트너사들과의 제휴를 통해 고객이 필요로 하는 최고의
+                  솔루션을 제공함으로써, 더 완벽한 기업 경영관리를 위한 길잡이가
+                  되어드립니다.
+                </p>
+                <div class="link">
+                  <a href=""><span></span> 문의하기 바로가기</a>
+                  <a href=""><span></span>브로슈어 바로가기</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
