@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
     <style>
       * {
         margin: 0;
@@ -25,6 +29,9 @@
         font-size: 1.6vw;
         color: #616161;
       }
+      .header h2 .br2 {
+        display: none;
+      }
       .main {
         width: 100%;
         max-width: 1760px;
@@ -33,6 +40,7 @@
       .main .title {
         position: relative;
         padding: 0 30px;
+       
       }
       .main .title p {
         width: 100%;
@@ -63,9 +71,33 @@
       }
 
       .main .list ul li {
+        position: relative;
         border-radius: 10px;
         border: 1px solid #e5e5e5;
         padding: 20px;
+      }
+      .main .list ul li p::after {
+        content: "\f061";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px;
+        width: 26px;
+        height: 26px;
+        color: #616161;
+        border: 1px solid #e5e5e5;
+        border-radius: 50%;
+        box-sizing: border-box;
+        text-align: center;
+        line-height: 26px;
+      }
+      .main .list ul li:hover p::after {
+        background: #f37321;
+        color: #fff;
+        transition: 0.5s;
       }
 
       .main .list ul li p:first-child {
@@ -80,6 +112,12 @@
         }
         .header h2 {
           font-size: 2vw;
+        }
+        .header h2 .br1 {
+          display: none;
+        }
+        .header h2 .br2 {
+          display: inline-block;
         }
       }
       @media screen and (max-width: 768px) {
@@ -106,8 +144,9 @@
     <div class="header">
       <h1>Companies</h1>
       <h2>
-        Through our comprehensive business portfolio, <br />
-        we deliver value to customers around the globe
+        Through our comprehensive business portfolio, <br class="br1" />
+        we deliver <br class="br2" />
+        value to customers around the globe
       </h2>
     </div>
 
@@ -131,7 +170,6 @@
                   alt=""
                 />
               </p>
-              <p><span></span></p>
             </a>
           </li>
           <li>
@@ -142,7 +180,6 @@
                   alt=""
                 />
               </p>
-              <p><span></span></p>
             </a>
           </li>
           <li>
@@ -153,7 +190,6 @@
                   alt=""
                 />
               </p>
-              <p><span></span></p>
             </a>
           </li>
           <li>
@@ -164,7 +200,6 @@
                   alt=""
                 />
               </p>
-              <p><span></span></p>
             </a>
           </li>
           <li>
@@ -175,7 +210,6 @@
                   alt=""
                 />
               </p>
-              <p><span></span></p>
             </a>
           </li>
           <li>
@@ -186,7 +220,6 @@
                   alt=""
                 />
               </p>
-              <p><span></span></p>
             </a>
           </li>
           <li>
@@ -197,7 +230,6 @@
                   alt=""
                 />
               </p>
-              <p><span></span></p>
             </a>
           </li>
           <li>
@@ -208,7 +240,6 @@
                   alt=""
                 />
               </p>
-              <p><span></span></p>
             </a>
           </li>
           <li>
@@ -219,7 +250,6 @@
                   alt=""
                 />
               </p>
-              <p><span></span></p>
             </a>
           </li>
           <li>
@@ -230,7 +260,6 @@
                   alt=""
                 />
               </p>
-              <p><span></span></p>
             </a>
           </li>
           <li>
@@ -241,7 +270,6 @@
                   alt=""
                 />
               </p>
-              <p><span></span></p>
             </a>
           </li>
           <li>
@@ -252,7 +280,6 @@
                   alt=""
                 />
               </p>
-              <p><span></span></p>
             </a>
           </li>
           <li>
@@ -263,7 +290,6 @@
                   alt=""
                 />
               </p>
-              <p><span></span></p>
             </a>
           </li>
         </ul>

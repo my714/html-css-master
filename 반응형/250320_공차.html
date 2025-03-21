@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공차</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: #333;
+      }
+
+      header .top {
+        width: 1200px;
+        height: 110px;
+        margin: 0 auto;
+        display: flex;
+      }
+      header .top .logo {
+        width: 134px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      nav > ul {
+        display: flex;
+        height: 100%;
+        align-items: center;
+      }
+      nav > ul > li {
+        width: 100%;
+        position: relative;
+      }
+      nav > ul > li > a {
+        color: #444444;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 0 24px;
+        width: 100%;
+      }
+
+      nav > ul > li > a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 60px;
+        width: 100%;
+        height: 4px;
+        background: #cf3e58;
+        transform: scaleX(0);
+        transition: 0.3s;
+      }
+      nav > ul > li:hover > a::after {
+        transform: scaleX(1);
+      }
+
+      /* header:hover nav > ul > li > a {
+        color: #333;
+      } */
+      nav > ul > li .sub {
+        position: absolute;
+        width: 100%;
+        top: 60px;
+        text-align: center;
+        z-index: 1;
+        height: 0;
+        overflow: hidden;
+        transition: 1s;
+      }
+      nav > ul > li a {
+        line-height: 40px;
+      }
+      nav > ul > li .menu li a:hover {
+        color: #cf3e58;
+      }
+
+      nav > ul > li > a .kor {
+        display: none;
+      }
+      nav > ul > li:hover a .eng {
+        display: none;
+      }
+      nav > ul > li:first-child:hover a .kor {
+        display: block;
+      }
+
+      nav > ul:hover > li .sub {
+        height: 320px;
+        padding: 20px 0;
+      }
+      nav > ul > li .sub > li {
+      }
+      nav > ul:hover > li .sub > li a {
+        display: block;
+        text-align: center;
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 35px;
+        color: #cccccc;
+        word-break: keep-all;
+      }
+      nav > ul:hover > li .sub > li:hover a {
+        color: #cf3e58;
+      }
+      .bg {
+        position: absolute;
+        width: 100%;
+        height: 0px;
+        background: rgba(0, 0, 0, 0.7);
+        left: 0;
+        top: 100px;
+        transition: 1s;
+        border: 1px solid #ccc;
+      }
+      nav > ul:hover ~ .bg {
+        height: 320px;
+        border-width: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="top">
+        <div class="logo">
+          <a href="#"
+            ><img
+              src="https://www.gong-cha.co.kr/view/gongcha/images/common/logo.png"
+              alt=""
+          /></a>
+        </div>
+        <nav>
+          <ul>
+            <li>
+              <a href="#"
+                ><span class="eng">Brand</span>
+                <span class="kor">브랜드</span>
+              </a>
+              <ul class="sub">
+                <li><a href="#">브랜드 소개</a></li>
+                <li><a href="#">공차의 약속</a></li>
+                <li><a href="#">브랜드 아이덴티티</a></li>
+                <li><a href="#">세계속의 공차</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"
+                ><span class="eng">Menu</span><span class="kor">메뉴</span></a
+              >
+              <ul class="sub">
+                <li><a href="#">주문방법</a></li>
+                <li><a href="#">신메뉴</a></li>
+                <li><a href="#">음료</a></li>
+                <li><a href="#">디저트</a></li>
+                <li><a href="#">MD상품</a></li>
+                <li><a href="#">티스토리</a></li>
+                <li><a href="#">티레시피</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"
+                ><span class="eng">Store</span><span class="kor">매장</span></a
+              >
+              <ul class="sub">
+                <li><a href="#">매장 찾기</a></li>
+                <li><a href="#">가맹점 개설문의</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"
+                ><span class="eng">Membership</span
+                ><span class="kor">멤버십</span></a
+              >
+              <ul class="sub">
+                <li><a href="#">공차 멤버십</a></li>
+                <li><a href="#">공차 카드 & e-Gift</a></li>
+                <li><a href="#">FAQ</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"
+                ><span class="eng">Benefit</span
+                ><span class="kor">제휴 서비스</span></a
+              >
+              <ul class="sub">
+                <li><a href="#">통신사 제휴</a></li>
+                <li><a href="#">결제 서비스</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"
+                ><span class="eng">Event&News</span
+                ><span class="kor">이벤트&뉴스</span></a
+              >
+              <ul class="sub">
+                <li><a href="#">이벤트</a></li>
+                <li><a href="#">공차소식</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="bg"></div>
+        </nav>
+      </div>
+    </header>
+  </body>
+</html>

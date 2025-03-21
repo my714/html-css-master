@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @font-face {
+        font-family: "Pretendard";
+        src: url(../webfonts/Pretendard.woff) format("woff");
+        font-weight: 400;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .main {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-top: 100px;
+      }
+      .main .top {
+        font-family: "Pretendard";
+        margin-bottom: 150px;
+      }
+      .main .top h1 {
+        font-size: 20px;
+        line-height: 1;
+        color: #666;
+        margin-bottom: 14px;
+        font-weight: 500;
+        letter-spacing: -2.5px;
+      }
+      .main .top p {
+        font-size: 37px;
+        line-height: 1.3;
+        font-weight: 500;
+        letter-spacing: -3.2px;
+        word-break: keep-all;
+      }
+      .bottom {
+        width: 95%;
+        margin: 0 auto;
+        max-width: 1440px;
+        height: 600px;
+      }
+      .bottom .bg {
+        width: 100%;
+        height: 100%;
+        background: url(https://www.bgfecomaterials.com/resources/kr/images/company/business/advanced-materials_bg_pc_img.jpg)
+          center/cover;
+        background-repeat: no-repeat;
+      }
+      .bottom .bg .txt {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 0 120px;
+        color: #fff;
+        text-align: left;
+        justify-content: center;
+        line-height: 1.5;
+        box-sizing: border-box;
+      }
+      .bottom .bg .txt p:first-child {
+        font-size: 28px;
+        letter-spacing: -2.5px;
+        font-weight: 600;
+      }
+      .bottom .bg .txt p:last-child {
+        margin-top: 20px;
+        font-size: 16px;
+        letter-spacing: -2px;
+        font-weight: 550;
+      }
+      @media screen and (max-width: 1367px) {
+        .main .top p br {
+          display: none;
+        }
+      }
+      @media screen and (max-width: 1200px) {
+        .main .top {
+          padding: 0 24px;
+          box-sizing: border-box;
+          margin-bottom: 50px;
+        }
+        .main .top p {
+          letter-spacing: -3.5px;
+        }
+      }
+      @media screen and (max-width: 1024px) {
+        .main .top h1 {
+          font-size: 14px;
+        }
+        .main .top p {
+          font-size: 22px;
+        }
+        .bottom .bg {
+          width: 100%;
+          height: 500px;
+        }
+        .bottom .bg .txt br {
+          display: none;
+        }
+        .bottom .bg .txt {
+          padding: 50px 16px;
+          justify-content: flex-start;
+          word-break: keep-all;
+        }
+        .bottom .bg .txt p:first-child {
+          font-size: 18px;
+          letter-spacing: -2.5px;
+          font-weight: 500;
+        }
+        .bottom .bg .txt p:last-child {
+          margin-top: 14px;
+          font-size: 13px;
+          letter-spacing: -1px;
+          font-weight: 500;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="top">
+        <h1>사업소개</h1>
+        <p>
+          다양한 소재 솔루션으로 고객의 생활을 더 안전하고 풍요롭게 하며<br />
+          환경에 이로운 신소재 개발로 지속 가능한 미래를 만듭니다.
+        </p>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="bg">
+        <div class="txt">
+          <p>
+            고객의 니즈에 따라 맞춤형 엔지니어링 소재를 개발하여 <br />
+            다양한 용도별 요구 성능을 충족 시킵니다.
+          </p>
+          <p>
+            환경규제 강화로 인한 금속부품의 경량화, 에너지효율 증대,
+            e-Mobility와 ESS 등 신규 Application의 <br />
+            확대로 고기능성 엔지니어링 소재의 적용처가 확대되고 있으며, 이에
+            따라 고객들은 보다 더 다양하고 <br />
+            정밀한 기능성을 요구하고 있습니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
