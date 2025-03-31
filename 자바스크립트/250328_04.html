@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      .con {
+        width: 1420px;
+        margin: 0 auto;
+        display: flex;
+      }
+      .con .left {
+        position: sticky;
+        top: 100px;
+        height: 100%;
+        width: 40%;
+      }
+      .con .right {
+        width: 60%;
+        position: relative;
+        top: 100px;
+      }
+      .con .right ul li {
+        height: 700px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="con">
+      <div class="left">
+        <ul>
+          <li><a href="#">하나</a></li>
+          <li><a href="#">둘</a></li>
+          <li><a href="#">셋</a></li>
+          <li><a href="#">넷</a></li>
+          <li><a href="#">다섯</a></li>
+        </ul>
+      </div>
+      <div class="right">
+        <ul>
+          <li id="con1">하나</li>
+          <li id="con2">둘</li>
+          <li id="con3">셋</li>
+          <li id="con4">넷</li>
+          <li id="con5">다섯</li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      let conTop = document.querySelector("#con1").offsetTop;
+      console.log(conTop);
+      document.querySelectorAll(".con .left ul li").forEach(function (v, k) {
+        v.onclick = function (e) {
+          e.preventDefault();
+          window.scrollTo({ top: document.querySelector });
+        };
+      });
+    </script>
+  </body>
+</html>

@@ -9,14 +9,14 @@
   </head>
   <body>
     <p class="txt">하나</p>
-    <button onclick="mycolor();">글자색바꾸기</button>
-    <button onclick="mysize();">글자크기바꾸기</button>
+    <button onclick="mycolor()">글자색바꾸기</button>
+    <button onclick="mysize()">글자크기바꾸기</button>
     <button>테두리넣기</button>
     <script>
       function mycolor() {
+        // document.getElementsByClassName("txt")[0].style.color="#f00";
         document.querySelector(".txt").style.color = "#f00";
       }
-
       function mysize() {
         document.querySelector(".txt").style.fontSize = "32px";
       }

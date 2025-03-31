@@ -32,19 +32,19 @@
       <li>photo5</li>
     </ul>
     <div>
-      <p><img src="../images/photo1.jpg" alt="" /></p>
-      <p><img src="../images/photo2.jpg" alt="" /></p>
-      <p><img src="../images/photo3.jpg" alt="" /></p>
-      <p><img src="../images/photo4.jpg" alt="" /></p>
-      <p><img src="../images/photo5.jpg" alt="" /></p>
+      <p><img src="../Html5&CSS/images/photo1.jpg" alt="" /></p>
+      <p><img src="../Html5&CSS/images/photo2.jpg" alt="" /></p>
+      <p><img src="../Html5&CSS/images/photo3.jpg" alt="" /></p>
+      <p><img src="../Html5&CSS/images/photo4.jpg" alt="" /></p>
+      <p><img src="../Html5&CSS/images/photo5.jpg" alt="" /></p>
     </div>
     <script>
       function my() {
-        document.querySelectorAll("p").forEach(function (value, key) {
-          value.classList.remove("on");
+        document.querySelectorAll("p").forEach(function (v, k) {
+          v.classList.remove("on");
         });
-        document.querySelectorAll("ul li").forEach(function (value, key) {
-          value.classList.remove("active");
+        document.querySelectorAll("ul li").forEach(function (v, k) {
+          v.classList.remove("active");
         });
       }
       document.getElementsByTagName("p")[0].classList.add("on");

@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      /* display: -webkit-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;*/
       * {
         margin: 0;
         padding: 0;
@@ -21,27 +26,27 @@
         margin: 0 auto;
         display: flex;
         gap: 20px;
+        /* background: #ccc; */
         height: 100%;
       }
       .new .left {
         margin-bottom: 100px;
       }
       .new .left h1 {
-        font-size: 48px;
         margin-bottom: 50px;
       }
       .new .left ul li {
-        font-weight: 600;
+        height: 50px;
+        font-size: 25px;
         color: #ccc;
-        line-height: 60px;
-        font-size: 28px;
       }
       .new .left ul li.active {
         color: #000;
       }
       .new .right {
-        position: relative;
         flex: 1;
+        /* background: #ddd; */
+        position: relative;
       }
       .new .right a {
         display: flex;
@@ -61,7 +66,19 @@
         justify-content: center;
         align-items: center;
       }
-      .new .right a .txt {
+      .new .right a > p img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        vertical-align: middle;
+      }
+      .new .right a:first-child > p img,
+      .new .right a:nth-child(3) > p img {
+        width: 30%;
+        height: 30%;
+        object-fit: contain;
+      }
+      .new .right .txt {
         width: 35%;
         display: flex;
         flex-direction: column;
@@ -84,19 +101,6 @@
         text-overflow: ellipsis;
         -webkit-line-clamp: 5;
         -webkit-box-orient: vertical;
-      }
-
-      .new .right a > p img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        vertical-align: middle;
-      }
-      .new .right a:first-child > p img,
-      .new .right a:nth-child(3) > p img {
-        width: 30%;
-        height: 30%;
-        object-fit: contain;
       }
     </style>
   </head>
@@ -184,7 +188,7 @@
             <p>
               한국바이오협회 마이크로바이옴신약기업협의회, 2025년 정기 총회 개최
             </p>
-            <span>2025-02-27</span>
+            <span>2025-02-18</span>
           </div>
         </a>
         <a href="">
@@ -198,7 +202,7 @@
             <h1>
               CJ바이오사이언스 홈페이지, "GDWEB DESIGN AWARDS 2024" 금상 수상
             </h1>
-            <span>2025-01-03</span>
+            <span>2025-02-18</span>
           </div>
         </a>
         <a href="">
@@ -225,7 +229,7 @@
               식이섬유가 우리 몸에 일으키는 놀라운 변화를 장내 마이크로바이옴
               분석 결과(2주간 식단 관리 전후 비교)를 통해 알아봅니다.
             </p>
-            <span>2025-02-05</span>
+            <span>2025-02-18</span>
           </div>
         </a>
       </div>
