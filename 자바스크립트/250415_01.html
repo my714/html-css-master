@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>Swiper demo</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .swiper {
+        width: 100%;
+        margin: 0 auto;
+        height: 100%;
+      }
+
+      /* .swiper-slide {
+        transition: 3s;
+      } */
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .swiper-wrapper {
+        position: relative;
+      }
+      /* .button {
+        display: flex;
+        position: absolute;
+        bottom: 24.5%;
+        right: 20%;
+        z-index: 1;
+        gap: 20px;
+      } */
+    </style>
+  </head>
+
+  <body>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img
+            src="https://www.coffeebay.com/upload/file_20250219184145.2025-%EB%B2%A0%EC%9D%B4%EC%BC%80%EC%9D%B4%EC%85%98(%EC%98%81%EA%B5%AD)-1920x1080px"
+            alt=""
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="https://www.coffeebay.com/upload/file_20240905165027.%E1%84%92%E1%85%A9%E1%86%B7%E1%84%91%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5%20%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%20pc%201920x1080"
+            alt=""
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="https://www.coffeebay.com/upload/file_20240523154742.jpg"
+            alt=""
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="https://www.coffeebay.com/upload/file_20241125154725.2024-%EB%B6%95%EC%96%B4%EB%B9%B5-1920x1080"
+            alt=""
+          />
+        </div>
+      </div>
+      <!-- <div class="button">
+        <div class="swiper-button-next">
+          <img
+            src="https://www.coffeebay.com/img/main/main_slide_prev_btn.png"
+            alt=""
+          />
+        </div>
+        <div class="swiper-button-prev">
+          <img
+            src="https://www.coffeebay.com/img/main/main_slide_next_btn.png"
+            alt=""
+          />
+        </div>
+      </div> -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        effect: "fade",
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        navigation: {
+          prevEl: ".swiper-button-next",
+          nextEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+  </body>
+</html>
