@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SK 3D Carousel</title>
+    <link
+      href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="leafCanvas"></canvas>
+    <script>
+      const canvas = document.getElementById("leafCanvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const leafImage = new Image();
+      leafImage.src = "./leaves.png"; // 나뭇잎 이미지 URL
+
+      const leaves = [];
+
+      for (let i = 0; i < 30; i++) {
+        leaves.push({
+          x: Math.random() * canvas.width + canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 30 + 20,
+          speedX: Math.random() * 2 + 1,
+          speedY: Math.random() * 1 - 0.5,
+          angle: Math.random() * Math.PI * 2,
+          angleSpeed: Math.random() * 0.02 - 0.01,
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let leaf of leaves) {
+          leaf.x -= leaf.speedX;
+          leaf.y += leaf.speedY;
+          leaf.angle += leaf.angleSpeed;
+
+          if (leaf.x < -leaf.size) {
+            leaf.x = canvas.width + leaf.size;
+            leaf.y = Math.random() * canvas.height;
+          }
+
+          ctx.save();
+          ctx.translate(leaf.x, leaf.y);
+          ctx.rotate(leaf.angle);
+          ctx.drawImage(
+            leafImage,
+            -leaf.size / 2,
+            -leaf.size / 2,
+            leaf.size,
+            leaf.size
+          );
+          ctx.restore();
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      leafImage.onload = () => {
+        animate();
+      };
+
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+    </script>
+  </body>
+</html>

@@ -8,46 +8,24 @@
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script>
       $(function () {
-        let i = 0;
-        $("#demo").on("click", function () {
-          console.log(i++); //i=i+1
-          if (i > 5) {
-            $(this).off("click");
+        $("a").click(function (e) {
+          //e.preventDefault();//a태그의 기본동작을 막아줌 구문의 가장위에
+          $("p").toggle(1000, "linear"); //swing,또는 linear
+          let txt = $(this).text();
+          console.log(txt);
+          $(this).text("show");
+          if (txt == "hide") {
+            $(this).text("show");
+          } else {
+            $(this).text("hide");
           }
-        });
-        $("#one").one("click", function () {
-          console.log(i++);
-        });
-        /*$("#con")
-          .click(function () {
-            $(this).text("클릭이벤트");
-          })
-          .dblclick(function () {
-            $(this).text("더블클릭이벤트");
-          })
-          .mouseenter(function () {
-            $(this).text("마우스엔터이벤트");
-          })
-          .mouseleave(function () {
-            $(this).text("마우스리브이벤트");
-          });*/
-        $("#con").on({
-          click: function () {
-            $(this).text("클릭이벤트");
-          },
-          dblclick: function () {
-            $(this).text("더블클릭이벤트");
-          },
-          mouseenter: function () {
-            $(this).text("마우스엔터이벤트");
-          },
+          return false; //a태그의 기본동작을 막아줌 구문의 가장끝
         });
       });
     </script>
   </head>
   <body>
-    <p id="demo">제이쿼리 on메서드</p>
-    <p id="one">제이쿼리 one메서드</p>
-    <p id="con">on메서드입니다</p>
+    <p>show()hide()</p>
+    <a href="#">hide</a>
   </body>
 </html>
