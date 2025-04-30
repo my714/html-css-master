@@ -2,231 +2,101 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-
+    <title>햄버거 메뉴 + 오른쪽 사이드 메뉴</title>
     <style>
-      * {
+      body {
         margin: 0;
+        font-family: sans-serif;
+      }
+
+      .menu-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 35px;
+        height: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        z-index: 1001;
+      }
+
+      .menu-toggle span {
+        height: 4px;
+        background: #333;
+        border-radius: 2px;
+        transition: 0.3s ease;
+      }
+
+      .menu-toggle.open span:nth-child(1) {
+        transform: rotate(45deg) translate(10px, 8px);
+      }
+
+      .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(10px, -8px);
+      }
+
+      .side-menu {
+        position: fixed;
+        top: 0;
+        right: -300px; /* 오른쪽에서 숨김 */
+        width: 250px;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 60px 20px;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+        transition: 0.5s ease;
+        z-index: 1;
+      }
+
+      .side-menu.open {
+        right: 0; /* 오른쪽에서 나타남 */
+      }
+
+      .side-menu ul {
+        list-style: none;
         padding: 0;
       }
-      ul {
-        list-style: none;
-      }
 
-      .main {
-        width: 1260px;
-        margin: 0 auto;
-      }
-      .main ul li {
-        border-bottom: 1px solid #d1a050;
-      }
-      .main ul li:first-child {
-        border-top: 1px solid #d1a050;
-      }
-      .main ul li:last-child {
-        border-bottom: none;
-      }
-      .main h4 {
-        color: #d1a050;
+      .side-menu li {
         margin: 20px 0;
-        font-size: 42px;
-        font-weight: 700;
-      }
-      .main h1 {
-        color: #d1a050;
-        margin: 80px 0 20px;
-        font-size: 42px;
-        font-weight: 500;
-      }
-      .main .title {
-        display: flex;
-        height: 100%;
-        padding: 15px 20px;
-        cursor: pointer;
-      }
-      .main .title span {
-        position: relative;
-        width: 24px;
-        height: 24px;
-        display: block;
-      }
-      .main .title span::before,
-      .main .title span::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        top: 80%;
-        background: #d1a050;
-        transition: 0.2s linear;
-        box-sizing: border-box;
-      }
-      .main .title span::before {
-        width: 15px;
-        height: 2px;
-        margin: -1px 0 0 -11px;
-      }
-      .main .title span::after {
-        width: 2px;
-        height: 15px;
-        margin: -8px 0 0 -4px;
-      }
-      .main .title span.on::before,
-      .main .title span.on::after {
-        transform: rotate(45deg);
-        opacity: 1;
-      }
-      .main .title p {
-        line-height: 1.5;
-        font-size: 24px;
-        color: #d1a050;
-        justify-content: center;
-        margin-right: 5px;
       }
 
-      .main .title .toplogo img {
-        max-width: 20px;
-        object-fit: cover;
-      }
-      .main .title .botlogo img {
-        max-width: 30px;
-        object-fit: cover;
-      }
-
-      .main .con p {
-        transform: translateY(20px);
-        height: 100%;
-        opacity: 0;
-        overflow: hidden;
-        transition: 0.5s;
-        margin: 70px 40px 80px;
-      }
-      .main .con p img {
-        width: 100%;
-        object-fit: cover;
-      }
-      .main .con p.on {
-        transform: translateY(10px);
-        opacity: 1;
+      .side-menu a {
+        color: white;
+        text-decoration: none;
       }
     </style>
   </head>
   <body>
-    <div class="main">
-      <h4>RETAIL</h4>
-      <h1>Slices - Oat Base</h1>
-      <ul>
-        <li>
-          <div class="title">
-            <span></span>
-            <p>AMERICAN</p>
-          </div>
-          <div class="con">
-            <p>
-              <img
-                src="https://d29wx3mrk1ysd0.cloudfront.net/_img/sub231114/SLICES-OATBASE-AMERICAN-pc.jpg"
-                alt=""
-              />
-            </p>
-          </div>
-        </li>
-        <li>
-          <div class="title">
-            <span></span>
-            <p>CHEDDAR</p>
-          </div>
-          <div class="con">
-            <p>
-              <img
-                src=" https://d29wx3mrk1ysd0.cloudfront.net/_img/sub231114/SLICES-OATBASE-CHEDDAR-pc.jpg"
-                alt=""
-              />
-            </p>
-          </div>
-        </li>
-        <li>
-          <div class="title">
-            <span></span>
-            <p>PEPPER JACK</p>
-            <p class="toplogo">
-              <img
-                src="https://www.armoredfresh.com/img/webstaurantstore-w-mark.png"
-                alt=""
-              />
-            </p>
-          </div>
-          <div class="con">
-            <p>
-              <img
-                src="https://d29wx3mrk1ysd0.cloudfront.net/_img/sub231114/SLICES-OATBASE-PEPPERJACK-pc.jpg"
-                alt=""
-              />
-            </p>
-          </div>
-        </li>
-      </ul>
-      <h1>Parmesan – Oat Base</h1>
-      <ul>
-        <li>
-          <div class="title">
-            <span></span>
-            <p>GRATED PARMESAN</p>
-            <p class="botlogo">
-              <img
-                src="https://www.armoredfresh.com/theme/af_v02/layout/_img/justalt_logo.png"
-                alt=""
-              />
-            </p>
-          </div>
-          <div class="con">
-            <p>
-              <img
-                src="https://www.armoredfresh.com/theme/af_v02/layout/_img/parmesan-pc.jpg"
-                alt=""
-              />
-            </p>
-          </div>
-        </li>
-        <li>
-          <div class="title">
-            <span></span>
-            <p>GRATED KIMCHI PARMESAN</p>
-            <p class="botlogo">
-              <img
-                src="https://www.armoredfresh.com/theme/af_v02/layout/_img/justalt_logo.png"
-                alt=""
-              />
-            </p>
-          </div>
-          <div class="con">
-            <p>
-              <img
-                src="https://www.armoredfresh.com/theme/af_v02/layout/_img/parmesan-kimchi-pc.jpg"
-                alt=""
-              />
-            </p>
-          </div>
-        </li>
-      </ul>
+    <div class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
+
+    <nav class="side-menu">
+      <ul>
+        <li><a href="#">홈</a></li>
+        <li><a href="#">서비스</a></li>
+        <li><a href="#">포트폴리오</a></li>
+        <li><a href="#">문의하기</a></li>
+      </ul>
+    </nav>
+
     <script>
-      document.querySelectorAll(".main ul li").forEach(function (v, k) {
-        v.querySelector(".con p").style.display = "none";
-      });
-      document.querySelectorAll(".main ul li").forEach(function (v, k) {
-        v.onclick = function () {
-          let bool = this.querySelector(".con p").style.display;
-          if (bool == "none") {
-            this.querySelector("span").classList.add("on");
-            this.querySelector(".con p").classList.add("on");
-            this.querySelector(".con p").style.display = "block";
-          } else {
-            this.querySelector("span").classList.remove("on");
-            this.querySelector(".con p").classList.remove("on");
-            this.querySelector(".con p").style.display = "none";
-          }
-        };
+      const toggle = document.querySelector(".menu-toggle");
+      const sideMenu = document.querySelector(".side-menu");
+
+      toggle.addEventListener("click", () => {
+        toggle.classList.toggle("open");
+        sideMenu.classList.toggle("open");
       });
     </script>
   </body>
