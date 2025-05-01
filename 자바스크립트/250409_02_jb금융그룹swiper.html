@@ -12,7 +12,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-    <link rel="stylesheet" href="./reset.css" />
+
     <!-- Demo styles -->
     <style>
       html,
@@ -29,9 +29,10 @@
         margin: 0;
         padding: 0;
       }
-
-      .swiper {
+      .visual {
         position: relative;
+      }
+      .swiper {
         width: 100%;
         height: 100%;
       }
@@ -45,88 +46,96 @@
         align-items: center;
       }
 
-      .swiper-slide img {
+      .swiper-slide video {
         display: block;
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
-      .controls {
-        position: absolute;
-        left: 100px;
-        top: 90%;
-        z-index: 10;
-        width: 300px;
-        height: 50px;
-        display: flex;
-        /* gap: 20px; */
-        /* align-items: center; */
-      }
+
       .autoplay-progress {
-        /* position: absolute;
+        position: absolute;
         right: 16px;
-        bottom: 16px; */
+        bottom: 16px;
         z-index: 10;
-        width: 250px;
+        width: 200px;
         height: 48px;
-        /* display: flex;
+        display: flex;
         align-items: center;
-        justify-content: center; */
+        justify-content: center;
         font-weight: bold;
         color: var(--swiper-theme-color);
       }
 
       .autoplay-progress svg {
         --progress: 0;
-        /* position: absolute;
+        position: absolute;
         left: 0;
-        top: 0px; */
-        position: relative;
+        top: 10px;
         z-index: 10;
         width: 100%;
         height: 100%;
         stroke-width: 4px;
-        stroke: #000;
+        stroke: var(--swiper-theme-color);
         fill: none;
         stroke-dashoffset: calc(200px * (1 - var(--progress)));
         stroke-dasharray: 200;
-        /* transform: rotate(-90deg); */
       }
-      .autoplay-progress svg line {
+      #controls {
         position: absolute;
-        left: 0;
-        top: 0;
+        left: 100px;
+        top: 80%;
+        width: 200px;
+        height: 50px;
+        z-index: 20;
       }
-      .autoplay-progress svg line.back {
-        stroke-dasharray: 0;
-        opacity: 0.2;
+      #controls svg {
+        stroke-width: 10px;
+        stroke: #fff;
+        fill: none;
+        stroke-dashoffset: calc(200px * (1 - var(--progress)));
+        stroke-dasharray: 200;
+        animation: bar 10s infinite linear;
+        /*animation-play-state: paused;
+        animation-play-state: running;*/
+      }
+      @keyframes bar {
+        0% {
+          stroke-dashoffset: 200;
+        }
+        100% {
+          stroke-dashoffset: 0;
+        }
       }
     </style>
   </head>
 
   <body>
-    <!-- Swiper -->
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">Slide 1</div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-        <div class="swiper-slide">Slide 4</div>
-      </div>
-
-      <div class="controls">
-        <span class="start"></span>
+    <div class="visual">
+      <!-- Swiper -->
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <video id="video" muted autoplay loop>
+              <source src="https://www.jbfg.com/assets/img/main/kv.mp4" />
+            </video>
+          </div>
+        </div>
         <div class="autoplay-progress">
           <svg>
-            <!-- <circle cx="24" cy="24" r="20"></circle> -->
-            <line x1="10" y1="10" x2="210" y2="10" class="back" />
-            <line x1="10" y1="10" x2="210" y2="10" class="up" />
+            <line x1="0" y1="0" x2="200" y2="0"></line>
           </svg>
-          <!-- <span></span> -->
+          <span></span>
         </div>
-        <span class="end"></span>
+      </div>
+      <div id="controls">
+        <svg>
+          <line x1="0" y1="0" x2="200" y2="0"></line>
+        </svg>
+        <span id="stop">정지</span>
       </div>
     </div>
+
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -134,32 +143,43 @@
     <script>
       const progressCircle = document.querySelector(".autoplay-progress svg");
       const progressContent = document.querySelector(".autoplay-progress span");
-      let slide = document.querySelectorAll(".swiper-slide");
-      document.querySelector(".start").innerHTML = "01";
-      document.querySelector(".end").innerHTML = "0" + slide.length;
-      document.querySelector("svg").style.stroke = "#f00";
+      const video = document.getElementById("video");
+      const stop = document.getElementById("stop");
+      const bar = document.querySelector("#controls svg");
+      // Swiper 초기화
       var swiper = new Swiper(".mySwiper", {
-        effect: "fade",
         autoplay: {
-          delay: 6000,
-          disableOnInteraction: false,
+          delay: 10000, // 10초마다 자동으로 슬라이드가 전환됨
+          disableOnInteraction: false, // 사용자가 슬라이드를 넘기더라도 자동 재생 유지
         },
-
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
         on: {
           autoplayTimeLeft(s, time, progress) {
-            progressCircle.style.setProperty("--progress", 1 - progress);
-            // progressContent.textContent = `${Math.ceil(time / 1000)}s`;
-            document.querySelector(".start").innerHTML = `0${
-              this.realIndex + 1
-            }`;
-            if (this.realIndex == 0 || this.realIndex == 3) {
-              document.querySelector("svg").style.stroke = "#f00";
-            } else {
-              document.querySelector("svg").style.stroke = "#000";
-            }
+            progressCircle.style.setProperty("--progress", 1 - progress); // 프로그래스바 업데이트
+            progressContent.textContent = `${Math.ceil(time / 1000)}s`; // 남은 시간 표시
           },
         },
       });
+      let videoPlay = true;
+      stop.onclick = function () {
+        if (videoPlay) {
+          video.pause();
+          this.innerHTML = "재생";
+          bar.style.animationPlayState = "paused";
+        } else {
+          video.play();
+          this.innerHTML = "정지";
+          bar.style.animationPlayState = "running";
+        }
+        videoPlay = !videoPlay;
+      };
     </script>
   </body>
 </html>

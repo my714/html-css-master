@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Swiper demo</title>
@@ -12,7 +12,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-
+    <link rel="stylesheet" href="./reset.css" />
     <!-- Demo styles -->
     <style>
       html,
@@ -58,10 +58,9 @@
         z-index: 10;
         width: 300px;
         height: 50px;
-        background: #ccc;
         display: flex;
-        /* gap: 20px;
-        align-items: center; */
+        /* gap: 20px; */
+        /* align-items: center; */
       }
       .autoplay-progress {
         /* position: absolute;
@@ -69,7 +68,7 @@
         bottom: 16px; */
         z-index: 10;
         width: 250px;
-        /* height: 48px; */
+        height: 48px;
         /* display: flex;
         align-items: center;
         justify-content: center; */
@@ -82,15 +81,25 @@
         /* position: absolute;
         left: 0;
         top: 0px; */
+        position: relative;
         z-index: 10;
         width: 100%;
         height: 100%;
         stroke-width: 4px;
-        stroke: var(--swiper-theme-color);
+        stroke: #000;
         fill: none;
         stroke-dashoffset: calc(200px * (1 - var(--progress)));
         stroke-dasharray: 200;
         /* transform: rotate(-90deg); */
+      }
+      .autoplay-progress svg line {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .autoplay-progress svg line.back {
+        stroke-dasharray: 0;
+        opacity: 0.2;
       }
     </style>
   </head>
@@ -108,15 +117,16 @@
       <div class="controls">
         <span class="start"></span>
         <div class="autoplay-progress">
-          <svg viewBox="0 0 250 48">
-            <line x1="10" y1="10" x2="210" y2="10" />
+          <svg>
             <!-- <circle cx="24" cy="24" r="20"></circle> -->
+            <line x1="10" y1="10" x2="210" y2="10" class="back" />
+            <line x1="10" y1="10" x2="210" y2="10" class="up" />
           </svg>
+          <!-- <span></span> -->
         </div>
         <span class="end"></span>
       </div>
     </div>
-
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -124,31 +134,29 @@
     <script>
       const progressCircle = document.querySelector(".autoplay-progress svg");
       const progressContent = document.querySelector(".autoplay-progress span");
-      document.querySelector("start").innerHTML = "01";
-      document.querySelector("end").innerHTML =
-        "0" + document.querySelectorAll(".swiper-slide").length;
-
+      let slide = document.querySelectorAll(".swiper-slide");
+      document.querySelector(".start").innerHTML = "01";
+      document.querySelector(".end").innerHTML = "0" + slide.length;
+      document.querySelector("svg").style.stroke = "#f00";
       var swiper = new Swiper(".mySwiper", {
-        spaceBetween: 30,
-        centeredSlides: true,
+        effect: "fade",
         autoplay: {
-          delay: 2500,
+          delay: 6000,
           disableOnInteraction: false,
         },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
+
         on: {
           autoplayTimeLeft(s, time, progress) {
             progressCircle.style.setProperty("--progress", 1 - progress);
             // progressContent.textContent = `${Math.ceil(time / 1000)}s`;
-            document.querySelector(".start").innerHTML = `0${this.realIndex + 1}
-          `;
+            document.querySelector(".start").innerHTML = `0${
+              this.realIndex + 1
+            }`;
+            if (this.realIndex == 0 || this.realIndex == 3) {
+              document.querySelector("svg").style.stroke = "#f00";
+            } else {
+              document.querySelector("svg").style.stroke = "#000";
+            }
           },
         },
       });

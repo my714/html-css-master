@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Swiper demo</title>
@@ -31,15 +31,14 @@
       }
 
       .swiper {
-        width: 1200px;
-        margin: 0 auto;
-        height: 600px;
+        width: 100%;
+        height: 100%;
       }
 
       .swiper-slide {
         text-align: center;
         font-size: 18px;
-        background: #ccc;
+        background: #fff;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -51,11 +50,6 @@
         height: 100%;
         object-fit: cover;
       }
-
-      .swiper {
-        margin-left: auto;
-        margin-right: auto;
-      }
     </style>
   </head>
 
@@ -63,21 +57,30 @@
     <!-- Swiper -->
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="../Html5&CSS/images/photo1.jpg" alt="" />
-        </div>
-        <div class="swiper-slide">
-          <img src="../Html5&CSS/images/photo2.jpg" alt="" />
-        </div>
-        <div class="swiper-slide">
-          <img src="../Html5&CSS/images/photo3.jpg" alt="" />
-        </div>
-        <div class="swiper-slide">
-          <img src="../Html5&CSS/images/photo4.jpg" alt="" />
-        </div>
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 4</div>
+        <div class="swiper-slide">Slide 5</div>
+        <div class="swiper-slide">Slide 6</div>
+        <div class="swiper-slide">Slide 7</div>
+        <div class="swiper-slide">Slide 8</div>
+        <div class="swiper-slide">Slide 9</div>
       </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+    <div class="swiper mySwiper1">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 4</div>
+        <div class="swiper-slide">Slide 5</div>
+        <div class="swiper-slide">Slide 6</div>
+        <div class="swiper-slide">Slide 7</div>
+        <div class="swiper-slide">Slide 8</div>
+        <div class="swiper-slide">Slide 9</div>
+      </div>
       <div class="swiper-pagination"></div>
     </div>
 
@@ -87,21 +90,19 @@
     <!-- Initialize Swiper -->
     <script>
       var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 1,
-        spaceBetween: 0,
-        loop: true,
-        mousewheel: true,
-        autoplay: {
-          delay: 1500,
-          disableOnInteraction: false,
-        },
+        slidesPerView: 4,
+        spaceBetween: 30,
+        centeredSlides: true,
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
         },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+      });
+      var swiper1 = new Swiper(".mySwiper1", {
+        direction: "vertical",
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
         },
       });
     </script>

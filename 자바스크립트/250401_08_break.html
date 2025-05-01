@@ -6,12 +6,16 @@
     <title>Document</title>
   </head>
   <body>
-    <p id="demo"></p>
     <script>
-      function myFunction(a, b) {
-        return arguments.length;
+      let text = "";
+      for (let i = 0; i < 10; i++) {
+        if (i === 3) {
+          // break;
+          continue;
+        }
+        text += "The number is " + i + "<br>";
       }
-      document.getElementById("demo").innerHTML = myFunction(4, 3);
+      document.write(text);
     </script>
   </body>
 </html>

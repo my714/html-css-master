@@ -55,13 +55,13 @@
       }
       .con ul li a span {
         opacity: 0;
+        position: absolute;
+        right: 0;
         transform: rotate(0deg);
         transition: 0.5s;
       }
       .con ul li a span.on {
         opacity: 1;
-        position: absolute;
-        right: 0;
         transform: rotate(180deg);
       }
     </style>
@@ -70,9 +70,9 @@
     <div class="con">
       <ul>
         <li>
-          <a href="#"
-            ><p>제품|서비스</p>
-            <span
+          <a href="#" class="on"
+            ><p class="on">제품|서비스</p>
+            <span class="on"
               ><img
                 src="	https://www.samsungshi.com/images/sub/sVIsual_icon.png"
                 alt="arrow" /></span
@@ -111,9 +111,20 @@
     <script>
       document.querySelectorAll(".con ul li").forEach(function (v, k) {
         v.onmouseenter = function () {
-          v.querySelector("a").classList.add("on");
-          v.querySelector("p").classList.add("on");
-          v.querySelector("span").classList.add("on");
+          if (k == 0) {
+            return;
+          } else {
+            v.querySelector("a").classList.add("on");
+            v.querySelector("p").classList.add("on");
+            v.querySelector("span").classList.add("on");
+          }
+        };
+        v.onmouseleave = function () {
+          if (k != 0) {
+            v.querySelector("a").classList.remove("on");
+            v.querySelector("p").classList.remove("on");
+            v.querySelector("span").classList.remove("on");
+          }
         };
       });
     </script>

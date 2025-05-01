@@ -6,16 +6,18 @@
     <title>Document</title>
   </head>
   <body>
+    <p>함수호출</p>
     <script>
-      let text = "";
-      for (let i = 0; i < 10; i++) {
-        if (i === 3) {
-          // break;
-          continue;
-        }
-        text += "The number is " + i + "<br>";
+      function myWrite() {
+        document.write("자바스트립트");
       }
-      document.write(text);
+      document.querySelector("p").onclick = function () {
+        myWrite();
+      };
+      // myWrite();
+      (function () {
+        document.write("자바스트립트");
+      })();
     </script>
   </body>
 </html>

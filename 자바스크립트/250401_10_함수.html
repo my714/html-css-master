@@ -6,18 +6,21 @@
     <title>Document</title>
   </head>
   <body>
-    <p>함수호출</p>
     <script>
-      function myWrite() {
-        document.write("자바스트립트");
+      document.write(add(4, 5));
+      document.write(myadd(100));
+
+      function add(a, b) {
+        return a + b;
       }
-      document.querySelector("p").onclick = function () {
-        myWrite();
+      function myadd(a) {
+        return a + 100;
+      }
+      const x = function () {
+        return 10 + 10;
       };
-      // myWrite();
-      (function () {
-        document.write("자바스트립트");
-      })();
+      document.write(x() + "<br>");
+      document.write(x + "<br>");
     </script>
   </body>
 </html>

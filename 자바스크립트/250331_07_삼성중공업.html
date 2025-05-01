@@ -55,13 +55,13 @@
       }
       .con ul li a span {
         opacity: 0;
+        position: absolute;
+        right: 0;
         transform: rotate(0deg);
         transition: 0.5s;
       }
       .con ul li a span.on {
         opacity: 1;
-        position: absolute;
-        right: 0;
         transform: rotate(180deg);
       }
     </style>
@@ -70,7 +70,7 @@
     <div class="con">
       <ul>
         <li>
-          <a href="#"
+          <a href="./250331_08_service.html"
             ><p>제품|서비스</p>
             <span
               ><img
@@ -108,6 +108,19 @@
       </ul>
     </div>
 
-    <script></script>
+    <script>
+      document.querySelectorAll(".con ul li").forEach(function (v, k) {
+        v.onmouseenter = function () {
+          v.querySelector("a").classList.add("on");
+          v.querySelector("p").classList.add("on");
+          v.querySelector("span").classList.add("on");
+        };
+        v.onmouseleave = function () {
+          v.querySelector("a").classList.remove("on");
+          v.querySelector("p").classList.remove("on");
+          v.querySelector("span").classList.remove("on");
+        };
+      });
+    </script>
   </body>
 </html>

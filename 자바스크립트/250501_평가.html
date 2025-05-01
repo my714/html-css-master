@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: #333;
+      }
+      .main {
+        width: 1400px;
+        margin: 100px auto;
+
+        justify-content: center;
+      }
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-bottom: 6.8rem;
+        margin-bottom: 4rem;
+      }
+      .top .top-left h2 {
+        font-size: 46px;
+        font-weight: bold;
+
+        line-height: 1.26;
+      }
+      .top .top-right ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .top .top-right ul li {
+        margin-right: 58px;
+        text-align: right;
+      }
+      .top .top-right ul li:last-child {
+        margin-right: 0;
+      }
+      .top .top-right p {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .top .top-right span {
+        color: rgba(22, 22, 22, 0.6);
+        font-size: 15px;
+      }
+      .bottom {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="top">
+        <div class="top-left">
+          <h2>
+            Sustainable <br />
+            Love & Respect
+          </h2>
+        </div>
+        <div class="top-right">
+          <ul>
+            <li>
+              <span>Environmental</span>
+              <p>환경</p>
+            </li>
+            <li>
+              <span>Social</span>
+              <p>사회</p>
+            </li>
+            <li>
+              <span>Governance</span>
+              <p>지배구조</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="bottom-left">
+          <div class="txt">
+            <p>
+              애경산업은 지속가능한 환경을 위해 <br />
+              책임을 다하겠습니다.
+            </p>
+          </div>
+          <div class="link">
+            <a href=""
+              ><span>바로가기</span
+              ><img
+                src="https://www.aekyung.co.kr/img/front/sub/sustainable/report/arrow_link.webp"
+                alt=""
+            /></a>
+          </div>
+        </div>
+        <div class="bottom-right">
+          <img
+            src="https://www.aekyung.co.kr/img/front/main/mo_main_tab01.png"
+            alt=""
+          />
+        </div>
+        <div class="bottom-left">
+          <div class="txt">
+            <p>
+              애경산업의 노력은<br />
+              임직원과 협력사, 지역사회<br />
+              그리고 고객이 함께하는 향기로운 동행이 될 것입니다.
+            </p>
+          </div>
+          <div class="link">
+            <a href=""
+              ><span>바로가기</span
+              ><img
+                src="https://www.aekyung.co.kr/img/front/sub/sustainable/report/arrow_link.webp"
+                alt=""
+            /></a>
+          </div>
+        </div>
+        <div class="bottom-right">
+          <img
+            src="https://www.aekyung.co.kr/img/front/main/mo_main_tab02.png"
+            alt=""
+          />
+        </div>
+        <div class="bottom-left">
+          <div class="txt">
+            <p>투명하고 건전한 기업 활동을 이어나가겠습니다.</p>
+          </div>
+          <div class="link">
+            <a href=""
+              ><span>바로가기</span
+              ><img
+                src="https://www.aekyung.co.kr/img/front/sub/sustainable/report/arrow_link.webp"
+                alt=""
+            /></a>
+          </div>
+        </div>
+        <div class="bottom-right">
+          <img
+            src="https://www.aekyung.co.kr/img/front/main/mo_main_tab03.png"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <script>
+      document.querySelectorAll(".new .left ul li")[0].classList.add("active");
+      document.querySelectorAll(".new .right a")[0].classList.add("active");
+
+      function myremove() {
+        document.querySelectorAll(".left ul li").forEach(function (v, k) {
+          v.classList.remove("active");
+        });
+        document.querySelectorAll(".new .right a").forEach(function (v, k) {
+          v.classList.remove("active");
+        });
+      }
+
+      document.querySelectorAll(".left ul li").forEach(function (v, k) {
+        v.onclick = function () {
+          myremove();
+          document.querySelectorAll(".new .right a")[k].classList.add("active");
+          document
+            .querySelectorAll(".new .left ul li")
+            [k].classList.add("active");
+        };
+      });
+    </script>
+  </body>
+</html>
