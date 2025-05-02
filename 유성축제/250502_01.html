@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      header {
+        height: 120px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .top {
+        width: 100%;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        padding: 0 50px;
+        margin: 0 auto;
+      }
+
+      .logo {
+        width: 250px;
+        height: 30px;
+      }
+
+      .logo img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .menu {
+        width: 100%;
+        max-width: 1920px;
+        margin: 0 auto;
+      }
+
+      .menu ul {
+        font-size: 24px;
+        display: flex;
+        height: 50px;
+        gap: 120px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .menu ul li {
+        text-align: center;
+        line-height: 50px;
+      }
+
+      .menu ul li a {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .submenu {
+        position: absolute;
+        width: 100%;
+        height: 0;
+        left: 50px;
+        top: 120px;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .submenu .lnb {
+        width: 1280px;
+        margin: 0 auto;
+      }
+
+      .submenu .lnb > ul {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .submenu .lnb > ul > li {
+        flex: 1 1 20%;
+        line-height: 40px;
+        text-align: center;
+      }
+
+      .submenu .lnb > ul > li a {
+        color: #333;
+      }
+
+      .submenu .lnb > ul > li a:hover {
+        color: #f00;
+      }
+
+      .benner {
+        width: 100%;
+        max-width: 1500px;
+        margin: 0 auto;
+      }
+
+      .benner img {
+        width: 100%;
+      }
+      .popup {
+        position: fixed;
+        bottom: 50px;
+        right: 30px;
+        font-size: 0;
+        z-index: 3000;
+      }
+      .popup a {
+        display: block;
+        width: 200px;
+      }
+      .popup a img {
+        width: 100%;
+      }
+      .main {
+        width: 1400px;
+        margin: 0 auto;
+        padding: 100px 0 60px;
+      }
+
+      .main .program h1 {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      .list ul {
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        margin-bottom: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="top">
+        <div class="logo">
+          <a href=""><img src="./img/logo.png" alt="로고" /></a>
+        </div>
+        <div class="menu">
+          <ul>
+            <li><a href="#">행사안내</a></li>
+            <li><a href="#">프로그램</a></li>
+            <li><a href="#">사전신청</a></li>
+            <li><a href="#">커뮤니티</a></li>
+          </ul>
+        </div>
+        <div class="submenu">
+          <div class="lnb">
+            <ul>
+              <li>
+                <ul>
+                  <li><a href="#">행사 소개</a></li>
+                  <li><a href="#">행사 개요</a></li>
+                  <li><a href="#">일정 및 배치도</a></li>
+                  <li><a href="#">오시는 길</a></li>
+                </ul>
+              </li>
+              <li>
+                <ul>
+                  <li><a href="#">대표 프로그램</a></li>
+                  <li><a href="#">공식 행사</a></li>
+                  <li><a href="#">공연 프로그램</a></li>
+                  <li><a href="#">경연 프로그램</a></li>
+                  <li><a href="#">체험 프로그램</a></li>
+                  <li><a href="#">전시˙관람 프로그램 </a></li>
+                </ul>
+              </li>
+              <li>
+                <ul>
+                  <li><a href="#">뮤직&댄스 경연대회</a></li>
+                </ul>
+              </li>
+              <li>
+                <ul>
+                  <li><a href="#">공지사항</a></li>
+                  <li><a href="#">행사 갤러리</a></li>
+                  <li><a href="#">Q&A</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mark">
+          <a href="">
+            <img src="./img/mark_yuseong.png" alt="유성구 마크" />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div class="benner"><img src="./img/benner.png" alt="배너 이미지" /></div>
+    <div class="popup">
+      <a href=""><img src="./img/ico_dance.png" alt="댄스 경연" /></a>
+    </div>
+
+    <div class="main">
+      <div class="program">
+        <h1>프로그램</h1>
+        <div class="list">
+          <ul>
+            <li><a href="">대표</a></li>
+            <li><a href="">공식</a></li>
+            <li><a href="">공연</a></li>
+            <li><a href="">경연</a></li>
+            <li><a href="">체험</a></li>
+            <li><a href="">전시˙관람</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 
+    <script>
+      let subMenu = document.querySelector(".submenu");
+      let sub = document.querySelectorAll(".lnb>ul>li");
+      let gnb = document.querySelectorAll(".menu ul li");
+      let ht = document.querySelector(".lnb").offsetHeight;
+      console.log("ht : " + ht);
+      gnb.forEach(function (item, keys) {
+        item.addEventListener("mouseenter", function () {
+          subMenu.style.height = ht + "px";
+        });
+        item.addEventListener("mouseleave", function () {
+          subMenu.style.height = 0 + "px";
+        });
+      });
+      sub.forEach(function (item, keys) {
+        item.addEventListener("mouseenter", function () {
+          subMenu.style.height = ht + "px";
+          gnb[keys].querySelector("a").classList.add("on", "active");
+        });
+        item.addEventListener("mouseleave", function () {
+          subMenu.style.height = 0 + "px";
+          gnb[keys].querySelector("a").classList.remove("on", "active");
+        });
+      });
+    </script> -->
+  </body>
+</html>
