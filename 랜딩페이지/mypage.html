@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MY PAGE</title>
+    <style>
+      @font-face {
+        font-family: "HakgyoansimByeolbichhaneulTTF-B";
+        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimByeolbichhaneulTTF-B.woff2")
+          format("woff2");
+        font-weight: 700;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Cafe24Decoshadow";
+        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Decoshadow.woff2")
+          format("woff2");
+        font-weight: normal;
+        font-style: normal;
+      }
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      body {
+        height: 3000px;
+        background-color: #fff0f5;
+      }
+      .tree {
+        position: fixed;
+        bottom: -200px;
+        right: 0;
+        width: 800px;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 2;
+      }
+      header {
+        overflow: hidden;
+        width: 1500px;
+        margin: 0 auto;
+      }
+      .top h1 {
+        font-family: "Cafe24Decoshadow";
+        font-size: 150px;
+        line-height: 1.5;
+        letter-spacing: 3px;
+      }
+
+      .top h1 span {
+        display: block;
+        background: linear-gradient(90deg, #fbc2eb, #fcd5ce);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: fadeInUp 1s ease forwards;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .top h1 span:nth-child(2) {
+        animation-delay: 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="top">
+        <h1>
+          <span>MY</span>
+          <span>PORTFOLIO</span>
+        </h1>
+      </div>
+    </header>
+
+    <img src="./img/bg_tree.png" class="tree" alt="벚나무" />
+
+    <canvas id="sakura"></canvas>
+
+    <script>
+      const canvas = document.getElementById("sakura");
+      const ctx = canvas.getContext("2d");
+
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      window.addEventListener("resize", () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const petalImages = ["./img/sakura01.png", "./img/sakura02.png"];
+
+      const loadedImages = [];
+      let imagesLoaded = 0;
+
+      petalImages.forEach((src, i) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => {
+          loadedImages[i] = img;
+          imagesLoaded++;
+          if (imagesLoaded === petalImages.length) startAnimation();
+        };
+      });
+
+      const petals = [];
+      const petalCount = 40;
+
+      function createPetals() {
+        for (let i = 0; i < petalCount; i++) {
+          petals.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            size: Math.random() * 25 + 15,
+            speedY: Math.random() * 1 + 0.5,
+            speedX: Math.random() * 1 - 0.5,
+            rotation: Math.random() * 360,
+            rotationSpeed: Math.random() * 2 - 1,
+            img: loadedImages[Math.floor(Math.random() * loadedImages.length)],
+          });
+        }
+      }
+
+      function drawPetals() {
+        ctx.clearRect(0, 0, width, height);
+        petals.forEach((p) => {
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+          ctx.drawImage(p.img, -p.size / 2, -p.size / 2, p.size, p.size);
+          ctx.restore();
+
+          p.y += p.speedY;
+          p.x += p.speedX;
+          p.rotation += p.rotationSpeed;
+
+          if (p.y > height || p.x > width || p.x < -50) {
+            p.y = -20;
+            p.x = Math.random() * width;
+          }
+        });
+      }
+
+      function animate() {
+        drawPetals();
+        requestAnimationFrame(animate);
+      }
+
+      function startAnimation() {
+        createPetals();
+        animate();
+      }
+    </script>
+  </body>
+</html>

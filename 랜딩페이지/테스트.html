@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MY PAGE</title>
+    <style>
+      @font-face {
+        font-family: "Cafe24Decoshadow";
+        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Decoshadow.woff2")
+          format("woff2");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      body {
+        background-color: #fff0f5;
+        overflow: hidden;
+      }
+      header {
+        position: relative;
+      }
+      .text_sakura {
+        position: absolute;
+        top: -100px;
+        left: -200px;
+        z-index: -1;
+      }
+      .line_sakura {
+        position: absolute;
+        top: 200px;
+        left: -50px;
+        z-index: -1;
+      }
+
+      .tree {
+        position: fixed;
+        bottom: -200px;
+        right: 0;
+        width: 800px;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      header {
+        width: 1500px;
+        margin: 0 auto;
+      }
+      .top {
+        margin: 200px 0;
+      }
+      .top h1 {
+        font-family: "Cafe24Decoshadow";
+        font-size: 150px;
+        line-height: 1.5;
+        letter-spacing: 3px;
+      }
+
+      .top h1 span {
+        display: inline-block;
+        background: linear-gradient(90deg, #fbc2eb, #fcd5ce);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: fadeInUp 1s ease forwards;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      .top h1 span:nth-child(2),
+      .top h1 span:nth-child(4),
+      .top h1 span:nth-child(5),
+      .top h1 span:nth-child(6) {
+        font-size: 50px;
+        animation-delay: 0.5s;
+      }
+
+      .top h1 span:last-child {
+        animation-delay: 1s;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="top">
+        <img src="./img/text_sakura.png" class="text_sakura" alt="벚꽃" />
+        <h1>
+          <span class="letter">M</span>
+          <span class="letter">i</span>
+          <span class="letter">Y</span>
+          <span class="letter">e</span>
+          <span class="letter">o</span>
+          <span class="letter">n</span>
+          <span class="letter">PORTFOLIO</span>
+        </h1>
+        <img src="./img/line_sakura.png" class="line_sakura" alt="벚꽃" />
+      </div>
+    </header>
+    <div class="main">
+      <h2>Profile</h2>
+      <div class="photo">
+        <img src="" alt="" />
+      </div>
+    </div>
+
+    <img src="./img/bg_tree.png" class="tree" alt="벚나무" />
+
+    <canvas id="sakura"></canvas>
+
+    <script>
+      // 캔버스 및 2D 렌더링 설정
+      const canvas = document.getElementById("sakura");
+      const ctx = canvas.getContext("2d");
+
+      let width = (canvas.width = window.innerWidth); // 화면의 가로 크기
+      let height = (canvas.height = window.innerHeight); // 화면의 세로 크기
+
+      // 화면 크기 변경 시 캔버스 크기 조정
+      window.addEventListener("resize", () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      // 벚꽃 이미지 배열 (sakura01, sakura02)
+      const petalImages = ["./img/sakura01.png", "./img/sakura02.png"];
+
+      // 이미지 로드 상태를 추적
+      const loadedImages = [];
+      let imagesLoaded = 0;
+
+      // 이미지 로드 완료 후 애니메이션 시작
+      petalImages.forEach((src, i) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => {
+          loadedImages[i] = img;
+          imagesLoaded++;
+          if (imagesLoaded === petalImages.length) startAnimation();
+        };
+      });
+
+      // 벚꽃(꽃잎)을 위한 배열과 설정
+      const petals = [];
+      const petalCount = 40;
+
+      // 벚꽃(꽃잎) 생성 함수
+      function createPetals() {
+        for (let i = 0; i < petalCount; i++) {
+          petals.push({
+            x: Math.random() * width, // 랜덤 x 좌표
+            y: Math.random() * height, // 랜덤 y 좌표
+            size: Math.random() * 25 + 15, // 랜덤 사이즈
+            speedY: Math.random() * 1 + 0.5, // 랜덤 Y 속도
+            speedX: Math.random() * 1 - 0.5, // 랜덤 X 속도
+            rotation: Math.random() * 360, // 랜덤 회전 각도
+            rotationSpeed: Math.random() * 2 - 1, // 랜덤 회전 속도
+            img: loadedImages[Math.floor(Math.random() * loadedImages.length)], // 랜덤 이미지
+          });
+        }
+      }
+
+      // 벚꽃(꽃잎)을 그리는 함수
+      function drawPetals() {
+        ctx.clearRect(0, 0, width, height); // 캔버스를 매번 지운다
+        petals.forEach((p) => {
+          ctx.save();
+          ctx.translate(p.x, p.y); // 꽃잎 위치로 이동
+          ctx.rotate((p.rotation * Math.PI) / 180); // 회전 적용
+          ctx.drawImage(p.img, -p.size / 2, -p.size / 2, p.size, p.size); // 이미지 그리기
+          ctx.restore();
+
+          // 꽃잎 위치 및 회전 업데이트
+          p.y += p.speedY;
+          p.x += p.speedX;
+          p.rotation += p.rotationSpeed;
+
+          // 화면 밖으로 나가면 다시 상단에 생성
+          if (p.y > height || p.x > width || p.x < -50) {
+            p.y = -20;
+            p.x = Math.random() * width;
+          }
+        });
+      }
+
+      // 애니메이션 실행 함수
+      function animate() {
+        drawPetals(); // 벚꽃 그리기
+        requestAnimationFrame(animate); // 애니메이션 프레임 요청
+      }
+
+      // 애니메이션 시작 함수
+      function startAnimation() {
+        createPetals(); // 벚꽃 생성
+        animate(); // 애니메이션 시작
+      }
+    </script>
+  </body>
+</html>
