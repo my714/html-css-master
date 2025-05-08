@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>4줄 타이핑 효과</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      #main {
+        background-color: black;
+        height: 100%;
+        color: white;
+        font-size: 40px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/typewriter-effect@2.18.0/dist/core.js"></script>
+  </head>
+  <body>
+    <section id="main">
+      <div id="line1"></div>
+      <div id="line2"></div>
+      <div id="line3"></div>
+      <div id="line4"></div>
+    </section>
+
+    <script>
+      const line1 = document.getElementById("line1");
+      const line2 = document.getElementById("line2");
+      const line3 = document.getElementById("line3");
+      const line4 = document.getElementById("line4");
+
+      const texts = [
+        "경계를 넘어,",
+        "새로운 가능성을 열다",
+        "변화를 두려워하지 않고",
+        "미래를 만들어 갑니다",
+      ];
+
+      // 진짜 한 글자씩 지우는 함수 (setTimeout 방식)
+      function eraseTextSlowly(element, callback, delay = 50) {
+        let content = element.innerText;
+        function eraseStep() {
+          if (content.length > 0) {
+            content = content.slice(0, -1);
+            element.innerText = content;
+            setTimeout(eraseStep, delay);
+          } else {
+            callback && callback();
+          }
+        }
+        eraseStep();
+      }
+
+      function startTypingEffect() {
+        // 초기화
+        line1.innerHTML = "";
+        line2.innerHTML = "";
+        line3.innerHTML = "";
+        line4.innerHTML = "";
+
+        const tw1 = new Typewriter(line1, {
+          loop: false,
+          delay: 75,
+          cursor: "",
+        });
+
+        tw1
+          .typeString(texts[0])
+          .pauseFor(800)
+          .callFunction(() => {
+            const tw2 = new Typewriter(line2, {
+              loop: false,
+              delay: 75,
+              cursor: "",
+            });
+            tw2
+              .typeString(texts[1])
+              .pauseFor(800)
+              .callFunction(() => {
+                const tw3 = new Typewriter(line3, {
+                  loop: false,
+                  delay: 75,
+                  cursor: "",
+                });
+                tw3
+                  .typeString(texts[2])
+                  .pauseFor(800)
+                  .callFunction(() => {
+                    const tw4 = new Typewriter(line4, {
+                      loop: false,
+                      delay: 75,
+                      cursor: "",
+                    });
+                    tw4
+                      .typeString(texts[3])
+                      .pauseFor(2000)
+                      .callFunction(() => {
+                        // 진짜로 줄마다 한 글자씩 지우기 (4 → 1)
+                        eraseTextSlowly(
+                          line4,
+                          () => {
+                            eraseTextSlowly(
+                              line3,
+                              () => {
+                                eraseTextSlowly(
+                                  line2,
+                                  () => {
+                                    eraseTextSlowly(
+                                      line1,
+                                      () => {
+                                        setTimeout(startTypingEffect, 800);
+                                      },
+                                      50
+                                    );
+                                  },
+                                  50
+                                );
+                              },
+                              50
+                            );
+                          },
+                          50
+                        );
+                      })
+                      .start();
+                  })
+                  .start();
+              })
+              .start();
+          })
+          .start();
+      }
+
+      startTypingEffect();
+    </script>
+  </body>
+</html>

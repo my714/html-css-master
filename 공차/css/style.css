@@ -1,0 +1,284 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+header {
+  position: relative;
+  height: 110px;
+  border-bottom: 1px solid #eeeeee;
+}
+.top {
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.top .left {
+  display: flex;
+  /* width: 1200px; */
+  height: 100%;
+  margin: 0 auto;
+}
+.logo {
+  /* display: flex; */
+  height: 100%;
+  line-height: 110px;
+  /* justify-content: center;
+  align-items: center; */
+}
+.logo img {
+  vertical-align: middle;
+}
+.menu {
+  height: 100%;
+  width: 1000px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.menu > ul {
+  display: flex;
+  height: 100%;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+.menu > ul > li {
+  position: relative;
+  /* flex: 1; */
+  text-align: center;
+  /* padding: 0 40px; */
+  width: 12%;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.menu > ul > li:nth-child(4) {
+  width: 20%;
+}
+.menu > ul > li:hover > a,
+.menu > ul > li > a:hover {
+  color: #c30f30;
+}
+.menu > ul > li > a {
+  display: block;
+  /* width: 100%; */
+  /* height: 100%; */
+  color: #444;
+  text-align: center;
+}
+.menu > ul > li > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 106px;
+  width: 100%;
+  height: 4px;
+  background: #c30f30;
+  transform: scaleX(0);
+  transition: 0.5s;
+}
+.menu > ul > li:hover > a::after {
+  transform: scaleX(1);
+}
+
+.menu > ul > li .ko {
+  display: none;
+}
+.submenu {
+  font-size: 15px;
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 0;
+  left: 0;
+  top: 110px;
+  /* background: rgba(0, 0, 0, 0.5); */
+  overflow: hidden;
+  transition: height 0.5s;
+  font-weight: bold;
+}
+
+.submenu li {
+  line-height: 40px;
+}
+.submenu li:first-child {
+  padding-top: 20px;
+}
+/* .submenu .lnb > ul {
+  display: flex;
+  justify-content: space-between;
+}
+.submenu .lnb > ul > li {
+  flex: 1 1 20%;
+  line-height: 40px;
+  text-align: center;
+} */
+
+.submenu li a {
+  color: #ccc;
+}
+.submenu li a:hover {
+  color: #c30f30;
+}
+.right {
+  display: flex;
+  height: 110px;
+  line-height: 110px;
+  align-items: flex-end;
+}
+.right a {
+  height: 100%;
+}
+.right img {
+  width: 100px;
+  height: 110px;
+  vertical-align: middle;
+}
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  background: rgba(0, 0, 0, 0.5);
+  left: 0;
+  top: 110px;
+  transition: 0.5s;
+}
+.swiper {
+  z-index: -1;
+  width: 100%;
+  margin: 0 auto;
+  height: 850px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.stkbox {
+  position: fixed;
+  top: 50%;
+  right: 30px;
+  width: 79px;
+  margin: -230px 0 0;
+  z-index: 1;
+}
+.main {
+  width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.main .con2 {
+  background: #ccc;
+  width: 600px;
+}
+.main .con2 .list {
+  width: 80%;
+  margin: 0 auto;
+}
+.main .con2 .list > p {
+  margin: 40px 0;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.main .con2 ul li {
+  margin: 20px 0;
+}
+.main .con4 {
+  width: 600px;
+  height: 500px;
+  background: #f5f4f2;
+}
+.main .con5 {
+  height: 500px;
+  background: #eee8da;
+}
+
+.bottom {
+  width: 100%;
+  height: 100%;
+  background: #f5eee8;
+}
+.bottom .recipe {
+  margin: 0 auto;
+  width: 1200px;
+  padding: 60px 0;
+}
+.bottom .recipe .up {
+  display: flex;
+  width: 100%;
+  margin: 0 0 60px;
+  overflow: hidden;
+  justify-content: space-between;
+}
+.bottom .recipe .up ul {
+  display: flex;
+  gap: 20px;
+}
+.bottom .recipe .up li {
+}
+.bottom .down {
+  position: relative;
+  align-items: center;
+}
+.bottom .down .one,
+.bottom .down .two,
+.bottom .down .three {
+  display: flex;
+  position: absolute;
+}
+footer {
+  display: flex;
+  width: 100%;
+  height: 166px;
+}
+footer .footerleft {
+  display: flex;
+  width: 35%;
+  height: 100%;
+  background: #575757;
+  justify-content: end;
+  align-items: center;
+}
+footer .footerleft img {
+  width: 69px;
+  height: 90px;
+  margin-right: 20px;
+}
+footer .footerleft p {
+  font-size: 12px;
+  line-height: 16px;
+  color: #b5b4b4;
+  margin-right: 50px;
+}
+footer .footerright {
+  width: 65%;
+  height: 100%;
+  background: #f1f2f2;
+}
+footer .footerright ul {
+  display: flex;
+}
+
+footer .footerright .firstcall,
+footer .footerright .secondcall {
+  display: flex;
+}
+
+footer .footerright .address {
+  display: flex;
+}
