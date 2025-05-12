@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>Swiper demo</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+      }
+      header {
+        position: relative;
+      }
+      .top {
+        width: 100%;
+        display: flex;
+        border-bottom: 1px solid #eeeeee;
+      }
+      .top .left {
+        display: flex;
+        width: 1200px;
+        height: 110px;
+        margin: 0 auto;
+      }
+      .logo {
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+      .menu {
+        height: 100%;
+        width: 1200px;
+        font-weight: bold;
+        font-size: 18px;
+      }
+      .menu ul {
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .menu ul li {
+        flex: 1 1 10%;
+        text-align: center;
+        line-height: 50px;
+      }
+      .menu ul li a:hover {
+        color: #c30f30;
+      }
+      .menu ul li a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 77px;
+        width: 100%;
+        height: 4px;
+        background: #c30f30;
+        transform: scaleX(0);
+        transition: 0.5s;
+      }
+      .menu ul li:hover a::after {
+        transform: scaleX(1);
+      }
+
+      .menu ul li a {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: #444;
+      }
+      .right {
+        display: flex;
+        height: 110px;
+        align-items: flex-end;
+      }
+      .right a {
+        height: 100%;
+      }
+      .right img {
+        width: 100px;
+        height: 110px;
+      }
+      .submenu {
+        z-index: 1;
+        position: absolute;
+        width: 100%;
+        height: 0;
+        left: 0;
+        top: 111px;
+        background: rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        transition: height 0.5s;
+        font-weight: bold;
+      }
+
+      .submenu .lnb {
+        width: 1138px;
+        margin: 0 auto;
+      }
+      .submenu .lnb > ul {
+        display: flex;
+        justify-content: space-between;
+      }
+      .submenu .lnb > ul > li {
+        flex: 1 1 20%;
+        line-height: 40px;
+        text-align: center;
+      }
+
+      .submenu .lnb > ul > li a {
+        color: #ccc;
+      }
+      .submenu .lnb > ul > li a:hover {
+        color: #c30f30;
+      }
+      .swiper {
+        z-index: -1;
+        width: 100%;
+        margin: 0 auto;
+        height: 850px;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="top">
+        <div class="left">
+          <div class="logo">
+            <a href="">
+              <img
+                src="https://www.gong-cha.co.kr/view/gongcha/images/common/logo.png"
+                alt=""
+              />
+            </a>
+          </div>
+          <div class="menu">
+            <ul>
+              <li><a href="#">브랜드</a></li>
+              <li><a href="#">메뉴</a></li>
+              <li><a href="#">매장</a></li>
+              <li><a href="#">멤버십 & 제휴</a></li>
+              <li><a href="#">이벤트</a></li>
+              <li><a href="#">공차소식</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="right">
+          <a href="">
+            <img src="./공차img/오더 (2).png" alt="" />
+          </a>
+        </div>
+      </div>
+
+      <div class="submenu">
+        <div class="lnb">
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#">브랜드 소개</a></li>
+                <li><a href="#">공차의 약속</a></li>
+                <li><a href="#">브랜드 아이덴티티</a></li>
+                <li><a href="#">세계속의 공차</a></li>
+              </ul>
+            </li>
+            <li>
+              <ul>
+                <li><a href="#">주문방법</a></li>
+                <li><a href="#">신메뉴</a></li>
+                <li><a href="#">음료</a></li>
+                <li><a href="#">디저트</a></li>
+                <li><a href="#">MD상품</a></li>
+                <li><a href="#">티스토리</a></li>
+                <li><a href="#">티레시피</a></li>
+              </ul>
+            </li>
+            <li>
+              <ul>
+                <li><a href="#">매장 찾기</a></li>
+                <li><a href="#">가맹점</a></li>
+                <li><a href="#">개설문의</a></li>
+              </ul>
+            </li>
+            <li>
+              <ul>
+                <li><a href="#">공차 멤버십</a></li>
+                <li><a href="#">공차 카드 & e-Gift</a></li>
+                <li><a href="#">통신사 제휴</a></li>
+                <li><a href="#">결제 서비스</a></li>
+              </ul>
+            </li>
+            <li>
+              <ul>
+                <li><a href="#">진행중인 이벤트</a></li>
+                <li><a href="#">종료된 이벤트</a></li>
+              </ul>
+            </li>
+            <li>
+              <ul>
+                <li>
+                  <a href="#">공지사항</a>
+                </li>
+                <li><a href="#">고객센터</a></li>
+                <li><a href="#">FAQ</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img
+            src="https://www.gong-cha.co.kr/uploads/board/20250327/7JzUQS0kWtLjCynD_20250327.jpg"
+            alt=""
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="https://www.gong-cha.co.kr/uploads/board/20250311/dj3g4ULyZqxm2HDS_20250311.jpg"
+            alt=""
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="https://www.gong-cha.co.kr/uploads/board/20250320/SczodPwiI9lX8VT3_20250320.png"
+            alt=""
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="	https://www.gong-cha.co.kr/uploads/board/20250410/9BginxNKOEYc61rV_20250410.jpg
+              "
+            alt=""
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="	https://www.gong-cha.co.kr/uploads/board/20250401/QfHBC7nTpxZw2ROu_20250401.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="con1">
+        <a href="">
+          <img
+            src="https://www.gong-cha.co.kr/uploads/banner/20240502/x7fsnWZoJvjPYGFH_20240502.jpg"
+            alt=""
+          />
+        </a>
+      </div>
+      <div class="con2">
+        <p>공차소식</p>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+      <div class="con3">
+        <a href="">
+          <img
+            src="https://www.gong-cha.co.kr/view/gongcha/images/brandmain/brand_main_section3_img.jpg"
+            alt=""
+          />
+        </a>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+      let subMenu = document.querySelector(".submenu");
+      let sub = document.querySelectorAll(".lnb>ul>li");
+      let gnb = document.querySelectorAll(".menu ul li");
+      let ht = document.querySelector(".lnb").offsetHeight;
+      console.log("ht : " + ht);
+      gnb.forEach(function (item, keys) {
+        item.addEventListener("mouseenter", function () {
+          subMenu.style.height = ht + "px";
+        });
+        item.addEventListener("mouseleave", function () {
+          subMenu.style.height = 0 + "px";
+        });
+      });
+      sub.forEach(function (item, keys) {
+        item.addEventListener("mouseenter", function () {
+          subMenu.style.height = ht + "px";
+          gnb[keys].querySelector("a").classList.add("on", "active");
+        });
+        item.addEventListener("mouseleave", function () {
+          subMenu.style.height = 0 + "px";
+          gnb[keys].querySelector("a").classList.remove("on", "active");
+        });
+      });
+
+      var swiper = new Swiper(".mySwiper", {
+        effect: "fade",
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+      });
+    </script>
+  </body>
+</html>

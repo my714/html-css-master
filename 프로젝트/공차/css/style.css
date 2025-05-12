@@ -1,0 +1,372 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+header {
+  height: 110px;
+  border-bottom: 1px solid #eeeeee;
+}
+.top {
+  position: relative;
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.top .left {
+  display: flex;
+  height: 100%;
+  margin: 0 auto;
+}
+.logo {
+  height: 100%;
+  line-height: 110px;
+}
+.logo img {
+  vertical-align: middle;
+}
+.menu {
+  height: 100%;
+  width: 1000px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.menu > ul {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.menu > ul > li {
+  position: relative;
+  /* flex: 1; */
+  text-align: center;
+  /* padding: 0 40px; */
+  width: 14%;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.menu > ul > li:nth-child(4) {
+  width: 16%;
+}
+.menu > ul > li:hover > a,
+.menu > ul > li > a:hover {
+  color: #c30f30;
+}
+.menu > ul > li > a {
+  display: block;
+  /* width: 100%; */
+  /* height: 100%; */
+  color: #444;
+  text-align: center;
+}
+.menu > ul > li > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 106px;
+  width: 100%;
+  height: 4px;
+  background: #c30f30;
+  transform: scaleX(0);
+  transition: 0.5s;
+}
+.menu > ul > li:hover > a::after {
+  transform: scaleX(1);
+}
+
+.menu > ul > li .ko {
+  display: none;
+}
+.submenu {
+  font-size: 15px;
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 0;
+  left: 0;
+  top: 110px;
+  /* background: rgba(0, 0, 0, 0.5); */
+  overflow: hidden;
+  transition: height 0.5s;
+  font-weight: bold;
+}
+
+.submenu li {
+  line-height: 40px;
+}
+.submenu li:first-child {
+  padding-top: 20px;
+}
+/* .submenu .lnb > ul {
+  display: flex;
+  justify-content: space-between;
+}
+.submenu .lnb > ul > li {
+  flex: 1 1 20%;
+  line-height: 40px;
+  text-align: center;
+} */
+
+.submenu li a {
+  color: #ccc;
+}
+.submenu li a:hover {
+  color: #c30f30;
+}
+.right {
+  width: 25%;
+  margin-left: 30px;
+}
+.right ul {
+  display: flex;
+  gap: 20px;
+}
+.right a {
+}
+.right span {
+  font-size: 13px;
+  color: #444;
+}
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  background: rgba(0, 0, 0, 0.5);
+  left: 0;
+  top: 110px;
+  transition: 0.5s;
+}
+.swiper {
+  z-index: -1;
+  width: 100%;
+  margin: 0 auto;
+  height: 850px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.stkbox {
+  position: fixed;
+  top: 50%;
+  right: 30px;
+  width: 79px;
+  margin: -230px 0 0;
+  z-index: 1;
+}
+.main {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.main .con2 {
+  width: 400px;
+  height: 390px;
+  padding: 50px 40px 0;
+  box-sizing: border-box;
+  float: left;
+  background: #f5f4f2;
+}
+.main .con2 h2 {
+  margin: 0 0 49px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1;
+  color: #222222;
+}
+.main .con2 p {
+  margin: 0 0 49px;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 32px;
+  color: #666666;
+}
+.main .con2 .search {
+  width: 100%;
+  height: 40px;
+  padding: 0 57px 0 20px;
+  margin: 0 0 10px;
+  box-sizing: border-box;
+  border: none;
+  background: #ffffff url(../img/search.gif) right 0 no-repeat;
+}
+.main .con2 a {
+  display: block;
+  width: 100%;
+  height: 50px;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 50px;
+  color: #ffffff;
+  background: #3b3230;
+  text-align: center;
+}
+.main .con3 {
+  width: 400px;
+  height: 500px;
+  padding: 50px 40px 0;
+  box-sizing: border-box;
+  background: url(../img/oder.jpg);
+}
+.main .con3 h2 {
+  margin-bottom: 28px;
+  font-size: 24px;
+}
+.main .con3 p {
+  font-size: 15px;
+  margin-bottom: 26px;
+}
+.main .con3 a:hover {
+  color: #c30f30;
+}
+.main .con3 span {
+  font-size: 13px;
+  color: #000;
+  text-decoration: underline;
+}
+.main .con4 {
+  width: 400px;
+  height: 500px;
+  padding: 80px 40px 0;
+  box-sizing: border-box;
+  float: left;
+  background: #ede6d6;
+}
+
+.main .con4 h1 {
+  margin-bottom: 50px;
+  font-size: 24px;
+}
+.main .con4 a {
+  margin-bottom: 50px;
+  display: flex;
+  gap: 20px;
+}
+.main .con4 a:nth-child(3) {
+  gap: 65px;
+}
+.main .con4 a:last-child {
+  display: block;
+  width: 100%;
+  height: 50px;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 50px;
+  color: #ffffff;
+  background: #6d5547;
+  text-align: center;
+}
+
+.main .con4 p {
+  font-size: 20px;
+  color: #000;
+}
+
+.main .con4 span {
+  font-size: 15px;
+  color: #000;
+}
+.main .con5 {
+  background: url(../img/open.jpg) center/cover no-repeat;
+  width: 400px;
+  height: 500px;
+}
+.main .con5 .con5_txt {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 420px 30px 0;
+}
+.main .con5 .con5_txt p {
+  color: #c30f30;
+  font-size: 20px;
+}
+.main .con5 .con5_txt a {
+  font-size: 15px;
+  color: #000;
+}
+
+.bottom {
+  width: 100%;
+  background: #f5eee8;
+}
+.bottom .recipe {
+  margin: 0 auto;
+  width: 1200px;
+  padding: 60px 0;
+}
+.bottom .recipe .up {
+  display: flex;
+  width: 100%;
+  margin: 0 0 60px;
+  overflow: hidden;
+  justify-content: space-between;
+}
+.bottom .recipe .up ul {
+  display: flex;
+  gap: 20px;
+}
+.bottom .recipe .up li {
+}
+.bottom .down {
+  display: flex;
+  align-items: center;
+}
+footer {
+  display: flex;
+  width: 100%;
+  height: 166px;
+}
+footer .footerleft {
+  display: flex;
+  width: 35%;
+  height: 100%;
+  background: #575757;
+  justify-content: end;
+  align-items: center;
+}
+footer .footerleft img {
+  width: 69px;
+  height: 90px;
+  margin-right: 20px;
+}
+footer .footerleft p {
+  font-size: 12px;
+  line-height: 16px;
+  color: #b5b4b4;
+  margin-right: 50px;
+}
+footer .footerright {
+  width: 65%;
+  height: 100%;
+  background: #f1f2f2;
+}
+footer .footerright ul {
+  display: flex;
+}
+
+footer .footerright .firstcall,
+footer .footerright .secondcall {
+  display: flex;
+}
+
+footer .footerright .address {
+  display: flex;
+}

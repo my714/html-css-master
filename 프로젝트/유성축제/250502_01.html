@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>유성온천문화축제 클론</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      /* 헤더 스타일 */
+      header {
+        height: 120px;
+        background-color: #fff;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .top {
+        width: 100%;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        padding: 0 50px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .logo {
+        width: 250px;
+        height: 30px;
+      }
+
+      .logo img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .menu {
+        flex: 1;
+        margin-left: 50px;
+      }
+
+      .menu > ul {
+        display: flex;
+        gap: 60px;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        font-size: 18px;
+        position: relative;
+      }
+
+      .menu > ul > li {
+        position: relative;
+      }
+
+      .menu > ul > li > a {
+        padding: 10px 15px;
+        display: block;
+      }
+
+      .submenu {
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        background-color: #fff;
+        padding: 10px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      .submenu li a {
+        display: block;
+        padding: 8px 20px;
+        white-space: nowrap;
+      }
+
+      .submenu li a:hover {
+        background-color: #f0f0f0;
+      }
+
+      .mark {
+        width: 100px;
+        height: 30px;
+      }
+
+      .mark img {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* 배너 스타일 */
+      .banner {
+        width: 100%;
+        max-width: 1500px;
+        margin: 0 auto;
+      }
+
+      .banner img {
+        width: 100%;
+      }
+
+      /* 팝업 스타일 */
+      .popup {
+        position: fixed;
+        bottom: 50px;
+        right: 30px;
+        z-index: 3000;
+      }
+
+      .popup a {
+        display: block;
+        width: 200px;
+      }
+
+      .popup a img {
+        width: 100%;
+      }
+
+      /* 메인 콘텐츠 스타일 */
+      .main {
+        width: 1400px;
+        margin: 0 auto;
+        padding: 100px 0 60px;
+      }
+
+      .program h1 {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .list ul {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        font-size: 18px;
+      }
+
+      .list ul li a {
+        padding: 10px 15px;
+        display: block;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .list ul li a:hover {
+        background-color: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <header>
+      <div class="top">
+        <div class="logo">
+          <a href="#"><img src="img/logo.png" alt="로고" /></a>
+        </div>
+        <nav class="menu">
+          <ul>
+            <li>
+              <a href="#">행사안내</a>
+              <ul class="submenu">
+                <li><a href="#">행사 소개</a></li>
+                <li><a href="#">행사 개요</a></li>
+                <li><a href="#">일정 및 배치도</a></li>
+                <li><a href="#">오시는 길</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">프로그램</a>
+              <ul class="submenu">
+                <li><a href="#">대표 프로그램</a></li>
+                <li><a href="#">공식 행사</a></li>
+                <li><a href="#">공연 프로그램</a></li>
+                <li><a href="#">경연 프로그램</a></li>
+                <li><a href="#">체험 프로그램</a></li>
+                <li><a href="#">전시˙관람 프로그램</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">사전신청</a>
+              <ul class="submenu">
+                <li><a href="#">뮤직&댄스 경연대회</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">커뮤니티</a>
+              <ul class="submenu">
+                <li><a href="#">공지사항</a></li>
+                <li><a href="#">행사 갤러리</a></li>
+                <li><a href="#">Q&A</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <div class="mark">
+          <a href="#"><img src="img/mark_yuseong.png" alt="유성구 마크" /></a>
+        </div>
+      </div>
+    </header>
+
+    <!-- 배너 -->
+    <div class="banner">
+      <img src="img/banner.png" alt="배너 이미지" />
+    </div>
+
+    <!-- 팝업 -->
+    <div class="popup">
+      <a href="#"><img src="img/ico_dance.png" alt="댄스 경연" /></a>
+    </div>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main">
+      <section class="program">
+        <h1>프로그램</h1>
+        <div class="list">
+          <ul>
+            <li><a href="#">대표</a></li>
+            <li><a href="#">공식</a></li>
+            <li><a href="#">공연</a></li>
+            <li><a href="#">경연</a></li>
+            <li><a href="#">체험</a></li>
+            <li><a href="#">전시˙관람</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuItems = document.querySelectorAll(".menu > ul > li");
+
+        menuItems.forEach((item) => {
+          const submenu = item.querySelector(".submenu");
+
+          item.addEventListener("mouseenter", () => {
+            if (submenu) {
+              submenu.style.display = "block";
+            }
+          });
+
+          item.addEventListener("mouseleave", () => {
+            if (submenu) {
+              submenu.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

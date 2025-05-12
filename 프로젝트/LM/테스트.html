@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Stellar Yeon 효과</title>
+    <style>
+      body {
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      h2 {
+        font-size: 48px;
+        font-family: "Arial", sans-serif;
+        display: flex;
+        gap: 4px;
+      }
+
+      .letter {
+        color: transparent;
+        opacity: 0;
+        transform: translateX(-20px);
+        animation: fadeInColor 1.5s forwards;
+      }
+
+      @keyframes fadeInColor {
+        to {
+          color: white;
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2 id="animated-text"></h2>
+
+    <script>
+      const text = "Stellar Yeon";
+      const container = document.getElementById("animated-text");
+
+      text.split("").forEach((char, index) => {
+        const span = document.createElement("span");
+        span.textContent = char;
+        span.classList.add("letter");
+        span.style.animationDelay = `${index * 0.2}s`;
+        container.appendChild(span);
+      });
+    </script>
+  </body>
+</html>
