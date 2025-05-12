@@ -21,16 +21,6 @@ gnb.forEach(function (item, keys) {
     this.querySelector("a .ko").style.display = "none";
   });
 });
-// sub.forEach(function (item, keys) {
-//   item.addEventListener("mouseenter", function () {
-//     subMenu.style.height = ht + "px";
-//     gnb[keys].querySelector("a").classList.add("on", "active");
-//   });
-//   item.addEventListener("mouseleave", function () {
-//     subMenu.style.height = 0 + "px";
-//     gnb[keys].querySelector("a").classList.remove("on", "active");
-//   });
-//});
 
 var swiper = new Swiper(".mySwiper", {
   effect: "fade",
@@ -42,4 +32,27 @@ var swiper = new Swiper(".mySwiper", {
     delay: 5000,
     disableOnInteraction: false,
   },
+});
+
+//바텀 클릭
+document.addEventListener("DOMContentLoaded", function () {
+  const tabs = document.querySelectorAll(".recipe_list li a");
+  const contents = document.querySelectorAll(".img_box .down");
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      tabs.forEach((t) => t.classList.remove("active"));
+      contents.forEach((c) => (c.style.display = "none"));
+
+      tab.classList.add("active");
+      contents[index].style.display = "flex";
+    });
+  });
+
+  tabs[0].classList.add("active");
+  contents.forEach((c, i) => {
+    c.style.display = i === 0 ? "flex" : "none";
+  });
 });
