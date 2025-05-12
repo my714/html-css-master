@@ -218,6 +218,7 @@ header {
   background: #3b3230;
   text-align: center;
 }
+
 .main .con3 {
   width: 400px;
   height: 500px;
@@ -233,13 +234,28 @@ header {
   font-size: 15px;
   margin-bottom: 26px;
 }
+
+.main .con3 a {
+  display: inline-block;
+  font-size: 15px;
+  color: #000;
+  text-decoration: underline;
+}
+.main .con3 span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: url(../img/arrow_black.png) right center no-repeat;
+  font-size: 13px;
+  line-height: 17px;
+}
+
 .main .con3 a:hover {
   color: #c30f30;
 }
-.main .con3 span {
-  font-size: 13px;
-  color: #000;
-  text-decoration: underline;
+
+.main .con3 a:hover span {
+  background: url(../img/arrow_red.png) right center no-repeat;
 }
 .main .con4 {
   width: 400px;
@@ -292,47 +308,131 @@ header {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  padding: 420px 30px 0;
+  padding: 420px 20px 0;
 }
 .main .con5 .con5_txt p {
   color: #c30f30;
   font-size: 20px;
 }
 .main .con5 .con5_txt a {
-  font-size: 15px;
-  color: #000;
+  display: inline-block;
+  color: #777777;
+  font-size: 13px;
+  text-decoration: underline;
+}
+.main .con5 .con5_txt span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: url(../img/arrow_gray.png) right center no-repeat;
+
+  line-height: 17px;
+}
+
+.main .con5 .con5_txt a:hover {
+  color: #c30f30;
+}
+
+.main .con5 .con5_txt a:hover span {
+  background: url(../img/arrow_red.png) right center no-repeat;
 }
 
 .bottom {
+  height: 470px;
   width: 100%;
   background: #f5eee8;
+  padding: 60px 0 0;
 }
 .bottom .recipe {
   margin: 0 auto;
   width: 1200px;
-  padding: 60px 0;
 }
-.bottom .recipe .up {
+.bottom .recipe .recipe_list {
   display: flex;
   width: 100%;
   margin: 0 0 60px;
   overflow: hidden;
   justify-content: space-between;
 }
-.bottom .recipe .up ul {
+.bottom .recipe .recipe_list ul {
   display: flex;
   gap: 20px;
 }
-.bottom .recipe .up li {
+.recipe_list > p {
+  font-size: 24px;
+  float: left;
+  color: #222222;
+}
+.recipe_list ul li {
+}
+.recipe_list ul li a {
+  display: block;
+  padding: 0 0 6px;
+  font-weight: 700;
+  font-size: 15px;
+  color: #9b8777;
+}
+.recipe_list ul li a.active {
+  color: #993b42;
+  border-bottom: 3px solid #993b42;
+}
+.bottom .img_box {
+  position: relative;
 }
 .bottom .down {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
+  display: none;
+}
+.down .txt h1 {
+  margin-bottom: 15px;
+  font-size: 36px;
+}
+.txt p:first-of-type {
+  color: #993b42;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.txt p:last-of-type {
+  color: #444;
+  margin-bottom: 25px;
+  font-size: 15px;
+}
+.txt a {
+  display: inline-block;
+  width: 152px;
+  height: 35px;
+  box-sizing: border-box;
+  border: 1px solid #993b42;
+
+  text-align: center;
+}
+.txt a span {
+  color: #993b42;
+  padding: 0 15px 0 0;
+  font-size: 13px;
+  line-height: 33px;
+  background: url(../img/arrow_red.png) right center no-repeat;
+}
+
+.txt a:hover {
+  background: #993b42;
+}
+.txt a:hover span {
+  color: #ffffff;
+  background: url(../img/arrow_gray.png) right center no-repeat;
 }
 footer {
-  display: flex;
   width: 100%;
   height: 166px;
+}
+footer .last {
+  width: 100%;
+  height: 100%;
+  display: flex;
 }
 footer .footerleft {
   display: flex;
@@ -358,8 +458,30 @@ footer .footerright {
   height: 100%;
   background: #f1f2f2;
 }
-footer .footerright ul {
+
+.txt_box {
+  margin-top: 20px;
+}
+
+.txt_box ul {
   display: flex;
+  margin-bottom: 20px;
+}
+.txt_box ul li {
+  margin: 0 0 0 41px;
+  float: left;
+  position: relative;
+  font-size: 18px;
+}
+.txt_box ul li::after {
+  display: block;
+  content: "";
+  width: 1px;
+  height: 14px;
+  position: absolute;
+  top: 4px;
+  left: -20px;
+  background: #a4a4a4;
 }
 
 footer .footerright .firstcall,
@@ -369,4 +491,42 @@ footer .footerright .secondcall {
 
 footer .footerright .address {
   display: flex;
+}
+.address ul li {
+  font-size: 13px;
+}
+
+.maincall {
+  margin-left: 41px;
+}
+.call span {
+  display: inline-block;
+  padding: 0 0 0 18px;
+  margin: 0 0 0 10px;
+  background: url(../img/call.png) 0 center no-repeat;
+}
+.firstcall p:last-child {
+  margin-left: 29px;
+}
+.secondcall {
+  margin-bottom: 10px;
+}
+.secondcall p:last-child {
+  margin-left: 20px;
+}
+
+.address ul li::after {
+  display: block;
+  content: "";
+  width: 1px;
+  height: 14px;
+  position: absolute;
+  top: 4px;
+  left: -20px;
+  background: #a4a4a4;
+}
+
+.txt_box ul li:first-child:after,
+.address ul li:first-child:after {
+  display: none;
 }
