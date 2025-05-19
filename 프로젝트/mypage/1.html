@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f9f9f9;
+      }
+
+      .image-row {
+        display: flex;
+        gap: 30px;
+      }
+
+      .rolling-image {
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+        animation: roll-ltr 2s ease-out forwards;
+      }
+
+      @keyframes roll-ltr {
+        0% {
+          transform: translateX(-100vw) rotate(0deg);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0) rotate(1080deg);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image-row">
+      <img src="./img/greentea.png" alt="녹차" class="rolling-image" />
+      <img src="./img/taro.png" alt="타로" class="rolling-image" />
+      <img src="./img/strawberry.png" alt="딸기" class="rolling-image" />
+      <img src="./img/yogut.png" alt="요거트" class="rolling-image" />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,425 @@
+@charset "utf-8";
+@font-face {
+  font-family: "Cafe24Decoshadow";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Decoshadow.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "YOnepickTTF-Bold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/YOnepickTTF-Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cafe24Decoline";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Decoline.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "omyu_pretty";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "HakgyoansimBombanghakR";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimBombanghakR.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.section {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.section:nth-child(1) {
+  background: url(../img/bg01.png) center/cover;
+  background-repeat: no-repeat;
+}
+
+header {
+  width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.title01 {
+  margin-top: 200px;
+}
+
+.title01 h1 {
+  font-family: "Cafe24Decoshadow";
+  font-size: 150px;
+  line-height: 1.5;
+  letter-spacing: 3px;
+}
+
+.title01 h1 span {
+  display: inline-block;
+  background: linear-gradient(120deg, #fbc2eb, #d3afa7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.title01 h1 span.animate {
+  animation: fadeInUp 1s ease forwards;
+}
+
+.title01 h1 span:nth-child(2),
+.title01 h1 span:nth-child(4),
+.title01 h1 span:nth-child(5),
+.title01 h1 span:nth-child(6) {
+  font-size: 50px;
+}
+
+.title01 h1 span:last-child {
+  animation-delay: 1s;
+}
+
+.text_sakura {
+  position: absolute;
+  top: -100px;
+  left: -200px;
+  z-index: 0;
+}
+
+.line_sakura {
+  position: absolute;
+  top: 200px;
+  left: -50px;
+  z-index: 0;
+}
+
+.tree {
+  position: absolute;
+  bottom: -220px;
+  right: 0;
+  width: 800px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.section:nth-child(2) {
+  background: url(../img/bg02.png) center/cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.title02 h2 {
+  text-align: center;
+  line-height: 3;
+}
+.title02 h2 span {
+  font-family: "YOnepickTTF-Bold";
+  font-size: 100px;
+  letter-spacing: -3px;
+  background: linear-gradient(95deg, #7fa1e0, #e795ec);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title02 h2 span.letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.title02 h2 span.letter.animate {
+  animation: fadeInUp 1s ease forwards;
+}
+.Profile_line {
+  position: absolute;
+  top: -20px;
+  left: 550px;
+  width: 1200px;
+}
+.Profile {
+  display: flex;
+}
+.photo {
+  margin: 20px;
+}
+.Profile_box {
+  text-align: center;
+  position: relative;
+}
+.txt_box {
+  position: absolute;
+  left: -100px;
+  top: -50px;
+}
+.txt_con {
+  width: 1000px;
+  height: 600px;
+  z-index: -1;
+}
+.txt {
+  color: #5900ce;
+  text-align: left;
+  font-family: "omyu_pretty";
+  font-size: 35px;
+  margin: 100px 0 0 150px;
+}
+.txt p:nth-child(2n + 1) {
+  color: #9c15eb;
+}
+
+.typing.active::after {
+  content: "|";
+  animation: blink 0.7s step-start infinite;
+  margin-left: 3px;
+  font-weight: bold;
+}
+
+.typing.done::after {
+  content: "";
+  animation: none;
+}
+.tree02 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.section:nth-child(3) {
+  background: url(../img/bg03.png) center/cover;
+  background-repeat: no-repeat;
+  color: white;
+}
+.line_h {
+  position: absolute;
+  top: 20px;
+  left: 650px;
+  height: 250px;
+}
+.title03 {
+  margin-top: 80px;
+  position: relative;
+}
+
+.title03 h3 {
+  text-align: center;
+  line-height: 1.5;
+}
+.title03 h3 span {
+  font-family: "YOnepickTTF-Bold";
+  font-size: 100px;
+  letter-spacing: -3px;
+  background: linear-gradient(90deg, #9d2ee7, #5d43d4, #130d46);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(0);
+}
+
+.title03 h3 span.animate-left {
+  animation: slideInLeft 2.5s ease forwards;
+}
+
+.title03 h3 span.animate-right {
+  animation: slideInRight 2.5s ease forwards;
+}
+
+.project {
+  width: 1400px;
+  margin: 100px auto;
+}
+
+.project .project_list {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 4em;
+  margin-bottom: 4rem;
+}
+
+.project_list ul {
+  text-align: center;
+  display: flex;
+  margin: 0 auto;
+  gap: 150px;
+}
+
+.project_list ul li a {
+  display: inline-block;
+  text-align: center;
+}
+
+.project_list ul li span {
+  display: block;
+  font-size: 15px;
+  color: rgba(22, 22, 22, 0.6);
+}
+
+.project_list ul li p {
+  font-family: "omyu_pretty";
+  font-size: 30px;
+}
+
+.project_list ul li p.active {
+  color: #130d46;
+}
+.bottom {
+  position: relative;
+}
+.bottom .con {
+  width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  gap: 50px;
+  left: 0;
+
+  display: none;
+}
+
+.img_box {
+  position: relative;
+  width: 1000px;
+  height: 500px;
+  z-index: 0;
+}
+
+.img_box .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1000px;
+  height: 100%;
+  background: black;
+  opacity: 0.3;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.img_box img {
+  position: relative;
+  z-index: 0;
+  width: 1000px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  transition: transform 0.4s ease;
+}
+
+.bottom .link {
+  position: relative;
+  z-index: 10;
+}
+
+.bottom .link a {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 2.4rem;
+  color: #535252;
+  background-image: linear-gradient(to top, #f5e7f0, #cccccc);
+  height: 50px;
+  padding: 0 16px;
+  gap: 8px;
+}
+
+.bottom .link a:hover {
+  background-image: linear-gradient(to top, #f5e7f0, #0f0f0f);
+  color: #fff;
+}
+
+.bottom .link a span {
+  font-family: "HakgyoansimBombanghakR";
+  font-size: 26px;
+}
+.img_box.bright .overlay {
+  opacity: 0;
+}
+
+.tree03 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 800px;
+  z-index: -1;
+}
+
+#Butterfly {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+#leaf {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 2;
+}
